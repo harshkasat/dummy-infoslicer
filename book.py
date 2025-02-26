@@ -28,7 +28,7 @@ from sugar3.activity.activity import get_bundle_path, get_activity_root
 
 import net
 from infoslicer.processing.article import Article
-from infoslicer.processing.ArticleData import ArticleData
+from infoslicer.processing.article_builder import ArticleData
 
 logger = logging.getLogger('infoslicer')
 
