@@ -6,7 +6,7 @@ from gi.repository import GObject
 from gi.repository import Pango
 import pickle
 
-SELECT_SENTENCE, SELECT_PARAGRAPH, SELECT_SECTION, FULL_EDIT = list(4)
+SELECT_SENTENCE, SELECT_PARAGRAPH, SELECT_SECTION, FULL_EDIT = range(4)
 
 class Textbox( Gtk.TextView ):
     """ 
