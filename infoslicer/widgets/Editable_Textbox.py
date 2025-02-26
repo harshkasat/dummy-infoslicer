@@ -11,7 +11,7 @@ from infoslicer.widgets.Textbox import Textbox
 
 import logging
 
-SNAP_SENTENCE, SNAP_PARAGRAPH, SNAP_SECTION, SNAP_NONE = list(4)
+SNAP_SENTENCE, SNAP_PARAGRAPH, SNAP_SECTION, SNAP_NONE = range(4)
 
 class Editable_Textbox( Textbox ):
     """

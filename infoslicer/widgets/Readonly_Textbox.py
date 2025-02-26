@@ -6,7 +6,7 @@ import pickle
 import logging
 from .Textbox import Textbox
 
-SELECT_SENTENCE, SELECT_PARAGRAPH, SELECT_SECTION, FULL_EDIT = list(4)
+SELECT_SENTENCE, SELECT_PARAGRAPH, SELECT_SECTION, FULL_EDIT = range(4)
 
 class Readonly_Textbox( Textbox ):    
     """
