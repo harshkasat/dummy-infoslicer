@@ -2,7 +2,7 @@
 
 import logging
 import random
-from infoslicer.processing.Sentence import Sentence, Picture, dummySentence
+from infoslicer.processing.sentence import Sentence, Picture, dummySentence
 from infoslicer.processing.article_data import ParagraphData, SentenceData
 from gi.repository import GdkPixbuf
 
