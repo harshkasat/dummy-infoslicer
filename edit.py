@@ -30,8 +30,8 @@ from infoslicer.widgets.Edit_Pane import Edit_Pane
 from infoslicer.widgets.Format_Pane import Format_Pane
 from infoslicer.widgets.Image_Pane import Image_Pane
 from infoslicer.widgets.Journal_Image_Pane import Journal_Image_Pane
-from infoslicer.processing.HTML_strip import dehtml
-from infoslicer.processing.Article import Article
+from infoslicer.processing.html_strip import dehtml
+from infoslicer.processing.article import Article
 
 import book
 
