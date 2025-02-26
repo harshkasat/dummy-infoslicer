@@ -11,8 +11,8 @@ from infoslicer.processing.article_data import (
     SentenceData,
 )
 from infoslicer.processing.paragraph import Paragraph
-from infoslicer.processing.Section import Section, dummySection
-from infoslicer.processing.Sentence import Sentence
+from infoslicer.processing.section import Section, dummySection
+from infoslicer.processing.sentence import Sentence
 
 # logger = logging.getLogger('infoslicer')
 logger = logging.getLogger("infoslicer::Article")
