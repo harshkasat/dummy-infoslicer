@@ -1,0 +1,297 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-07-07 00:32-0400\n"
+"PO-Revision-Date: 2014-05-14 04:26+0200\n"
+"Last-Translator: Chris <cjl@laptop.org>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: pbs\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.0.5\n"
+
+#. TRANS: "name" option from activity.info file
+msgid "InfoSlicer"
+msgstr "InfoSlicer"
+
+#. TRANS: "summary" option from activity.info file
+#. TRANS: "description" option from activity.info file
+msgid ""
+"Is it possible to have my own encyclopedia? Yes! Find your favorite "
+"information on the web and package it with InfoSlicer creating incredible "
+"collections."
+msgstr ""
+"¿Lania'at mu numei tiji nuk'uix? ¡lik'iajam! Kijit re kikiu'uts' manad-iu' "
+"kimieng ne web vichjaut makjat infoslicer kichjau maveiñ ni makajai'-"
+
+#: activity.py:67
+msgid "Library"
+msgstr "limi ngk'uix ma'ajau"
+
+#: activity.py:75
+msgid "Edit"
+msgstr "Malejeiñ"
+
+#: book.py:211
+msgid "Lion (from en.wikipedia.org)"
+msgstr "kuteung (de en.wikipedia.org)"
+
+#: book.py:212
+msgid "Tiger (from en.wikipedia.org)"
+msgstr "nimix matse' (de en.wikipedia.org)"
+
+#: book.py:213
+msgid "Giraffe (from en.wikipedia.org)"
+msgstr "Jirafa (de en.wikipedia.org)"
+
+#: book.py:214
+msgid "Zebra (from en.wikipedia.org)"
+msgstr "Vareik ndikiuát (de en.wikipedia.org)"
+
+#: book.py:221
+msgid "Giraffe"
+msgstr "Jirafa"
+
+#: bookview.py:52
+msgid "Articles are ready to be published"
+msgstr "Re kily'e ndul'uets' majau mad-eung manat'ujuñ mi'iat lanjú"
+
+#: bookview.py:92
+msgid "Create new article"
+msgstr "Matsjau nda viñkjiu kily'e me'ets'"
+
+#: bookview.py:102
+msgid "Delete current article"
+msgstr "Mavun kily'e me'ets se manaja kje'"
+
+#: bookview.py:109
+msgid "Move article downward"
+msgstr "Maka'aut kily'e me'ets nimia kimviu'p"
+
+#: bookview.py:114
+msgid "Move article upward"
+msgstr "Maka'aut kily'e me'ets nimia kimvia'"
+
+#: bookview.py:191
+msgid "New article"
+msgstr "Viñkjiu kily'e me'ets"
+
+#: edit.py:76
+msgid "Text"
+msgstr "keich' kily'e"
+
+#: edit.py:81
+msgid "Images"
+msgstr "xikji'ik"
+
+#: edit.py:86
+msgid "Journal Images"
+msgstr "xikji'ik lumei pu xiñi'iu lichjau"
+
+#: edit.py:91
+msgid "Choose Journal Images"
+msgstr "make'eik xikji'ik ne xiñi'iu lichjau"
+
+#: edit.py:95
+msgid "Choose Journal Text"
+msgstr "makeje' kily'e me'ets' ne xiñi'iu lichjau"
+
+#: infoslicer/widgets/Edit_Pane.py:53
+msgid "Snap selection to:"
+msgstr "Makjaik/maku'usp ne makeje' a:"
+
+#: infoslicer/widgets/Edit_Pane.py:54
+msgid "Nothing"
+msgstr "nip kad-er"
+
+#: infoslicer/widgets/Edit_Pane.py:55
+msgid "Sentences"
+msgstr "Riñjá vumang sania'"
+
+#: infoslicer/widgets/Edit_Pane.py:56
+msgid "Paragraphs"
+msgstr "tijap kily'e me'ets'"
+
+#: infoslicer/widgets/Edit_Pane.py:57
+msgid "Sections"
+msgstr "vasajik ngk'uix"
+
+#: infoslicer/widgets/Edit_Pane.py:103 infoslicer/widgets/Edit_Pane.py:111
+#: infoslicer/widgets/Format_Pane.py:52 infoslicer/widgets/Image_Pane.py:58
+#: infoslicer/widgets/Image_Pane.py:89
+#: infoslicer/widgets/Journal_Image_Pane.py:59
+msgid "Article:"
+msgstr "kily'e me'ets'"
+
+#: infoslicer/widgets/Image_Pane.py:79
+msgid "This article does not have any images"
+msgstr "Ranji kily'e me'ets kad-ep lumei nip nda xikji'ik"
+
+#: infoslicer/widgets/Image_Pane.py:82
+msgid "Please select a Wikipedia article from the menu above"
+msgstr ""
+"Vichjaut majau kiji't nda me'ets kily'e pu wikipedia lumei nde'et make' ma "
+"kimvia'"
+
+#: library.py:50
+msgid "Wiki"
+msgstr "Wiki"
+
+#: library.py:50
+msgid "Wiki articles"
+msgstr "Me'ets kily'e lumei wiki"
+
+#: library.py:52
+msgid "Custom"
+msgstr "Liji vupaí"
+
+#: library.py:52
+msgid "Custom articles"
+msgstr "Kily'e me'ets k'ua liji vupai"
+
+#: library.py:72
+msgid ""
+"To download Wiki article\n"
+"type \"Article name\" and click"
+msgstr ""
+"Se mapup kily'e me'ets lumei pu wiki\n"
+"ñjust \"ngunjiu' pu kily'e me'ets\" maiñ kist"
+
+#: library.py:73
+msgid "button on the top \"Library\" panel"
+msgstr "ndaleiñ kimvia lumei mi'ia re se make' \"makjat ngk'uix\""
+
+#: library.py:75
+msgid "To create custom article click"
+msgstr "Se matsjau kad-a kily'e me'ets liji k'ua vupai mates pu"
+
+#: library.py:76
+msgid "button on the left \"Custom\" panel"
+msgstr "ndaleiñ lumei pu lumei re se make' \"k'ua liji vupai\" ma meje'ep"
+
+#: library.py:84
+msgid "Get article from:"
+msgstr "Mamei kily'e me'ets' ne:"
+
+#: library.py:95
+msgid "Article name"
+msgstr "Ngunjiu' pu kily'e me'ets'"
+
+#: library.py:101
+msgid "Search"
+msgstr "Mata'au"
+
+#: library.py:208
+msgid "Exists"
+msgstr "Limi"
+
+#: library.py:209
+#, python-format
+msgid "\"%s\" article already exists"
+msgstr "Re kily'e me'ets' \"%s\" limí"
+
+#: library.py:231
+msgid "Publish selected articles"
+msgstr "Ma'u'up mi'iat re kily'e me'ets se makew'eik"
+
+#: library.py:242
+msgid "English Wikipedia"
+msgstr "Wikipedia en inglés"
+
+#: library.py:243
+msgid "Simple English Wikipedia"
+msgstr "Wikipedia en inglés nip ngul'ajau"
+
+#: library.py:244
+msgid "French Wikipedia"
+msgstr "Wikipedia en francés"
+
+#: library.py:245
+msgid "German Wikipedia"
+msgstr "Wikipedia en alemán"
+
+#: library.py:246
+msgid "Polish Wikipedia"
+msgstr "Wikipedia en polaco"
+
+#: library.py:247
+msgid "Spanish Wikipedia"
+msgstr "Wikipedia lumei man'eiñ"
+
+#: net.py:37
+#, python-format
+msgid "\"%s\" download in progress..."
+msgstr "Mapup ne \"%s\" se manaju pu'"
+
+#: net.py:40
+#, python-format
+msgid "Processing \"%s\"..."
+msgstr "manajá va'ajau \"%s\""
+
+#: net.py:44
+#, python-format
+msgid "Downloading \"%s\" images..."
+msgstr "mapup re xikji'ik \"%s\"..."
+
+#: net.py:45
+#, python-format
+msgid " (from %s)"
+msgstr " (de %s)"
+
+#: net.py:47
+#, python-format
+msgid "\"%s\" successfully downloaded"
+msgstr "\"%s\" ndania'ap mapup majau"
+
+#: net.py:51
+#, python-format
+msgid "\"%s\" could not be found"
+msgstr "\"%s\" kad-ep ndania'at nduk'uejé"
+
+#: net.py:55
+#, python-format
+msgid "Error downloading \"%s\"; check your connection"
+msgstr "ndich'u se mapup \"%s\"; ñut se vaka'am"
+
+#: parse.py:18
+msgid "Return to index"
+msgstr "Makue'e namá pu lupup"
+
+#: xol.py:50
+msgid "Nothing to publish"
+msgstr "Nip kanen mi'iat mananjú"
+
+#: xol.py:51
+msgid "Mark arcticles from \"Custom\" panel and try again."
+msgstr ""
+"Me'es kily'e me'ets lumei pu lumei li'iajaun k'ua vake' \"liji vupai\" viñkjiu "
+"matsau."
+
+#: xol.py:71
+msgid "Overwrite existed bundle?"
+msgstr "¿Maleixme'ets kily'e re makjat limi?"
+
+#: xol.py:72
+msgid ""
+"A bundle for current object was already created. Click \"OK\" to overwrite "
+"it."
+msgstr ""
+"Nda makjat pu sania' se chu'mani ndutsjau. kist pu \"OK\" se manaleix nad-ets'"
+
+#: xol.py:99
+msgid "Book published to your Journal"
+msgstr "Nguk'uix ma'u'up mi'iat pu xiñi'iu tutsjau"
+
+#: xol.py:100
+msgid ""
+"You can read the book in Browse or access the .xol file from your Journal"
+msgstr ""
+"Kiju'u kigyajau pu nguk'uix ne kad-eu maiñ mananú pu nguk'uix makjat .xol "
+"lumei pu xiñi'iu tutsjau"

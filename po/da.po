@@ -1,0 +1,325 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-12-22 18:55+0000\n"
+"PO-Revision-Date: 2016-10-13 09:41+0000\n"
+"Last-Translator: dark159123 <r.j.hansen@protonmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: da\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.5.1.1\n"
+"X-POOTLE-MTIME: 1476351682.000000\n"
+
+msgid "InfoSlicer"
+msgstr "InfoSkærer"
+
+msgid ""
+"Is it possible to have my own encyclopedia? Yes! Find your favorite "
+"information on the web and package it with InfoSlicer creating incredible "
+"collections."
+msgstr ""
+"Er det muligt at få min eget leksikon? Ja! Din din favoritviden på nettet - "
+"pak den med InfoSkærer og skab fantastiske samlinger."
+
+#: /var/www/pootle/sugarlabs/clones/InfoSlicer/book.py:211
+msgid "Lion (from en.wikipedia.org)"
+msgstr "Løve (fra en.wikipedia.org)"
+
+#: /var/www/pootle/sugarlabs/clones/InfoSlicer/book.py:212
+msgid "Tiger (from en.wikipedia.org)"
+msgstr "Tiger (fra en.wikipedia.org)"
+
+#: /var/www/pootle/sugarlabs/clones/InfoSlicer/book.py:213
+msgid "Giraffe (from en.wikipedia.org)"
+msgstr "Giraf (fra en.wikipedia.org)"
+
+#: /var/www/pootle/sugarlabs/clones/InfoSlicer/book.py:214
+msgid "Zebra (from en.wikipedia.org)"
+msgstr "Zebra (fra en.wikipedia.org)"
+
+#: /var/www/pootle/sugarlabs/clones/InfoSlicer/book.py:221
+msgid "Giraffe"
+msgstr "Giraf"
+
+#: /var/www/pootle/sugarlabs/clones/InfoSlicer/parse.py:18
+msgid "Return to index"
+msgstr "Gå tilbage til indeks"
+
+#: /var/www/pootle/sugarlabs/clones/InfoSlicer/xol.py:50
+msgid "Nothing to publish"
+msgstr "Intet at publicere"
+
+# puncspacing checked
+#: /var/www/pootle/sugarlabs/clones/InfoSlicer/xol.py:51
+msgid "Mark arcticles from \"Custom\" panel and try again."
+msgstr "Markér artikler fra panelet \"Brugerdefineret\" og forsøg igen."
+
+#: /var/www/pootle/sugarlabs/clones/InfoSlicer/xol.py:71
+msgid "Overwrite existed bundle?"
+msgstr "Overskriv eksisterende bundt?"
+
+#: /var/www/pootle/sugarlabs/clones/InfoSlicer/xol.py:72
+msgid ""
+"A bundle for current object was already created. Click \"OK\" to overwrite "
+"it."
+msgstr ""
+"Der er allerede oprettet et bundt for det aktuelle objekt. Klik \"OK\" for "
+"at overskrive det."
+
+#: /var/www/pootle/sugarlabs/clones/InfoSlicer/xol.py:99
+msgid "Book published to your Journal"
+msgstr "Bog publiceret i din Journal"
+
+#: /var/www/pootle/sugarlabs/clones/InfoSlicer/xol.py:100
+msgid ""
+"You can read the book in Browse or access the .xol file from your Journal"
+msgstr "Du kan læse bogen i Gennemse eller tilgå .xol-filen fra din journal"
+
+#: /var/www/pootle/sugarlabs/clones/InfoSlicer/infoslicer/widgets/Format_Pane.py:52
+#: /var/www/pootle/sugarlabs/clones/InfoSlicer/infoslicer/widgets/Journal_Image_Pane.py:59
+#: /var/www/pootle/sugarlabs/clones/InfoSlicer/infoslicer/widgets/Image_Pane.py:58
+#: /var/www/pootle/sugarlabs/clones/InfoSlicer/infoslicer/widgets/Image_Pane.py:89
+#: /var/www/pootle/sugarlabs/clones/InfoSlicer/infoslicer/widgets/Edit_Pane.py:103
+#: /var/www/pootle/sugarlabs/clones/InfoSlicer/infoslicer/widgets/Edit_Pane.py:111
+msgid "Article:"
+msgstr "Artikel:"
+
+#: /var/www/pootle/sugarlabs/clones/InfoSlicer/infoslicer/widgets/Image_Pane.py:79
+msgid "This article does not have any images"
+msgstr "Denne artikel har ingen billeder"
+
+#: /var/www/pootle/sugarlabs/clones/InfoSlicer/infoslicer/widgets/Image_Pane.py:82
+msgid "Please select a Wikipedia article from the menu above"
+msgstr "Vælg venligst en Wikipedia-artikel fra menuen ovenfor"
+
+#: /var/www/pootle/sugarlabs/clones/InfoSlicer/infoslicer/widgets/Edit_Pane.py:53
+msgid "Snap selection to:"
+msgstr "Snup markering til:"
+
+#: /var/www/pootle/sugarlabs/clones/InfoSlicer/infoslicer/widgets/Edit_Pane.py:54
+msgid "Nothing"
+msgstr "Ingenting"
+
+#: /var/www/pootle/sugarlabs/clones/InfoSlicer/infoslicer/widgets/Edit_Pane.py:55
+msgid "Sentences"
+msgstr "Sætninger"
+
+#: /var/www/pootle/sugarlabs/clones/InfoSlicer/infoslicer/widgets/Edit_Pane.py:56
+msgid "Paragraphs"
+msgstr "Paragrafer"
+
+#: /var/www/pootle/sugarlabs/clones/InfoSlicer/infoslicer/widgets/Edit_Pane.py:57
+msgid "Sections"
+msgstr "Sektioner"
+
+#: /var/www/pootle/sugarlabs/clones/InfoSlicer/edit.py:76
+msgid "Text"
+msgstr "Tekst"
+
+#: /var/www/pootle/sugarlabs/clones/InfoSlicer/edit.py:81
+msgid "Images"
+msgstr "Billeder"
+
+#: /var/www/pootle/sugarlabs/clones/InfoSlicer/edit.py:86
+msgid "Journal Images"
+msgstr "Journal-billeder"
+
+#: /var/www/pootle/sugarlabs/clones/InfoSlicer/edit.py:91
+msgid "Choose Journal Images"
+msgstr "Vælg journal-billeder"
+
+#: /var/www/pootle/sugarlabs/clones/InfoSlicer/edit.py:95
+msgid "Choose Journal Text"
+msgstr "Vælg journal-tekst"
+
+#: /var/www/pootle/sugarlabs/clones/InfoSlicer/net.py:37
+#, python-format
+msgid "\"%s\" download in progress..."
+msgstr "\"%s\" nedlastning er i gang..."
+
+#: /var/www/pootle/sugarlabs/clones/InfoSlicer/net.py:40
+#, python-format
+msgid "Processing \"%s\"..."
+msgstr "Behandler \"%s\"..."
+
+#: /var/www/pootle/sugarlabs/clones/InfoSlicer/net.py:44
+#, python-format
+msgid "Downloading \"%s\" images..."
+msgstr "Henter \"%s\" billeder..."
+
+#: /var/www/pootle/sugarlabs/clones/InfoSlicer/net.py:45
+#, python-format
+msgid " (from %s)"
+msgstr " (fra %s)"
+
+#: /var/www/pootle/sugarlabs/clones/InfoSlicer/net.py:47
+#, python-format
+msgid "\"%s\" successfully downloaded"
+msgstr "\"%s\" blev hentet med succes"
+
+#: /var/www/pootle/sugarlabs/clones/InfoSlicer/net.py:51
+#, python-format
+msgid "\"%s\" could not be found"
+msgstr "\"%s\" blev ikke fundet"
+
+#: /var/www/pootle/sugarlabs/clones/InfoSlicer/net.py:55
+#, python-format
+msgid "Error downloading \"%s\"; check your connection"
+msgstr "Fejl under hentning af \"%s\"; tjek din forbindelse"
+
+#: /var/www/pootle/sugarlabs/clones/InfoSlicer/bookview.py:52
+msgid "Articles are ready to be published"
+msgstr "Artikler er klar til at blive publiceret"
+
+#: /var/www/pootle/sugarlabs/clones/InfoSlicer/bookview.py:92
+msgid "Create new article"
+msgstr "Opret ny artikel"
+
+#: /var/www/pootle/sugarlabs/clones/InfoSlicer/bookview.py:102
+msgid "Delete current article"
+msgstr "Slet nuværende artikel"
+
+#: /var/www/pootle/sugarlabs/clones/InfoSlicer/bookview.py:109
+msgid "Move article downward"
+msgstr "Flyt artikel ned"
+
+#: /var/www/pootle/sugarlabs/clones/InfoSlicer/bookview.py:114
+msgid "Move article upward"
+msgstr "Flyt artikel op"
+
+#: /var/www/pootle/sugarlabs/clones/InfoSlicer/bookview.py:191
+msgid "New article"
+msgstr "Ny artikel"
+
+#: /var/www/pootle/sugarlabs/clones/InfoSlicer/activity.py:15
+msgid ""
+"This is only a test. Had this been a real string, it would need to be "
+"translated. Please ignore this string."
+msgstr ""
+"Dette er en test. Havde det været en rigtig tekststreng, skulle den have "
+"været oversat. Ignorer denne tekststreng."
+
+#: /var/www/pootle/sugarlabs/clones/InfoSlicer/activity.py:69
+msgid "Library"
+msgstr "Bibliotek"
+
+#: /var/www/pootle/sugarlabs/clones/InfoSlicer/activity.py:77
+msgid "Edit"
+msgstr "Redigér"
+
+#: /var/www/pootle/sugarlabs/clones/InfoSlicer/library.py:50
+msgid "Wiki"
+msgstr "Wiki"
+
+#: /var/www/pootle/sugarlabs/clones/InfoSlicer/library.py:50
+msgid "Wiki articles"
+msgstr "Wiki-artikler"
+
+#: /var/www/pootle/sugarlabs/clones/InfoSlicer/library.py:52
+msgid "Custom"
+msgstr "Brugerdefineret"
+
+#: /var/www/pootle/sugarlabs/clones/InfoSlicer/library.py:52
+msgid "Custom articles"
+msgstr "Brugerdefinerede artikler"
+
+#: /var/www/pootle/sugarlabs/clones/InfoSlicer/library.py:72
+msgid ""
+"To download Wiki article\n"
+"type \"Article name\" and click"
+msgstr ""
+"For at hente Wiki-artiklen\n"
+"så tast \"Artikelnavn\" og klik"
+
+# puncspacing checked
+#: /var/www/pootle/sugarlabs/clones/InfoSlicer/library.py:73
+msgid "button on the top \"Library\" panel"
+msgstr "knappen i toppen af \"Bibliotek\"-panel"
+
+#: /var/www/pootle/sugarlabs/clones/InfoSlicer/library.py:75
+msgid "To create custom article click"
+msgstr "For at oprette en brugerdefineret artikel, så klik"
+
+# puncspacing  checked
+#: /var/www/pootle/sugarlabs/clones/InfoSlicer/library.py:76
+msgid "button on the left \"Custom\" panel"
+msgstr "knappen på venstre \"Brugerdefineret\"-panel"
+
+#: /var/www/pootle/sugarlabs/clones/InfoSlicer/library.py:84
+msgid "Get article from:"
+msgstr "Hent artikel fra:"
+
+#: /var/www/pootle/sugarlabs/clones/InfoSlicer/library.py:95
+msgid "Article name"
+msgstr "Artikelnavn"
+
+#: /var/www/pootle/sugarlabs/clones/InfoSlicer/library.py:101
+msgid "Search"
+msgstr "Søg"
+
+#: /var/www/pootle/sugarlabs/clones/InfoSlicer/library.py:208
+msgid "Exists"
+msgstr "Eksisterer"
+
+# puncspacing checked
+#: /var/www/pootle/sugarlabs/clones/InfoSlicer/library.py:209
+#, python-format
+msgid "\"%s\" article already exists"
+msgstr "\"%s\"-artikel eksisterer allerede"
+
+#: /var/www/pootle/sugarlabs/clones/InfoSlicer/library.py:231
+msgid "Publish selected articles"
+msgstr "Publicér markerede artikler"
+
+#: /var/www/pootle/sugarlabs/clones/InfoSlicer/library.py:242
+msgid "English Wikipedia"
+msgstr "Engelsk Wikipedia"
+
+#: /var/www/pootle/sugarlabs/clones/InfoSlicer/library.py:243
+msgid "Simple English Wikipedia"
+msgstr "Simpel Engelsk Wikipedia"
+
+#: /var/www/pootle/sugarlabs/clones/InfoSlicer/library.py:244
+msgid "French Wikipedia"
+msgstr "Fransk Wikipedia"
+
+#: /var/www/pootle/sugarlabs/clones/InfoSlicer/library.py:245
+msgid "German Wikipedia"
+msgstr "Tysk Wikipedia"
+
+#: /var/www/pootle/sugarlabs/clones/InfoSlicer/library.py:246
+msgid "Polish Wikipedia"
+msgstr "Polsk Wikipedia"
+
+#: /var/www/pootle/sugarlabs/clones/InfoSlicer/library.py:247
+msgid "Spanish Wikipedia"
+msgstr "Spansk Wikipedia"
+
+#~ msgid "Bundle exists"
+#~ msgstr "Bundt eksisterer"
+
+#, python-format
+#~ msgid ""
+#~ "A bundle by \"%s\" name already exists. Please click \"Erase\" in the "
+#~ "Journal. You can click \"Publish\" again afterwards."
+#~ msgstr ""
+#~ "Der eksisterer allerede et bundt med navnet \"%s\". Klik venligst \"Udvisk\" i "
+#~ "Journal. Du kan klikke \"Udgiv\" igen efterfølgende."
+
+#, python-format
+#~ msgid "A bundle by \"%s\" name already exists. Please "
+#~ msgstr "Et bundt med navnet \"%s\" eksisterer allerede. Venligst "
+
+#~ msgid "A bundle for current object was already created. "
+#~ msgstr "Der er allerede oprettet et bundt for nuværende objekt. "
+
+#~ msgid "Find article"
+#~ msgstr "Find artikel"

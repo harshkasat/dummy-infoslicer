@@ -1,0 +1,352 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-04-01 00:31-0400\n"
+"PO-Revision-Date: 2012-09-09 10:06+0200\n"
+"Last-Translator: Yannis <kiolalis@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: el\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.0.5\n"
+
+#. TRANS: "name" option from activity.info file
+msgid "InfoSlicer"
+msgstr "Πληροφοριοκόπτης"
+
+#. TRANS: "summary" option from activity.info file
+#. TRANS: "description" option from activity.info file
+msgid ""
+"Is it possible to have my own encyclopedia? Yes! Find your favorite "
+"information on the web and package it with InfoSlicer creating incredible "
+"collections."
+msgstr ""
+
+#: activity.py:67
+msgid "Library"
+msgstr "Βιβλιοθήκη"
+
+#: activity.py:75
+msgid "Edit"
+msgstr "Επεξεργασία"
+
+#: book.py:211
+msgid "Lion (from en.wikipedia.org)"
+msgstr "Λιοντάρι (από el.wikipedia.org)"
+
+#: book.py:212
+msgid "Tiger (from en.wikipedia.org)"
+msgstr "Τίγρης (από el.wikipedia.org)"
+
+#: book.py:213
+msgid "Giraffe (from en.wikipedia.org)"
+msgstr "Καμηλοπάρδαλη (από el.wikipedia.org)"
+
+#: book.py:214
+msgid "Zebra (from en.wikipedia.org)"
+msgstr "Ζέβρα (από el.wikipedia.org)"
+
+#: book.py:221
+msgid "Giraffe"
+msgstr "Καμηλοπάρδαλη"
+
+#: bookview.py:52
+msgid "Articles are ready to be published"
+msgstr "Τα άρθρα είναι έτοιμα προς δημοσίευση"
+
+#: bookview.py:92
+msgid "Create new article"
+msgstr "Δημιουργία νέου άρθρου"
+
+#: bookview.py:102
+msgid "Delete current article"
+msgstr "Διαγραφή τρέχοντος άρθρου"
+
+#: bookview.py:109
+msgid "Move article downward"
+msgstr "Μετακίνηση άρθρου προς τα κάτω"
+
+#: bookview.py:114
+msgid "Move article upward"
+msgstr "Μετακίνηση άρθρου προς τα πάνω"
+
+#: bookview.py:191
+msgid "New article"
+msgstr "Νέο άρθρο"
+
+#: edit.py:76
+msgid "Text"
+msgstr "Κείμενο"
+
+#: edit.py:81
+msgid "Images"
+msgstr "Εικόνες"
+
+#: edit.py:86
+msgid "Journal Images"
+msgstr ""
+
+#: edit.py:91
+msgid "Choose Journal Images"
+msgstr ""
+
+#: edit.py:95
+msgid "Choose Journal Text"
+msgstr ""
+
+#: infoslicer/widgets/Edit_Pane.py:53
+msgid "Snap selection to:"
+msgstr "Πάρε την επιλογή στο:"
+
+#: infoslicer/widgets/Edit_Pane.py:54
+msgid "Nothing"
+msgstr "Τίποτα"
+
+#: infoslicer/widgets/Edit_Pane.py:55
+msgid "Sentences"
+msgstr "Προτάσεις"
+
+#: infoslicer/widgets/Edit_Pane.py:56
+msgid "Paragraphs"
+msgstr "Παράγραφοι"
+
+#: infoslicer/widgets/Edit_Pane.py:57
+msgid "Sections"
+msgstr "Τμήματα"
+
+#: infoslicer/widgets/Edit_Pane.py:103 infoslicer/widgets/Edit_Pane.py:111
+#: infoslicer/widgets/Format_Pane.py:52 infoslicer/widgets/Image_Pane.py:58
+#: infoslicer/widgets/Image_Pane.py:89
+#: infoslicer/widgets/Journal_Image_Pane.py:59
+msgid "Article:"
+msgstr "Άρθρο:"
+
+#: infoslicer/widgets/Image_Pane.py:79
+msgid "This article does not have any images"
+msgstr "Αυτό το άρθρο δεν περιέχει εικόνες"
+
+#: infoslicer/widgets/Image_Pane.py:82
+msgid "Please select a Wikipedia article from the menu above"
+msgstr "Παρακαλώ επιλέξτε ένα άρθρο της Βικιπαίδεια από το παραπάνω μενού"
+
+#: library.py:50
+msgid "Wiki"
+msgstr "Εν τάχει"
+
+# Το "Γουίκι" δε μεταφράζεται, δυστυχώς!
+#: library.py:50
+msgid "Wiki articles"
+msgstr "Άρθρα «εν τάχει»"
+
+#: library.py:52
+msgid "Custom"
+msgstr "Προσαρμογή"
+
+#: library.py:52
+msgid "Custom articles"
+msgstr "Προσαρμοσμένα άρθρα"
+
+#: library.py:72
+msgid ""
+"To download Wiki article\n"
+"type \"Article name\" and click"
+msgstr ""
+"Για να κάνετε λήψη άρθρων «εν τάχει»\n"
+"πληκτρολογήστε «όνομα άρθρου»\n"
+"και κάντε κλικ"
+
+#: library.py:73
+msgid "button on the top \"Library\" panel"
+msgstr "πλήκτρο στο επάνω μέρος του πίνακα \"Βιβλιοθήκη\""
+
+#: library.py:75
+msgid "To create custom article click"
+msgstr "Για να δημιουργήσετε προσαρμοσμένο άρθρο κάντε κλικ"
+
+#: library.py:76
+msgid "button on the left \"Custom\" panel"
+msgstr "πλήκτρο στ' αριστερά του πίνακα \"Προσαρμογή\""
+
+#: library.py:84
+msgid "Get article from:"
+msgstr "Λήψη άρθρου από:"
+
+#: library.py:95
+msgid "Article name"
+msgstr "Όνομα άρθρου"
+
+#: library.py:101
+msgid "Search"
+msgstr "Αναζήτηση"
+
+#: library.py:208
+msgid "Exists"
+msgstr "Υπάρχει"
+
+#: library.py:209
+#, python-format
+msgid "\"%s\" article already exists"
+msgstr "Το άρθρο «%s» υπάρχει ήδη"
+
+#: library.py:231
+msgid "Publish selected articles"
+msgstr "Δημοσίευση επιλεγμένων άρθρων"
+
+#: library.py:242
+msgid "English Wikipedia"
+msgstr "Αγγλική Βικιπαίδεια"
+
+#: library.py:243
+msgid "Simple English Wikipedia"
+msgstr "Απλή Αγγλική Βικιπαίδεια"
+
+#: library.py:244
+msgid "French Wikipedia"
+msgstr "Γαλλική Βικιπαίδεια"
+
+#: library.py:245
+msgid "German Wikipedia"
+msgstr "Γερμανική Βικιπαίδεια"
+
+#: library.py:246
+#, fuzzy
+msgid "Polish Wikipedia"
+msgstr "Αγγλική Βικιπαίδεια"
+
+#: library.py:247
+msgid "Spanish Wikipedia"
+msgstr "Ισπανική Βικιπαίδεια"
+
+#: net.py:37
+#, python-format
+msgid "\"%s\" download in progress..."
+msgstr "Η λήψη του «%s» είναι σε εξέλιξη..."
+
+#: net.py:40
+#, python-format
+msgid "Processing \"%s\"..."
+msgstr "Επεξεργασία του «%s»..."
+
+#: net.py:44
+#, python-format
+msgid "Downloading \"%s\" images..."
+msgstr "Λήψη εικόνων του «%s»..."
+
+#: net.py:45
+#, python-format
+msgid " (from %s)"
+msgstr " (από το %s)"
+
+#: net.py:47
+#, python-format
+msgid "\"%s\" successfully downloaded"
+msgstr "Το «%s» λήφθηκε με επιτυχία"
+
+#: net.py:51
+#, python-format
+msgid "\"%s\" could not be found"
+msgstr "Το «%s» δεν ήταν δυνατόν να βρεθεί"
+
+#: net.py:55
+#, python-format
+msgid "Error downloading \"%s\"; check your connection"
+msgstr "Σφάλμα λήψης του «%s». Ελέγξτε τη σύνδεσή σας"
+
+#: parse.py:18
+msgid "Return to index"
+msgstr "Επιστροφή στο ευρετήριο"
+
+#: xol.py:50
+msgid "Nothing to publish"
+msgstr "Δεν υπάρχει τίποτε προς δημοσίευση"
+
+#: xol.py:51
+msgid "Mark arcticles from \"Custom\" panel and try again."
+msgstr "Επιλέξτε άρθρα από τον πίνακα \"Προσαρμογή\" και ξαναπροσπαθήστε."
+
+#: xol.py:71
+msgid "Overwrite existed bundle?"
+msgstr "Αντικατάσταση υπάρχουσας δέσμης;"
+
+#: xol.py:72
+msgid ""
+"A bundle for current object was already created. Click \"OK\" to overwrite "
+"it."
+msgstr ""
+"Ένα πακέτο έχει ήδη δημιουργηθεί γι' αυτό το αντικείμενο. Κάντε κλικ στο "
+"\"Εντάξει\" για να το αντικαταστήσετε."
+
+#: xol.py:99
+msgid "Book published to your Journal"
+msgstr "Το βιβλίο δημοσιεύτηκε στο Ημερολόγιό σου"
+
+#: xol.py:100
+msgid ""
+"You can read the book in Browse or access the .xol file from your Journal"
+msgstr ""
+"Μπορείτε να διαβάσετε το βιβλίο με την Περιήγηση ή να αποκτήσετε πρόσβαση "
+"στο αρχείο .xol από το Ημερολόγιό σας."
+
+#~ msgid "Bundle exists"
+#~ msgstr "Η δέσμη υπάρχει"
+
+#, python-format
+#~ msgid "A bundle by \"%s\" name already exists. Please "
+#~ msgstr "Η δέσμη με το όνομα \"%s\" υπάρχει ήδη. Παρακαλώ "
+
+#~ msgid "A bundle for current object was already created. "
+#~ msgstr "Μια δέσμη για το τρέχον αντικείμενο έχει ήδη δημιουργηθεί. "
+
+#~ msgid "Find article"
+#~ msgstr "Εύρεση άρθρου"
+
+#~ msgid "Create"
+#~ msgstr "Δημιουργία"
+
+#~ msgid "Delete"
+#~ msgstr "Διαγραφή"
+
+#~ msgid "Move downward"
+#~ msgstr "Μετακίνηση προς τα κάτω"
+
+#~ msgid "Move upward"
+#~ msgstr "Μετακίνηση προς τα πάνω"

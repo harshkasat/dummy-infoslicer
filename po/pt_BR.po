@@ -1,0 +1,330 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-04-01 00:31-0400\n"
+"PO-Revision-Date: 2010-09-13 05:49+0200\n"
+"Last-Translator: silviak <silviakist@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Pootle 2.0.3\n"
+
+#. TRANS: "name" option from activity.info file
+msgid "InfoSlicer"
+msgstr "Fatiador de informação"
+
+#. TRANS: "summary" option from activity.info file
+#. TRANS: "description" option from activity.info file
+msgid ""
+"Is it possible to have my own encyclopedia? Yes! Find your favorite "
+"information on the web and package it with InfoSlicer creating incredible "
+"collections."
+msgstr ""
+
+#: activity.py:67
+msgid "Library"
+msgstr "Biblioteca"
+
+#: activity.py:75
+msgid "Edit"
+msgstr "Editar"
+
+#: book.py:211
+msgid "Lion (from en.wikipedia.org)"
+msgstr "Leão (da pt.wikipedia.org)"
+
+#: book.py:212
+msgid "Tiger (from en.wikipedia.org)"
+msgstr "Tigre (da pt.wikipedia.org)"
+
+#: book.py:213
+msgid "Giraffe (from en.wikipedia.org)"
+msgstr "Girafa (da pt.wikipedia.org)"
+
+#: book.py:214
+msgid "Zebra (from en.wikipedia.org)"
+msgstr "Zebra (da pt.wikipedia.org)"
+
+#: book.py:221
+msgid "Giraffe"
+msgstr "Girafa"
+
+#: bookview.py:52
+msgid "Articles are ready to be published"
+msgstr "Os artigos estão prontos para serem publicados"
+
+#: bookview.py:92
+msgid "Create new article"
+msgstr "Criar novo artigo"
+
+#: bookview.py:102
+msgid "Delete current article"
+msgstr "Apagar um artigo atual"
+
+#: bookview.py:109
+msgid "Move article downward"
+msgstr "Mover artigo para baixo"
+
+#: bookview.py:114
+msgid "Move article upward"
+msgstr "Mover artigo para cima"
+
+#: bookview.py:191
+msgid "New article"
+msgstr "Novo artigo"
+
+#: edit.py:76
+msgid "Text"
+msgstr "Texto"
+
+#: edit.py:81
+msgid "Images"
+msgstr "Imagens"
+
+#: edit.py:86
+msgid "Journal Images"
+msgstr ""
+
+#: edit.py:91
+msgid "Choose Journal Images"
+msgstr ""
+
+#: edit.py:95
+msgid "Choose Journal Text"
+msgstr ""
+
+#: infoslicer/widgets/Edit_Pane.py:53
+msgid "Snap selection to:"
+msgstr "Ajustar a seleção a:"
+
+#: infoslicer/widgets/Edit_Pane.py:54
+msgid "Nothing"
+msgstr "Nada"
+
+#: infoslicer/widgets/Edit_Pane.py:55
+msgid "Sentences"
+msgstr "Sentenças"
+
+#: infoslicer/widgets/Edit_Pane.py:56
+msgid "Paragraphs"
+msgstr "Parágrafos"
+
+#: infoslicer/widgets/Edit_Pane.py:57
+msgid "Sections"
+msgstr "Seções"
+
+#: infoslicer/widgets/Edit_Pane.py:103 infoslicer/widgets/Edit_Pane.py:111
+#: infoslicer/widgets/Format_Pane.py:52 infoslicer/widgets/Image_Pane.py:58
+#: infoslicer/widgets/Image_Pane.py:89
+#: infoslicer/widgets/Journal_Image_Pane.py:59
+msgid "Article:"
+msgstr "Artigo:"
+
+#: infoslicer/widgets/Image_Pane.py:79
+msgid "This article does not have any images"
+msgstr "Este artigo não possui imagens"
+
+#: infoslicer/widgets/Image_Pane.py:82
+msgid "Please select a Wikipedia article from the menu above"
+msgstr "Por favor selecione um artigo da Wikipedia no menu acima"
+
+#: library.py:50
+msgid "Wiki"
+msgstr "Wiki"
+
+#: library.py:50
+msgid "Wiki articles"
+msgstr "Artigos do wiki"
+
+#: library.py:52
+msgid "Custom"
+msgstr "Personalizado"
+
+#: library.py:52
+msgid "Custom articles"
+msgstr "Artigos personalizados"
+
+#: library.py:72
+msgid ""
+"To download Wiki article\n"
+"type \"Article name\" and click"
+msgstr ""
+"Para baixar artigos do Wiki\n"
+"digite o \"nome do Artigo\" e clique"
+
+#: library.py:73
+msgid "button on the top \"Library\" panel"
+msgstr "botão no painel superior da \"Biblioteca\""
+
+#: library.py:75
+msgid "To create custom article click"
+msgstr "clique para criar um artigo personalizado"
+
+#: library.py:76
+msgid "button on the left \"Custom\" panel"
+msgstr "botão no painel esquerdo \"Personalizado\""
+
+#: library.py:84
+msgid "Get article from:"
+msgstr "Obter artigo de:"
+
+#: library.py:95
+msgid "Article name"
+msgstr "Nome do artigo"
+
+#: library.py:101
+msgid "Search"
+msgstr ""
+
+#: library.py:208
+msgid "Exists"
+msgstr "Existe"
+
+#: library.py:209
+#, python-format
+msgid "\"%s\" article already exists"
+msgstr "artigo \"%s\" já existe"
+
+#: library.py:231
+msgid "Publish selected articles"
+msgstr "Publicar artigos selecionados"
+
+#: library.py:242
+msgid "English Wikipedia"
+msgstr "Wikipédia em Inglês"
+
+#: library.py:243
+msgid "Simple English Wikipedia"
+msgstr "Simples Wikipédia em Inglês"
+
+#: library.py:244
+msgid "French Wikipedia"
+msgstr "Wikipédia Francesa"
+
+#: library.py:245
+msgid "German Wikipedia"
+msgstr "Wikipédia Alemã"
+
+#: library.py:246
+#, fuzzy
+msgid "Polish Wikipedia"
+msgstr "Wikipédia em Inglês"
+
+#: library.py:247
+msgid "Spanish Wikipedia"
+msgstr "Wikipédia Espanhola"
+
+#: net.py:37
+#, python-format
+msgid "\"%s\" download in progress..."
+msgstr "\"%s\" transferindo..."
+
+#: net.py:40
+#, python-format
+msgid "Processing \"%s\"..."
+msgstr "Processando \"%s\"..."
+
+#: net.py:44
+#, python-format
+msgid "Downloading \"%s\" images..."
+msgstr "Baixando \"%s\" imagens..."
+
+#: net.py:45
+#, python-format
+msgid " (from %s)"
+msgstr " (de %s)"
+
+#: net.py:47
+#, python-format
+msgid "\"%s\" successfully downloaded"
+msgstr "\"%s\" transferido com sucesso"
+
+#: net.py:51
+#, python-format
+msgid "\"%s\" could not be found"
+msgstr "\"%s\" não pode ser encontrado"
+
+#: net.py:55
+#, python-format
+msgid "Error downloading \"%s\"; check your connection"
+msgstr "Erro ao baixar \"%s\"; verifique sua conexão"
+
+#: parse.py:18
+msgid "Return to index"
+msgstr ""
+
+#: xol.py:50
+msgid "Nothing to publish"
+msgstr "Nada para publicar"
+
+#: xol.py:51
+msgid "Mark arcticles from \"Custom\" panel and try again."
+msgstr "Marcar artigos do painel \"Personalizado\" e tentar novamente."
+
+#: xol.py:71
+msgid "Overwrite existed bundle?"
+msgstr "Sobrescrever o pacote existente?"
+
+#: xol.py:72
+msgid ""
+"A bundle for current object was already created. Click \"OK\" to overwrite "
+"it."
+msgstr ""
+
+#: xol.py:99
+msgid "Book published to your Journal"
+msgstr ""
+
+#: xol.py:100
+msgid ""
+"You can read the book in Browse or access the .xol file from your Journal"
+msgstr ""
+
+#~ msgid "Bundle exists"
+#~ msgstr "O pacote já existe"
+
+#, python-format
+#~ msgid "A bundle by \"%s\" name already exists. Please "
+#~ msgstr "Um pacote com o nome \"%s\" já existe. Por favor "
+
+#~ msgid "A bundle for current object was already created. "
+#~ msgstr "Um pacote para o objeto atual já foi criado. "
+
+#~ msgid "Find article"
+#~ msgstr "Encontrar artigo"

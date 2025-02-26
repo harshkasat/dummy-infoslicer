@@ -1,0 +1,283 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-06-24 02:17+0200\n"
+"PO-Revision-Date: 2013-04-06 21:10+0200\n"
+"Last-Translator: Chris <cjl@laptop.org>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.0.5\n"
+
+#. TRANS: "name" option from activity.info file
+msgid "InfoSlicer"
+msgstr "InfoSlicer"
+
+#. TRANS: "summary" option from activity.info file
+msgid "Is it possible to have my own encyclopedia? Yes! Find your favorite information on the web and package it with InfoSlicer creating incredible collections."
+msgstr ""
+"Is it possible to have my own encyclopedia? Yes! Find your favorite "
+"information on the web and package it with InfoSlicer creating incredible "
+"collections."
+
+#~ msgid "Library"
+#~ msgstr "Library"
+
+#~ msgid "Edit"
+#~ msgstr "Edit"
+
+#~ msgid "Lion (from en.wikipedia.org)"
+#~ msgstr "Lion (from en.wikipedia.org)"
+
+#~ msgid "Tiger (from en.wikipedia.org)"
+#~ msgstr "Tiger (from en.wikipedia.org)"
+
+#~ msgid "Giraffe (from en.wikipedia.org)"
+#~ msgstr "Giraffe (from en.wikipedia.org)"
+
+#~ msgid "Zebra (from en.wikipedia.org)"
+#~ msgstr "Zebra (from en.wikipedia.org)"
+
+#~ msgid "Giraffe"
+#~ msgstr "Giraffe"
+
+#~ msgid "Articles are ready to be published"
+#~ msgstr "Articles are ready to be published"
+
+#~ msgid "Create new article"
+#~ msgstr "Create new article"
+
+#~ msgid "Delete current article"
+#~ msgstr "Delete current article"
+
+#~ msgid "Move article downward"
+#~ msgstr "Move article downward"
+
+#~ msgid "Move article upward"
+#~ msgstr "Move article upward"
+
+#~ msgid "New article"
+#~ msgstr "New article"
+
+#~ msgid "Text"
+#~ msgstr "Text"
+
+#~ msgid "Images"
+#~ msgstr "Images"
+
+#~ msgid "Journal Images"
+#~ msgstr "Journal Images"
+
+#~ msgid "Choose Journal Images"
+#~ msgstr "Choose Journal Images"
+
+#~ msgid "Choose Journal Text"
+#~ msgstr "Choose Journal Text"
+
+#~ msgid "Snap selection to:"
+#~ msgstr "Snap selection to:"
+
+#~ msgid "Nothing"
+#~ msgstr "Nothing"
+
+#~ msgid "Sentences"
+#~ msgstr "Sentences"
+
+#~ msgid "Paragraphs"
+#~ msgstr "Paragraphs"
+
+#~ msgid "Sections"
+#~ msgstr "Sections"
+
+#~ msgid "Article:"
+#~ msgstr "Article:"
+
+#~ msgid "This article does not have any images"
+#~ msgstr "This article does not have any images"
+
+#~ msgid "Please select a Wikipedia article from the menu above"
+#~ msgstr "Please select a Wikipedia article from the menu above"
+
+#~ msgid "Wiki"
+#~ msgstr "Wiki"
+
+#~ msgid "Wiki articles"
+#~ msgstr "Wiki articles"
+
+#~ msgid "Custom"
+#~ msgstr "Custom"
+
+#~ msgid "Custom articles"
+#~ msgstr "Custom articles"
+
+#~ msgid ""
+#~ "To download Wiki article\n"
+#~ "type \"Article name\" and click"
+#~ msgstr ""
+#~ "To download Wiki article\n"
+#~ "type \"Article name\" and click"
+
+#~ msgid "button on the top \"Library\" panel"
+#~ msgstr "button on the top \"Library\" panel"
+
+#~ msgid "To create custom article click"
+#~ msgstr "To create custom article click"
+
+#~ msgid "button on the left \"Custom\" panel"
+#~ msgstr "button on the left \"Custom\" panel"
+
+#~ msgid "Get article from:"
+#~ msgstr "Get article from:"
+
+#~ msgid "Article name"
+#~ msgstr "Article name"
+
+#~ msgid "Search"
+#~ msgstr "Search"
+
+#~ msgid "Exists"
+#~ msgstr "Exists"
+
+#, python-format
+#~ msgid "\"%s\" article already exists"
+#~ msgstr "\"%s\" article already exists"
+
+#~ msgid "Publish selected articles"
+#~ msgstr "Publish selected articles"
+
+#~ msgid "English Wikipedia"
+#~ msgstr "English Wikipedia"
+
+#~ msgid "Simple English Wikipedia"
+#~ msgstr "Simple English Wikipedia"
+
+#~ msgid "French Wikipedia"
+#~ msgstr "French Wikipedia"
+
+#~ msgid "German Wikipedia"
+#~ msgstr "German Wikipedia"
+
+#~ msgid "Polish Wikipedia"
+#~ msgstr "Polish Wikipedia"
+
+#~ msgid "Spanish Wikipedia"
+#~ msgstr "Spanish Wikipedia"
+
+#, python-format
+#~ msgid "\"%s\" download in progress..."
+#~ msgstr "\"%s\" download in progress..."
+
+#, python-format
+#~ msgid "Processing \"%s\"..."
+#~ msgstr "Processing \"%s\"..."
+
+#, python-format
+#~ msgid "Downloading \"%s\" images..."
+#~ msgstr "Downloading \"%s\" images..."
+
+#, python-format
+#~ msgid " (from %s)"
+#~ msgstr " (from %s)"
+
+#, python-format
+#~ msgid "\"%s\" successfully downloaded"
+#~ msgstr "\"%s\" successfully downloaded"
+
+#, python-format
+#~ msgid "\"%s\" could not be found"
+#~ msgstr "\"%s\" could not be found"
+
+#, python-format
+#~ msgid "Error downloading \"%s\"; check your connection"
+#~ msgstr "Error downloading \"%s\"; check your connection"
+
+#~ msgid "Return to index"
+#~ msgstr "Return to index"
+
+#~ msgid "Nothing to publish"
+#~ msgstr "Nothing to publish"
+
+#~ msgid "Mark arcticles from \"Custom\" panel and try again."
+#~ msgstr "Mark arcticles from \"Custom\" panel and try again."
+
+#~ msgid "Overwrite existed bundle?"
+#~ msgstr "Overwrite existed bundle?"
+
+#~ msgid ""
+#~ "A bundle for current object was already created. Click \"OK\" to overwrite "
+#~ "it."
+#~ msgstr ""
+#~ "A bundle for current object was already created. Click \"OK\" to overwrite it."
+
+#~ msgid "Book published to your Journal"
+#~ msgstr "Book published to your Journal"
+
+#~ msgid ""
+#~ "You can read the book in Browse or access the .xol file from your Journal"
+#~ msgstr ""
+#~ "You can read the book in Browse or access the .xol file from your Journal"
+
+#~ msgid "Bundle exists"
+#~ msgstr "Bundle exists"
+
+#, python-format
+#~ msgid ""
+#~ "A bundle by \"%s\" name already exists. Please click \"Erase\" in the "
+#~ "Journal. You can click \"Publish\" again afterwards."
+#~ msgstr ""
+#~ "A bundle by \"%s\" name already exists. Please click \"Erase\" in the Journal. "
+#~ "You can click \"Publish\" again afterwards."
+
+#, python-format
+#~ msgid "A bundle by \"%s\" name already exists. Please "
+#~ msgstr "A bundle by \"%s\" name already exists. Please "
+
+#~ msgid "A bundle for current object was already created. "
+#~ msgstr "A bundle for current object was already created. "
+
+#~ msgid "Find article"
+#~ msgstr "Find article"

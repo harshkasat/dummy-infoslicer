@@ -1,0 +1,327 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-04-01 00:31-0400\n"
+"PO-Revision-Date: 2012-03-16 08:08+0200\n"
+"Last-Translator: Meechai <malaku38@hotmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Pootle 2.0.5\n"
+
+#. TRANS: "name" option from activity.info file
+msgid "InfoSlicer"
+msgstr "InfoSlicer"
+
+#. TRANS: "summary" option from activity.info file
+#. TRANS: "description" option from activity.info file
+msgid ""
+"Is it possible to have my own encyclopedia? Yes! Find your favorite "
+"information on the web and package it with InfoSlicer creating incredible "
+"collections."
+msgstr ""
+
+#: activity.py:67
+msgid "Library"
+msgstr "ห้องสมุด"
+
+#: activity.py:75
+msgid "Edit"
+msgstr "แก้ไข"
+
+#: book.py:211
+msgid "Lion (from en.wikipedia.org)"
+msgstr "สิงโต(จาก en.wikipedia.org )"
+
+#: book.py:212
+msgid "Tiger (from en.wikipedia.org)"
+msgstr "เสือ(จาก en.wikipedia.org)"
+
+#: book.py:213
+msgid "Giraffe (from en.wikipedia.org)"
+msgstr "ยีราฟ(จาก en.wikipedia.org)"
+
+#: book.py:214
+msgid "Zebra (from en.wikipedia.org)"
+msgstr "ม้าลาย(จาก en.wikipedia.org)"
+
+#: book.py:221
+msgid "Giraffe"
+msgstr "ยีราฟ"
+
+#: bookview.py:52
+msgid "Articles are ready to be published"
+msgstr "บทความพร้อมที่จะถูกเผยแพร่"
+
+#: bookview.py:92
+msgid "Create new article"
+msgstr "สร้างบทความใหม่"
+
+#: bookview.py:102
+msgid "Delete current article"
+msgstr "ลบบทความปัจจุบัน"
+
+#: bookview.py:109
+msgid "Move article downward"
+msgstr "ย้ายบทความลงข้างล่าง"
+
+#: bookview.py:114
+msgid "Move article upward"
+msgstr "ย้ายบทความขึ้นข้างบน"
+
+#: bookview.py:191
+msgid "New article"
+msgstr "บทความใหม่"
+
+#: edit.py:76
+msgid "Text"
+msgstr "ข้อความ"
+
+#: edit.py:81
+msgid "Images"
+msgstr "รูปภาพ"
+
+#: edit.py:86
+msgid "Journal Images"
+msgstr ""
+
+#: edit.py:91
+msgid "Choose Journal Images"
+msgstr ""
+
+#: edit.py:95
+msgid "Choose Journal Text"
+msgstr ""
+
+#: infoslicer/widgets/Edit_Pane.py:53
+msgid "Snap selection to:"
+msgstr "คัดลอกส่วนที่เลือกไปยัง:"
+
+#: infoslicer/widgets/Edit_Pane.py:54
+msgid "Nothing"
+msgstr "ไม่มีอะไร"
+
+#: infoslicer/widgets/Edit_Pane.py:55
+msgid "Sentences"
+msgstr "ประโยค"
+
+#: infoslicer/widgets/Edit_Pane.py:56
+msgid "Paragraphs"
+msgstr "ย่อหน้า"
+
+#: infoslicer/widgets/Edit_Pane.py:57
+msgid "Sections"
+msgstr "ส่วน"
+
+#: infoslicer/widgets/Edit_Pane.py:103 infoslicer/widgets/Edit_Pane.py:111
+#: infoslicer/widgets/Format_Pane.py:52 infoslicer/widgets/Image_Pane.py:58
+#: infoslicer/widgets/Image_Pane.py:89
+#: infoslicer/widgets/Journal_Image_Pane.py:59
+msgid "Article:"
+msgstr "บทความ:"
+
+#: infoslicer/widgets/Image_Pane.py:79
+msgid "This article does not have any images"
+msgstr "บทความนี้ไม่มีรูปภาพเลย"
+
+#: infoslicer/widgets/Image_Pane.py:82
+msgid "Please select a Wikipedia article from the menu above"
+msgstr "กรุณาเลือกบทความวิกิพีเดียจากเมนูข้างบน"
+
+#: library.py:50
+msgid "Wiki"
+msgstr "วิกิ"
+
+#: library.py:50
+msgid "Wiki articles"
+msgstr "บทความของวิกิ"
+
+#: library.py:52
+msgid "Custom"
+msgstr "กำหนดเอง"
+
+#: library.py:52
+msgid "Custom articles"
+msgstr "บทความที่กำหนดเอง"
+
+#: library.py:72
+msgid ""
+"To download Wiki article\n"
+"type \"Article name\" and click"
+msgstr ""
+"ดาวน์โหลดบทความของวิกิ\n"
+"พิมพ์ \"ชื่อบทความ\" และคลิก"
+
+#: library.py:73
+msgid "button on the top \"Library\" panel"
+msgstr "ปุ่มอยู่ด้านบนของแผง \"ห้องสมุด\""
+
+#: library.py:75
+msgid "To create custom article click"
+msgstr "สร้างบทความที่กำหนดเอง คลิก"
+
+#: library.py:76
+msgid "button on the left \"Custom\" panel"
+msgstr "ปุ่มอยู่ด้านซ้ายของแผง \"กำหนดเอง\""
+
+#: library.py:84
+msgid "Get article from:"
+msgstr "ได้รับบทความมาจาก:"
+
+#: library.py:95
+msgid "Article name"
+msgstr "ชื่อบทความ"
+
+#: library.py:101
+msgid "Search"
+msgstr "ค้นหา"
+
+#: library.py:208
+msgid "Exists"
+msgstr "ที่มีอยู่"
+
+#: library.py:209
+#, python-format
+msgid "\"%s\" article already exists"
+msgstr "มีบทความ \"%s\" อยู่แล้ว"
+
+#: library.py:231
+msgid "Publish selected articles"
+msgstr "เผยแพร่บทความที่ถูกเลือก"
+
+#: library.py:242
+msgid "English Wikipedia"
+msgstr "วิกิพีเดียภาษาอังกฤษ"
+
+#: library.py:243
+msgid "Simple English Wikipedia"
+msgstr "ตัวอย่างวิกิพีเดียภาษาอังกฤษอย่างง่าย"
+
+#: library.py:244
+msgid "French Wikipedia"
+msgstr "วิกิพีเดียภาษาฝรั่งเศส"
+
+#: library.py:245
+msgid "German Wikipedia"
+msgstr "วิกิพีเดียภาษาเยอรมัน"
+
+#: library.py:246
+#, fuzzy
+msgid "Polish Wikipedia"
+msgstr "วิกิพีเดียภาษาอังกฤษ"
+
+#: library.py:247
+msgid "Spanish Wikipedia"
+msgstr "วิกิพีเดียภาษาสเปน"
+
+#: net.py:37
+#, python-format
+msgid "\"%s\" download in progress..."
+msgstr "\"%s\" กำลังดาวน์โหลด..."
+
+#: net.py:40
+#, python-format
+msgid "Processing \"%s\"..."
+msgstr "กำลังประมวลผล \"%s\"..."
+
+#: net.py:44
+#, python-format
+msgid "Downloading \"%s\" images..."
+msgstr "กำลังดาวน์โหลดภาพ \"%s\"..."
+
+#: net.py:45
+#, python-format
+msgid " (from %s)"
+msgstr " (จาก %s)"
+
+#: net.py:47
+#, python-format
+msgid "\"%s\" successfully downloaded"
+msgstr "ดาวน์โหลด \"%s\" สำเร็จ"
+
+#: net.py:51
+#, python-format
+msgid "\"%s\" could not be found"
+msgstr "ไม่พบ \"%s\""
+
+#: net.py:55
+#, python-format
+msgid "Error downloading \"%s\"; check your connection"
+msgstr "การดาวน์โหลด \"%s\" ผิดพลาด; ตรวจสอบการเชื่อมต่อ"
+
+#: parse.py:18
+msgid "Return to index"
+msgstr ""
+
+#: xol.py:50
+msgid "Nothing to publish"
+msgstr "ไม่มีอะไรที่จะเผยแพร่"
+
+#: xol.py:51
+msgid "Mark arcticles from \"Custom\" panel and try again."
+msgstr "ทำเครื่องหมายบมความ จากแผง\"กำหนดเอง\" แล้วลองอีกครั้ง"
+
+#: xol.py:71
+msgid "Overwrite existed bundle?"
+msgstr "เขียนทับรวมชุดที่มีอยู่หรือไม่?"
+
+#: xol.py:72
+msgid ""
+"A bundle for current object was already created. Click \"OK\" to overwrite "
+"it."
+msgstr ""
+
+#: xol.py:99
+msgid "Book published to your Journal"
+msgstr ""
+
+#: xol.py:100
+msgid ""
+"You can read the book in Browse or access the .xol file from your Journal"
+msgstr ""
+
+#~ msgid "Bundle exists"
+#~ msgstr "รวมชุดอยู่"
+
+#, python-format
+#~ msgid "A bundle by \"%s\" name already exists. Please "
+#~ msgstr "รวมชุดโดย \"%s\" ชื่อมีอยู่แล้ว กรุณา "
+
+#~ msgid "A bundle for current object was already created. "
+#~ msgstr "รวมชุดสำหรับอ็อบเจกต์ปัจจุบันได้ถูกสร้างขึ้นแล้ว "

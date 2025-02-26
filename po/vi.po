@@ -1,0 +1,330 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-07-07 00:32-0400\n"
+"PO-Revision-Date: 2010-04-28 14:21+0200\n"
+"Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Pootle 2.0.3\n"
+
+#. TRANS: "name" option from activity.info file
+msgid "InfoSlicer"
+msgstr "Cắt ra Thông tin"
+
+#. TRANS: "summary" option from activity.info file
+#. TRANS: "description" option from activity.info file
+msgid ""
+"Is it possible to have my own encyclopedia? Yes! Find your favorite "
+"information on the web and package it with InfoSlicer creating incredible "
+"collections."
+msgstr ""
+
+#: activity.py:67
+msgid "Library"
+msgstr "Thư viện"
+
+#: activity.py:75
+msgid "Edit"
+msgstr "Sửa"
+
+#: book.py:211
+msgid "Lion (from en.wikipedia.org)"
+msgstr "Sư tử (từ en.wikipedia.org)"
+
+#: book.py:212
+msgid "Tiger (from en.wikipedia.org)"
+msgstr "Hổ (từ en.wikipedia.org)"
+
+#: book.py:213
+msgid "Giraffe (from en.wikipedia.org)"
+msgstr "Hươu cao cổ (từ en.wikipedia.org)"
+
+#: book.py:214
+msgid "Zebra (from en.wikipedia.org)"
+msgstr "Ngựa vằn (từ en.wikipedia.org)"
+
+#: book.py:221
+msgid "Giraffe"
+msgstr "Hươu cao cổ"
+
+#: bookview.py:52
+msgid "Articles are ready to be published"
+msgstr "Bài báo sắp sửa xuất bản"
+
+#: bookview.py:92
+msgid "Create new article"
+msgstr "Tạo bài mới"
+
+#: bookview.py:102
+msgid "Delete current article"
+msgstr "Xoá bài đang sửa"
+
+#: bookview.py:109
+msgid "Move article downward"
+msgstr "Đem bài xuống"
+
+#: bookview.py:114
+msgid "Move article upward"
+msgstr "Đem bài lên"
+
+#: bookview.py:191
+msgid "New article"
+msgstr "Bài mới"
+
+#: edit.py:76
+msgid "Text"
+msgstr "Văn bản"
+
+#: edit.py:81
+msgid "Images"
+msgstr "Ảnh"
+
+#: edit.py:86
+msgid "Journal Images"
+msgstr ""
+
+#: edit.py:91
+msgid "Choose Journal Images"
+msgstr ""
+
+#: edit.py:95
+msgid "Choose Journal Text"
+msgstr ""
+
+#: infoslicer/widgets/Edit_Pane.py:53
+msgid "Snap selection to:"
+msgstr "Đính vùng chọn tới:"
+
+#: infoslicer/widgets/Edit_Pane.py:54
+msgid "Nothing"
+msgstr "Không gì"
+
+#: infoslicer/widgets/Edit_Pane.py:55
+msgid "Sentences"
+msgstr "Câu"
+
+#: infoslicer/widgets/Edit_Pane.py:56
+msgid "Paragraphs"
+msgstr "Đoạn văn"
+
+#: infoslicer/widgets/Edit_Pane.py:57
+msgid "Sections"
+msgstr "Phần"
+
+#: infoslicer/widgets/Edit_Pane.py:103 infoslicer/widgets/Edit_Pane.py:111
+#: infoslicer/widgets/Format_Pane.py:52 infoslicer/widgets/Image_Pane.py:58
+#: infoslicer/widgets/Image_Pane.py:89
+#: infoslicer/widgets/Journal_Image_Pane.py:59
+msgid "Article:"
+msgstr "Bài:"
+
+#: infoslicer/widgets/Image_Pane.py:79
+msgid "This article does not have any images"
+msgstr "Bài này không có ảnh nào"
+
+#: infoslicer/widgets/Image_Pane.py:82
+msgid "Please select a Wikipedia article from the menu above"
+msgstr "Hãy chọn một bài báo Wikipedia trong trình đơn trên"
+
+#: library.py:50
+msgid "Wiki"
+msgstr "Wiki"
+
+#: library.py:50
+msgid "Wiki articles"
+msgstr "Bài Wiki"
+
+#: library.py:52
+msgid "Custom"
+msgstr "Tự chọn"
+
+#: library.py:52
+msgid "Custom articles"
+msgstr "Bài tự chọn"
+
+#: library.py:72
+msgid ""
+"To download Wiki article\n"
+"type \"Article name\" and click"
+msgstr ""
+"Để tải về bài Wiki, gõ\n"
+"« tên bài » và nhấn nút"
+
+#: library.py:73
+msgid "button on the top \"Library\" panel"
+msgstr "trên bảng « Thư viện » ở đầu"
+
+#: library.py:75
+msgid "To create custom article click"
+msgstr "Để tạo bài tự chọn, nhấn nút"
+
+#: library.py:76
+msgid "button on the left \"Custom\" panel"
+msgstr "trên bảng « Tự chọn » bên trái"
+
+#: library.py:84
+msgid "Get article from:"
+msgstr "Lấy bài từ :"
+
+#: library.py:95
+msgid "Article name"
+msgstr "Tên bài"
+
+#: library.py:101
+msgid "Search"
+msgstr ""
+
+#: library.py:208
+msgid "Exists"
+msgstr "Đã có"
+
+#: library.py:209
+#, python-format
+msgid "\"%s\" article already exists"
+msgstr "Bài « %s » đã có"
+
+#: library.py:231
+msgid "Publish selected articles"
+msgstr "Xuất các bài được chọn"
+
+#: library.py:242
+msgid "English Wikipedia"
+msgstr "Wikipedia tiếng Anh"
+
+#: library.py:243
+msgid "Simple English Wikipedia"
+msgstr "Wikipedia tiếng Anh đơn giản"
+
+#: library.py:244
+msgid "French Wikipedia"
+msgstr ""
+
+#: library.py:245
+msgid "German Wikipedia"
+msgstr "Wikipedia tiếng Đức"
+
+#: library.py:246
+#, fuzzy
+msgid "Polish Wikipedia"
+msgstr "Wikipedia tiếng Anh"
+
+#: library.py:247
+msgid "Spanish Wikipedia"
+msgstr "Wikipedia tiếng Tây Ban Nha"
+
+#: net.py:37
+#, python-format
+msgid "\"%s\" download in progress..."
+msgstr "Đang tải về « %s »..."
+
+#: net.py:40
+#, python-format
+msgid "Processing \"%s\"..."
+msgstr "Đang xử lý « %s »..."
+
+#: net.py:44
+#, python-format
+msgid "Downloading \"%s\" images..."
+msgstr "Đang tải về các ảnh « %s »..."
+
+#: net.py:45
+#, python-format
+msgid " (from %s)"
+msgstr " (từ %s)"
+
+#: net.py:47
+#, python-format
+msgid "\"%s\" successfully downloaded"
+msgstr "« %s » đã được tải về"
+
+#: net.py:51
+#, python-format
+msgid "\"%s\" could not be found"
+msgstr "Không tìm thấy « %s »"
+
+#: net.py:55
+#, python-format
+msgid "Error downloading \"%s\"; check your connection"
+msgstr "Gặp lỗi khi tải về « %s »: hãy kiểm tra lại sự kết nối"
+
+#: parse.py:18
+msgid "Return to index"
+msgstr ""
+
+#: xol.py:50
+msgid "Nothing to publish"
+msgstr "Không có gì cần xuất bản"
+
+#: xol.py:51
+msgid "Mark arcticles from \"Custom\" panel and try again."
+msgstr "Đánh dấu bài trên bảng « Tự chọn », và thử lại."
+
+#: xol.py:71
+msgid "Overwrite existed bundle?"
+msgstr "Ghi đè lên bó đã có ?"
+
+#: xol.py:72
+msgid ""
+"A bundle for current object was already created. Click \"OK\" to overwrite "
+"it."
+msgstr ""
+
+#: xol.py:99
+msgid "Book published to your Journal"
+msgstr ""
+
+#: xol.py:100
+msgid ""
+"You can read the book in Browse or access the .xol file from your Journal"
+msgstr ""
+
+#~ msgid "Bundle exists"
+#~ msgstr "Bó đã có"
+
+#, python-format
+#~ msgid "A bundle by \"%s\" name already exists. Please "
+#~ msgstr "Một bó tên « %s » đã có. Hãy "
+
+#~ msgid "A bundle for current object was already created. "
+#~ msgstr "Một bó cho đối tượng hiện thời đã được tạo về trước. "
+
+#~ msgid "Find article"
+#~ msgstr "Tìm bài"

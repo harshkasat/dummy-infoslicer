@@ -1,0 +1,333 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-07-07 00:32-0400\n"
+"PO-Revision-Date: 2013-11-26 08:56+0200\n"
+"Last-Translator: Ganesh <ganesh.ghimire@olenepal.org>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: ne\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.0.5\n"
+
+#. TRANS: "name" option from activity.info file
+msgid "InfoSlicer"
+msgstr "इन्फोस्लाइसर"
+
+#. TRANS: "summary" option from activity.info file
+#. TRANS: "description" option from activity.info file
+msgid ""
+"Is it possible to have my own encyclopedia? Yes! Find your favorite "
+"information on the web and package it with InfoSlicer creating incredible "
+"collections."
+msgstr ""
+"मेरो आफ्नै विश्वकोष बनाउन सम्भव छ? छ! तिम्रो मनपर्ने जानकारीहरु वेबमा खोज र "
+"InfoSlicer मार्फत त्यसको प्याकेज बनाउ।"
+
+#: activity.py:67
+msgid "Library"
+msgstr "पुस्तकालय"
+
+#: activity.py:75
+msgid "Edit"
+msgstr "सम्पादन"
+
+#: book.py:211
+msgid "Lion (from en.wikipedia.org)"
+msgstr "सिँह (en.wikipedia.org बाट)"
+
+#: book.py:212
+msgid "Tiger (from en.wikipedia.org)"
+msgstr "बाघ (en.wikipedia.org बाट)"
+
+#: book.py:213
+msgid "Giraffe (from en.wikipedia.org)"
+msgstr "जिराफ (en.wikipedia.org बाट)"
+
+#: book.py:214
+msgid "Zebra (from en.wikipedia.org)"
+msgstr "जेब्रा (en.wikipedia.org बाट)"
+
+#: book.py:221
+msgid "Giraffe"
+msgstr "जिराफ"
+
+#: bookview.py:52
+msgid "Articles are ready to be published"
+msgstr "लेखहरु छापको लागि तयार छ"
+
+#: bookview.py:92
+msgid "Create new article"
+msgstr "नया लेख बनाऊ"
+
+#: bookview.py:102
+msgid "Delete current article"
+msgstr "यो लेख मेटाउ"
+
+#: bookview.py:109
+msgid "Move article downward"
+msgstr "लेख तल सार"
+
+#: bookview.py:114
+msgid "Move article upward"
+msgstr "लेख माथी सार"
+
+#: bookview.py:191
+msgid "New article"
+msgstr "नया लेख"
+
+#: edit.py:76
+msgid "Text"
+msgstr "पाठ"
+
+#: edit.py:81
+msgid "Images"
+msgstr "चित्र"
+
+#: edit.py:86
+msgid "Journal Images"
+msgstr "पंजिका तस्विरहरु"
+
+#: edit.py:91
+msgid "Choose Journal Images"
+msgstr "पंजिकाका तस्विरहरु छान"
+
+#: edit.py:95
+msgid "Choose Journal Text"
+msgstr "पंजिकाका अक्षरहरु छान"
+
+#: infoslicer/widgets/Edit_Pane.py:53
+msgid "Snap selection to:"
+msgstr "मा छानिएकोलाई स्न्याप गर:"
+
+#: infoslicer/widgets/Edit_Pane.py:54
+msgid "Nothing"
+msgstr "केहि न केहि"
+
+#: infoslicer/widgets/Edit_Pane.py:55
+msgid "Sentences"
+msgstr "वाक्यहरु"
+
+#: infoslicer/widgets/Edit_Pane.py:56
+msgid "Paragraphs"
+msgstr "अनुच्छेदहरु"
+
+#: infoslicer/widgets/Edit_Pane.py:57
+msgid "Sections"
+msgstr "भाग"
+
+#: infoslicer/widgets/Edit_Pane.py:103 infoslicer/widgets/Edit_Pane.py:111
+#: infoslicer/widgets/Format_Pane.py:52 infoslicer/widgets/Image_Pane.py:58
+#: infoslicer/widgets/Image_Pane.py:89
+#: infoslicer/widgets/Journal_Image_Pane.py:59
+msgid "Article:"
+msgstr "लेख:"
+
+#: infoslicer/widgets/Image_Pane.py:79
+msgid "This article does not have any images"
+msgstr "यस लेखमा कुनै चित्र छैन"
+
+#: infoslicer/widgets/Image_Pane.py:82
+msgid "Please select a Wikipedia article from the menu above"
+msgstr "क्रिपया मेनुबाट कुनै विकिपेडियाको लेख छान्नुहोस्"
+
+#: library.py:50
+msgid "Wiki"
+msgstr "विकि"
+
+#: library.py:50
+msgid "Wiki articles"
+msgstr "विकि लेखहरु"
+
+#: library.py:52
+msgid "Custom"
+msgstr "कस्टम"
+
+#: library.py:52
+msgid "Custom articles"
+msgstr "कस्टम लेख"
+
+#: library.py:72
+msgid ""
+"To download Wiki article\n"
+"type \"Article name\" and click"
+msgstr ""
+"विकि लेखहरु डाउनलोड गर्नका\n"
+"लागि \"लेखको नाम\" टाइप गरेर क्लिक गर्नुहोस्"
+
+#: library.py:73
+msgid "button on the top \"Library\" panel"
+msgstr "बटन \"लाइब्रेरी\" पेनल को टुप्पोमा छ"
+
+#: library.py:75
+msgid "To create custom article click"
+msgstr "कस्टम लेख लेख्नलाई क्लिक गर्नुहोस"
+
+#: library.py:76
+msgid "button on the left \"Custom\" panel"
+msgstr "बटन बायाँ \"कस्टम\" प्यानलमा"
+
+#: library.py:84
+msgid "Get article from:"
+msgstr "लेख एताबाट पाउ:"
+
+#: library.py:95
+msgid "Article name"
+msgstr "लेखको नाम"
+
+#: library.py:101
+msgid "Search"
+msgstr "खोज"
+
+#: library.py:208
+msgid "Exists"
+msgstr "छ"
+
+#: library.py:209
+#, python-format
+msgid "\"%s\" article already exists"
+msgstr "\"%s\" लेखहरु पहिलेदेखि छ"
+
+#: library.py:231
+msgid "Publish selected articles"
+msgstr "चुनिएको लेखहरु छाप"
+
+#: library.py:242
+msgid "English Wikipedia"
+msgstr "अङ्ग्रेजी विकीपीडिया"
+
+#: library.py:243
+msgid "Simple English Wikipedia"
+msgstr "सरल अङ्ग्रेजी विकीपीडिया"
+
+#: library.py:244
+msgid "French Wikipedia"
+msgstr "फ्रान्सेली विकीपीडिया"
+
+#: library.py:245
+msgid "German Wikipedia"
+msgstr "जर्मन विकीपीडिया"
+
+#: library.py:246
+msgid "Polish Wikipedia"
+msgstr "पोल्यान्डि विश्वकोष"
+
+#: library.py:247
+msgid "Spanish Wikipedia"
+msgstr "स्पेनी विकीपीडिया"
+
+#: net.py:37
+#, python-format
+msgid "\"%s\" download in progress..."
+msgstr "\"%s\" डाउनलोड हुदैछ"
+
+#: net.py:40
+#, python-format
+msgid "Processing \"%s\"..."
+msgstr "काम हुदैछ \"%s\"..."
+
+#: net.py:44
+#, python-format
+msgid "Downloading \"%s\" images..."
+msgstr "डाउन्लोड हुदैछ \"%s\" images..."
+
+#: net.py:45
+#, python-format
+msgid " (from %s)"
+msgstr " (%s बाट)"
+
+#: net.py:47
+#, python-format
+msgid "\"%s\" successfully downloaded"
+msgstr "\"%s\" डाउनलोड सफल भयो"
+
+#: net.py:51
+#, python-format
+msgid "\"%s\" could not be found"
+msgstr "\"%s\" भेटिएन"
+
+#: net.py:55
+#, python-format
+msgid "Error downloading \"%s\"; check your connection"
+msgstr "डाउनलोडमा त्रुटि आयो \"%s\", जडान हेर्नुहोस्"
+
+#: parse.py:18
+msgid "Return to index"
+msgstr "सूचिमा फर्क"
+
+#: xol.py:50
+msgid "Nothing to publish"
+msgstr "छाप्नलाई केहि छैन"
+
+#: xol.py:51
+msgid "Mark arcticles from \"Custom\" panel and try again."
+msgstr "\"कस्टम\" प्यानलबाट लेखमा निशान लगाएर पुन: प्रयाश गर्नुहोस्"
+
+#: xol.py:71
+msgid "Overwrite existed bundle?"
+msgstr "रहिरहेको समुहमाथि लेख्ने?"
+
+#: xol.py:72
+msgid ""
+"A bundle for current object was already created. Click \"OK\" to overwrite "
+"it."
+msgstr "हालैको वस्तुका लागि एक बन्डल सिर्जना गरियो। Click \"OK\" to overwrite it."
+
+#: xol.py:99
+msgid "Book published to your Journal"
+msgstr "तिम्रो पंजिकामा किताब प्राकशित भयो"
+
+#: xol.py:100
+msgid ""
+"You can read the book in Browse or access the .xol file from your Journal"
+msgstr ""
+"तिमीले किताबलाई ब्राउजमा पढ्न सक्छौ अथवा .xol फाइललाई तिम्रो पंजिकाबाट पहुँच "
+"पाउन सक्छौ"
+
+#~ msgid "Bundle exists"
+#~ msgstr "समुह छ"
+
+#, python-format
+#~ msgid "A bundle by \"%s\" name already exists. Please "
+#~ msgstr "\"%s\" नामको समुह पहिलेदेखि छ। क्रिपया "
+
+#~ msgid "A bundle for current object was already created. "
+#~ msgstr "यो बस्तुलाई समुह पहिलेनै बनाईएको थियो "
+
+#~ msgid "Find article"
+#~ msgstr "लेख खोज"

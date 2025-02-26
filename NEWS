@@ -1,0 +1,131 @@
+25
+* New translations
+* Added repository to activity.info
+
+24
+
+ENHANCEMENT:
+* New translations
+
+23
+
+ENHANCEMENT:
+* New translations
+
+21
+
+ENHANCEMENT:
+* New translations
+
+20
+
+BUG FIX:
+* Specify encoding to fix #4526
+
+19
+
+ENHANCEMENT:
+* New translations
+
+BUG FIX:
+* Fixed #4525: Infoslicer crash dragging text
+
+17
+
+ENHANCEMENTS:
+* Load text from Sugar Journal (w/ Aneesh Dogra)
+* Load images from Sugar Journal (w/ Aneesh Dogra)
+* Add Polish wikipedia to library (w/ )
+* New translations
+
+15
+
+ENHANCEMENT:
+* New translations
+
+BUG FIX:
+* Export content as HTML SL (#3608) (patch by Manuel Kaufmann)
+* Avoid screen overlapping SL (#3632) (patch by Manuel Kaufmann)
+
+14
+
+ENHANCEMENT:
+* New translations
+
+13
+
+ENHANCEMENT:
+* New translations
+
+12
+
+ENHANCEMENT:
+* New translations
+
+BUG FIX:
+* Gonzalo fixed a problem with image download
+
+11
+
+ENHANCEMENT:
+* New translation
+
+10
+
+ENHANCEMENTS:
+* New translations
+* Icon update
+ 
+9
+
+ENHANCEMENTS:
+* Set the wiki source acording to the configured locale - SL #2871 (Gonzalo
+  Odiard)
+* Reorganize UI and implement new toolbars (Gonzalo Odiard)
+* New translations from the Localization Team
+
+BUG FIXES:
+* Encode title of the page before download it - SL #2855 (Gonzalo Odiard)
+  If the word searched have a non ascii character, like a accent could not
+  be downloaded
+* Avoid crash when a article is downloaded - SL #2856 (Gonzalo Odiard)
+
+8 
+
+ENHANCEMENT:
+* Adding fr.wikipedia.org
+
+7
+
+ENHANCEMENT:
+* Adding es.wikipedia.org
+
+6
+
+BUG FIX:
+* Patches by jpichon to fix parsing problem that had prevented
+  processing of new articles
+
+5
+
+ENHANCEMENT:
+* Run activity in Sucrose 0.82 environment
+
+4
+
+ENHANCEMENT:
+* Run activity in CM12 environment
+
+3
+
+ENHANCEMENT:
+* Major cleanup by alroot
+
+2
+
+ENHANCEMENT:
+* Adding gettext strings
+
+1
+
+* New activity

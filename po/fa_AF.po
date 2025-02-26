@@ -1,0 +1,342 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-04-01 00:31-0400\n"
+"PO-Revision-Date: 2013-06-28 20:01+0200\n"
+"Last-Translator: Chris <cjl@laptop.org>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: fa_AF\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Pootle 2.0.5\n"
+
+#. TRANS: "name" option from activity.info file
+msgid "InfoSlicer"
+msgstr "قسمت کننده معلومات"
+
+#. TRANS: "summary" option from activity.info file
+#. TRANS: "description" option from activity.info file
+msgid ""
+"Is it possible to have my own encyclopedia? Yes! Find your favorite "
+"information on the web and package it with InfoSlicer creating incredible "
+"collections."
+msgstr ""
+
+#: activity.py:67
+msgid "Library"
+msgstr "کتابخانه"
+
+#: activity.py:75
+msgid "Edit"
+msgstr "تنظیم کردن"
+
+#: book.py:211
+msgid "Lion (from en.wikipedia.org)"
+msgstr "شیر از"
+
+#: book.py:212
+msgid "Tiger (from en.wikipedia.org)"
+msgstr "پلنگ از"
+
+#: book.py:213
+msgid "Giraffe (from en.wikipedia.org)"
+msgstr "زرافه از"
+
+#: book.py:214
+msgid "Zebra (from en.wikipedia.org)"
+msgstr "گور خر از"
+
+#: book.py:221
+msgid "Giraffe"
+msgstr "زرافه"
+
+#: bookview.py:52
+msgid "Articles are ready to be published"
+msgstr "مقالات برای نشرکردن آماده هستند"
+
+#: bookview.py:92
+msgid "Create new article"
+msgstr "مقاله جدید ایجاد کن"
+
+#: bookview.py:102
+msgid "Delete current article"
+msgstr "مقاله فعلی را حذف کن"
+
+#: bookview.py:109
+msgid "Move article downward"
+msgstr "مقاله را به طرف پایین حرکت بده"
+
+#: bookview.py:114
+msgid "Move article upward"
+msgstr "مقاله را رو به بالا حرکت بده"
+
+#: bookview.py:191
+msgid "New article"
+msgstr "مقاله جدید"
+
+#: edit.py:76
+msgid "Text"
+msgstr "متن"
+
+#: edit.py:81
+msgid "Images"
+msgstr "تصاویر"
+
+#: edit.py:86
+msgid "Journal Images"
+msgstr ""
+
+#: edit.py:91
+msgid "Choose Journal Images"
+msgstr ""
+
+#: edit.py:95
+msgid "Choose Journal Text"
+msgstr ""
+
+#: infoslicer/widgets/Edit_Pane.py:53
+msgid "Snap selection to:"
+msgstr "انتخاب ناگهانی به"
+
+#: infoslicer/widgets/Edit_Pane.py:54
+msgid "Nothing"
+msgstr "هیچ چیز"
+
+#: infoslicer/widgets/Edit_Pane.py:55
+msgid "Sentences"
+msgstr "جملات"
+
+#: infoslicer/widgets/Edit_Pane.py:56
+msgid "Paragraphs"
+msgstr "پاراگراف ها"
+
+#: infoslicer/widgets/Edit_Pane.py:57
+msgid "Sections"
+msgstr "بخش ها"
+
+#: infoslicer/widgets/Edit_Pane.py:103 infoslicer/widgets/Edit_Pane.py:111
+#: infoslicer/widgets/Format_Pane.py:52 infoslicer/widgets/Image_Pane.py:58
+#: infoslicer/widgets/Image_Pane.py:89
+#: infoslicer/widgets/Journal_Image_Pane.py:59
+msgid "Article:"
+msgstr "مقاله"
+
+#: infoslicer/widgets/Image_Pane.py:79
+msgid "This article does not have any images"
+msgstr "مقاله هیچ تصویری ندارد"
+
+#: infoslicer/widgets/Image_Pane.py:82
+msgid "Please select a Wikipedia article from the menu above"
+msgstr "لطفا یک مقاله ویکیپیدیا را از لیست بالا انتخاب کن"
+
+#: library.py:50
+msgid "Wiki"
+msgstr "ویکی"
+
+#: library.py:50
+msgid "Wiki articles"
+msgstr "مقالات ویکی"
+
+#: library.py:52
+msgid "Custom"
+msgstr "عادت"
+
+#: library.py:52
+msgid "Custom articles"
+msgstr "مقالات عادتی"
+
+#: library.py:72
+msgid ""
+"To download Wiki article\n"
+"type \"Article name\" and click"
+msgstr "برای بارگیری مقاله ویکی نام مقاله را نوشته و کلیک کنید"
+
+#: library.py:73
+msgid "button on the top \"Library\" panel"
+msgstr "دکمه در قسمت بالای صفحه کتابخانه"
+
+#: library.py:75
+msgid "To create custom article click"
+msgstr "برای ایجاد کلیک مقاله عادتی"
+
+#: library.py:76
+msgid "button on the left \"Custom\" panel"
+msgstr "دکمه درقسمت چپ صفحه عادتی"
+
+#: library.py:84
+msgid "Get article from:"
+msgstr "مقاله را به دست آرید از"
+
+#: library.py:95
+msgid "Article name"
+msgstr "نام مقاله"
+
+#: library.py:101
+msgid "Search"
+msgstr ""
+
+#: library.py:208
+msgid "Exists"
+msgstr "موجود است"
+
+#: library.py:209
+#, python-format
+#, python-format, fuzzy
+msgid "\"%s\" article already exists"
+msgstr "مقاله قبلا موجود است"
+
+#: library.py:231
+msgid "Publish selected articles"
+msgstr "مقالات انتخاب شده را نشر کن"
+
+#: library.py:242
+msgid "English Wikipedia"
+msgstr "ویکیپیدیا انگلیسی"
+
+#: library.py:243
+msgid "Simple English Wikipedia"
+msgstr "ویکیپیدیای انگلیسی ساده"
+
+#: library.py:244
+msgid "French Wikipedia"
+msgstr ""
+
+#: library.py:245
+msgid "German Wikipedia"
+msgstr "ویکیپیدیای جرمنی"
+
+#: library.py:246
+#, fuzzy
+msgid "Polish Wikipedia"
+msgstr "ویکیپیدیا انگلیسی"
+
+#: library.py:247
+#, fuzzy
+msgid "Spanish Wikipedia"
+msgstr "ویکیپیدیا انگلیسی"
+
+#: net.py:37
+#, python-format
+#, python-format, fuzzy
+msgid "\"%s\" download in progress..."
+msgstr "بار گیری در حال پیشرفت"
+
+#: net.py:40
+#, python-format
+#, python-format, fuzzy
+msgid "Processing \"%s\"..."
+msgstr "پردازش"
+
+#: net.py:44
+#, python-format
+#, python-format, fuzzy
+msgid "Downloading \"%s\" images..."
+msgstr "درحال بارگیری تصاویر"
+
+#: net.py:45
+#, python-format
+#, python-format, fuzzy
+msgid " (from %s)"
+msgstr " از"
+
+#: net.py:47
+#, python-format
+#, python-format, fuzzy
+msgid "\"%s\" successfully downloaded"
+msgstr "موفقانه بارگیری شد"
+
+#: net.py:51
+#, python-format
+#, python-format, fuzzy
+msgid "\"%s\" could not be found"
+msgstr "پیدا شده نمیتواند"
+
+#: net.py:55
+#, python-format
+#, python-format, fuzzy
+msgid "Error downloading \"%s\"; check your connection"
+msgstr "برای بار گیری اتصال تان را بررسی نمایید"
+
+#: parse.py:18
+msgid "Return to index"
+msgstr ""
+
+#: xol.py:50
+msgid "Nothing to publish"
+msgstr "چیزی برای نشر نیست"
+
+#: xol.py:51
+msgid "Mark arcticles from \"Custom\" panel and try again."
+msgstr "مقالات را از صفحه/عادتی/ بساز و دو باره کوشش کن"
+
+#: xol.py:71
+msgid "Overwrite existed bundle?"
+msgstr "مجموعه موجود را چندین بار بنویسد؟"
+
+#: xol.py:72
+msgid ""
+"A bundle for current object was already created. Click \"OK\" to overwrite "
+"it."
+msgstr ""
+
+#: xol.py:99
+msgid "Book published to your Journal"
+msgstr ""
+
+#: xol.py:100
+msgid ""
+"You can read the book in Browse or access the .xol file from your Journal"
+msgstr ""
+
+#~ msgid "A bundle for current object was already created. "
+#~ msgstr "یک مجموعه برای شیٔ فعلی قبلا ایجاد گردیده است"
+
+#~ msgid "Find article"
+#~ msgstr "مقاله را پیدا کن"
+
+#~ msgid "Create"
+#~ msgstr "ایجاد کردن"
+
+#~ msgid "Delete"
+#~ msgstr "حذف کردن"
+
+#~ msgid "Move downward"
+#~ msgstr "به طرف پایین حرکت کن"
+
+#~ msgid "Move upward"
+#~ msgstr "رو به بالا حرکت کن"

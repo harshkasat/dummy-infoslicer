@@ -1,0 +1,343 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-04-01 00:31-0400\n"
+"PO-Revision-Date: 2011-07-31 04:36+0200\n"
+"Last-Translator: Thangamani <thangam.arunx@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.0.1\n"
+
+#. TRANS: "name" option from activity.info file
+msgid "InfoSlicer"
+msgstr "தகவல் தருவோன்"
+
+#. TRANS: "summary" option from activity.info file
+#. TRANS: "description" option from activity.info file
+msgid ""
+"Is it possible to have my own encyclopedia? Yes! Find your favorite "
+"information on the web and package it with InfoSlicer creating incredible "
+"collections."
+msgstr ""
+
+#: activity.py:67
+msgid "Library"
+msgstr "நூலகம்"
+
+#: activity.py:75
+msgid "Edit"
+msgstr "திருத்தம்"
+
+#: book.py:211
+msgid "Lion (from en.wikipedia.org)"
+msgstr "சிங்கம் (en.wikipedia.org இலிருந்து)"
+
+#: book.py:212
+msgid "Tiger (from en.wikipedia.org)"
+msgstr "புலி (en.wikipedia.org இலிருந்து)"
+
+#: book.py:213
+msgid "Giraffe (from en.wikipedia.org)"
+msgstr "ஒட்டகச் சிவிங்கி (en.wikipedia.org இலிருந்து)"
+
+#: book.py:214
+msgid "Zebra (from en.wikipedia.org)"
+msgstr "வரிக்குதிரை (en.wikipedia.org இலிருந்து)"
+
+#: book.py:221
+msgid "Giraffe"
+msgstr "ஒட்டகச் சிவிங்கி"
+
+#: bookview.py:52
+msgid "Articles are ready to be published"
+msgstr "விடயங்கள் பிரசுரிப்பதற்கு ஆயத்தமாக உள்ளன"
+
+#: bookview.py:92
+msgid "Create new article"
+msgstr "புதிய கட்டுரையை உருவாக்கு"
+
+#: bookview.py:102
+msgid "Delete current article"
+msgstr "தற்போதய கட்டுரையை அழி"
+
+#: bookview.py:109
+msgid "Move article downward"
+msgstr "கீழ் நோக்கி கட்டுரையை அசை"
+
+#: bookview.py:114
+msgid "Move article upward"
+msgstr "மேல் நோக்கி கட்டுரையை அசை"
+
+#: bookview.py:191
+msgid "New article"
+msgstr "புதிய கட்டுரை"
+
+#: edit.py:76
+msgid "Text"
+msgstr "உரை"
+
+#: edit.py:81
+msgid "Images"
+msgstr "படங்கள்"
+
+#: edit.py:86
+msgid "Journal Images"
+msgstr ""
+
+#: edit.py:91
+msgid "Choose Journal Images"
+msgstr ""
+
+#: edit.py:95
+msgid "Choose Journal Text"
+msgstr ""
+
+#: infoslicer/widgets/Edit_Pane.py:53
+msgid "Snap selection to:"
+msgstr "தெரிவு செய்ததைக் கொண்டு போ:"
+
+#: infoslicer/widgets/Edit_Pane.py:54
+msgid "Nothing"
+msgstr "ஒன்றுமில்லை"
+
+#: infoslicer/widgets/Edit_Pane.py:55
+msgid "Sentences"
+msgstr "வசனங்கள்"
+
+#: infoslicer/widgets/Edit_Pane.py:56
+msgid "Paragraphs"
+msgstr "பந்திகள்"
+
+#: infoslicer/widgets/Edit_Pane.py:57
+msgid "Sections"
+msgstr "பகுதிகள்"
+
+#: infoslicer/widgets/Edit_Pane.py:103 infoslicer/widgets/Edit_Pane.py:111
+#: infoslicer/widgets/Format_Pane.py:52 infoslicer/widgets/Image_Pane.py:58
+#: infoslicer/widgets/Image_Pane.py:89
+#: infoslicer/widgets/Journal_Image_Pane.py:59
+msgid "Article:"
+msgstr "கட்டுரை"
+
+#: infoslicer/widgets/Image_Pane.py:79
+msgid "This article does not have any images"
+msgstr "இந்தக் கட்டுரையில் எந்த படங்களும் இல்லை"
+
+#: infoslicer/widgets/Image_Pane.py:82
+msgid "Please select a Wikipedia article from the menu above"
+msgstr "மேலுள்ள பட்டியலிலிருந்து விக்கிபீடியா கட்டுரையை தெரிவு செய்"
+
+#: library.py:50
+msgid "Wiki"
+msgstr "விக்கி(Wiki)"
+
+#: library.py:50
+msgid "Wiki articles"
+msgstr "விக்கி(Wiki) கட்டுரைகள்"
+
+#: library.py:52
+msgid "Custom"
+msgstr "வழமை"
+
+#: library.py:52
+msgid "Custom articles"
+msgstr "வழமையான கட்டுரைகள்"
+
+#: library.py:72
+msgid ""
+"To download Wiki article\n"
+"type \"Article name\" and click"
+msgstr ""
+"விக்கி(Wiki) கட்டுரைகள்  \n"
+"   பதிவிறக்கத்திற்கு \" விடயப் பெயர்\" ஐ உள்ளீடு செய்து சொடுக்கு"
+
+#: library.py:73
+msgid "button on the top \"Library\" panel"
+msgstr "\"நூலகம்\" சட்டத்தின் மேல் பொத்தான் உள்ளது"
+
+#: library.py:75
+msgid "To create custom article click"
+msgstr "வழமையான கட்டுரைகளை உருவாக்குவதற்கு சொடுக்கு"
+
+#: library.py:76
+msgid "button on the left \"Custom\" panel"
+msgstr "இடது \"வழமை\" சட்டத்தின் மேல் பொத்தான் உள்ளது"
+
+#: library.py:84
+msgid "Get article from:"
+msgstr "கட்டுரைகளை இங்கிருந்து பெறு"
+
+#: library.py:95
+msgid "Article name"
+msgstr "கட்டுரைகளின் தலைப்பு"
+
+#: library.py:101
+msgid "Search"
+msgstr "தேடு"
+
+#: library.py:208
+msgid "Exists"
+msgstr "ஏற்கனவே உள்ளன"
+
+#: library.py:209
+#, python-format
+msgid "\"%s\" article already exists"
+msgstr "\"%s\" மான கட்டுரைகளை  ஏற்கனவே உள்ளன"
+
+#: library.py:231
+msgid "Publish selected articles"
+msgstr "தெரிவு செய்த கட்டுரைகளை பிரசுரி"
+
+#: library.py:242
+msgid "English Wikipedia"
+msgstr "ஆங்கில விக்கிபீடியா- கலைக் களஞ்சியம் (English Wikipedia)"
+
+#: library.py:243
+msgid "Simple English Wikipedia"
+msgstr "எளிய ஆங்கில விக்கிபீடியா- கலைக் களஞ்சியம் (English Wikipedia)"
+
+#: library.py:244
+msgid "French Wikipedia"
+msgstr "பிரெஞ்சு விக்கிபீடியா-கலைக் களஞ்சியம்"
+
+#: library.py:245
+msgid "German Wikipedia"
+msgstr "ஜெர்மனிய விக்கிபீடியா- கலைக் களஞ்சியம்"
+
+#: library.py:246
+#, fuzzy
+msgid "Polish Wikipedia"
+msgstr "ஆங்கில விக்கிபீடியா- கலைக் களஞ்சியம் (English Wikipedia)"
+
+#: library.py:247
+msgid "Spanish Wikipedia"
+msgstr "ஸ்பேனிஷ் விக்கிபீடியா- கலைக் களஞ்சியம் (Spanish Wikipedia)"
+
+#: net.py:37
+#, python-format
+msgid "\"%s\" download in progress..."
+msgstr "\"%s\" பதிவிறக்கம் நடைபெறுகிறது..."
+
+#: net.py:40
+#, python-format
+msgid "Processing \"%s\"..."
+msgstr "\"%s\"செயல் படுத்தப் படுகின்றது..."
+
+#: net.py:44
+#, python-format
+msgid "Downloading \"%s\" images..."
+msgstr "\"%s\" படம் பதிவிறக்கம் ..."
+
+#: net.py:45
+#, python-format
+msgid " (from %s)"
+msgstr " (இலிருந்து %s)"
+
+#: net.py:47
+#, python-format
+msgid "\"%s\" successfully downloaded"
+msgstr "\"%s\" வெற்றிகரமாக பதிவிறக்கப்பட்டுள்ளது"
+
+#: net.py:51
+#, python-format
+msgid "\"%s\" could not be found"
+msgstr "\"%s\"கண்டு பிடிக்கப் முடியவில்லை"
+
+#: net.py:55
+#, python-format
+msgid "Error downloading \"%s\"; check your connection"
+msgstr "பதிவிறக்கத்தில் பிழைகளுள்ளன \"%s\"; உங்கள் இணைப்பை சரி பாருங்ஙள்"
+
+#: parse.py:18
+msgid "Return to index"
+msgstr ""
+
+#: xol.py:50
+msgid "Nothing to publish"
+msgstr "பிரசுரிப்பதற்கு விடயங்கள் எதுவுமில்லை"
+
+#: xol.py:51
+msgid "Mark arcticles from \"Custom\" panel and try again."
+msgstr ""
+"\"வழமை\" தட்டில் இருந்து மீண்டும் விடயம் ஒன்றை ஆரம்பிக்க முயற்சி செய்யவும்"
+
+#: xol.py:71
+msgid "Overwrite existed bundle?"
+msgstr "ஏற்கனவே உள்ள கட்டினை அழித்து விட்டு அதன் மேலிடு"
+
+#: xol.py:72
+msgid ""
+"A bundle for current object was already created. Click \"OK\" to overwrite "
+"it."
+msgstr ""
+
+#: xol.py:99
+msgid "Book published to your Journal"
+msgstr ""
+
+#: xol.py:100
+msgid ""
+"You can read the book in Browse or access the .xol file from your Journal"
+msgstr ""
+
+#~ msgid "Bundle exists"
+#~ msgstr "ஏற்கனவே உள்ளதை கட்டு"
+
+#, python-format
+#~ msgid "A bundle by \"%s\" name already exists. Please "
+#~ msgstr "கட்டானது ஏற்கனவே %s பெயரால் உள்ளது. தயவு செய்து. "
+
+#~ msgid "A bundle for current object was already created. "
+#~ msgstr "ஏற்கனவே தற்போதய குறிக் கோளுக்காக ஒரு கட்டு உருவாக்கப்பட்டுள்ளது "
+
+#~ msgid "Find article"
+#~ msgstr "கட்டுரைகளை கண்டுபிடி"
+
+#~ msgid "Create"
+#~ msgstr "உருவாக்கு"
+
+#~ msgid "Delete"
+#~ msgstr "அழி"
+
+#~ msgid "Move downward"
+#~ msgstr "கீழ் நோக்கி அசை"
+
+#~ msgid "Move upward"
+#~ msgstr "மேல் நோக்கி அசை"
