@@ -28,7 +28,7 @@ from sugar3.activity.activity import get_bundle_path, get_activity_root
 
 import net
 from infoslicer.processing.article import Article
-from infoslicer.processing import Article_Builder
+from infoslicer.processing.ArticleData import ArticleData
 
 logger = logging.getLogger('infoslicer')
 
@@ -61,7 +61,7 @@ class Book(GObject.GObject):
         if entry:
             content = self._load(entry['uid'])
             if content:
-                data = Article_Builder.get_article_from_dita(
+                data = ArticleData.get_article_from_dita(
                         image_root, content)
                 self._article = Article(data)
             else:
@@ -257,7 +257,7 @@ class CustomBook(Book):
         self.find_by_uuid(self._article.uid)['title'] = \
                 self._article.article_title
 
-        contents = Article_Builder.get_dita_from_article(
+        contents = ArticleData.get_dita_from_article(
                 image_root, self._article)
 
         self._save(self._article.uid, contents)
