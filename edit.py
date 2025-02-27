@@ -59,10 +59,10 @@ class View(Gtk.Notebook):
     def _map_cb(self, widget):
         index = self.get_current_page()
 
-        if book.wiki.article:
-            TABS[index].set_source_article(book.wiki.article)
-        if book.custom.article:
-            TABS[index].set_working_article(book.custom.article)
+        if book.WIKI.article:
+            TABS[index].set_source_article(book.WIKI.article)
+        if book.CUSTOM.article:
+            TABS[index].set_working_article(book.CUSTOM.article)
 
 class ToolbarBuilder():
     def __init__(self, edit, toolbar):
@@ -169,9 +169,9 @@ class ToolbarBuilder():
             i.show()
 
         # We don't require any article data to display jounal images
-        if book.wiki.article and index != 2:
-            TABS[index].set_source_article(book.wiki.article)
-        if book.custom.article:
-            TABS[index].set_working_article(book.custom.article)
+        if book.WIKI.article and index != 2:
+            TABS[index].set_source_article(book.WIKI.article)
+        if book.CUSTOM.article:
+            TABS[index].set_working_article(book.CUSTOM.article)
 
         self.edit.set_current_page(index)

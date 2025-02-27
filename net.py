@@ -44,7 +44,7 @@ def download_wiki_article(title, wiki, progress):
         contents = parser.parse()
 
         progress.set_label(_('Downloading "%s" images...') % title)
-        book.wiki.create(title + _(' (from %s)') % wiki, contents)
+        book.WIKI.create(title + _(' (from %s)') % wiki, contents)
 
         progress.set_label(_('"%s" successfully downloaded') % title)
 

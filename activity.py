@@ -49,9 +49,9 @@ class InfoslicerActivity(activity.Activity):
         self.instance()
 
     def instance(self):
-        book.wiki = book.WikiBook()
-        if not book.custom:
-            book.custom = book.CustomBook()
+        book.WIKI = book.WikiBook()
+        if not book.CUSTOM:
+            book.CUSTOM = book.CustomBook()
 
         self.edit_page = 1
         self.edit = edit.View()
@@ -108,12 +108,12 @@ class InfoslicerActivity(activity.Activity):
         self.instance()
 
     def resume_instance(self, filepath):
-        book.custom = book.CustomBook(filepath)
+        book.CUSTOM = book.CustomBook(filepath)
         self.instance()
 
     def save_instance(self, filepath):
-        book.wiki.sync()
-        book.custom.sync(filepath)
+        book.WIKI.sync()
+        book.CUSTOM.sync(filepath)
 
     def set_edit_sensitive(self, enable):
         pass

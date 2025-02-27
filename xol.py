@@ -45,7 +45,7 @@ def __alert_response_cb(alert, response_id, activity, force):
 
 
 def publish(activity, force=False):
-    if not [i for i in book.custom.index if i['ready']]:
+    if not [i for i in book.CUSTOM.index if i['ready']]:
         alert = NotifyAlert(5)
         alert.props.title = _('Nothing to publish')
         alert.props.msg = _('Mark arcticles from "Custom" '
@@ -58,7 +58,7 @@ def publish(activity, force=False):
     title = activity.metadata['title']
     jobject = datastore.find({
             'activity_id': activity.get_id(),
-            'activity'   : book.custom.uid})[0] or None
+            'activity'   : book.CUSTOM.uid})[0] or None
 
     logger.debug('publish: title=%s jobject=%s force=%s' \
             % (title, jobject and jobject[0].metadata['activity'], force))
@@ -79,21 +79,21 @@ def publish(activity, force=False):
     else:
         jobject = datastore.create()
         jobject.metadata['activity_id'] = activity.get_id()
-        jobject.metadata['activity'] = book.custom.uid
+        jobject.metadata['activity'] = book.CUSTOM.uid
         jobject.metadata['mime_type'] = 'application/vnd.olpc-content'
         jobject.metadata['description'] = \
                 'This is a bundle containing articles on %s.\n' \
                 'To view these articles, open the \'Browse\' Activity.\n' \
                 'Go to \'Books\', and select \'%s\'.' % (title, title)
 
-    book.custom.sync_article()
-    book.custom.revision += 1
+    book.CUSTOM.sync_article()
+    book.CUSTOM.revision += 1
 
     jobject.metadata['title'] = title
     _publish(title, jobject)
     jobject.destroy()
 
-    book.custom.sync_index()
+    book.CUSTOM.sync_index()
 
     alert = NotifyAlert()
     alert.props.title = _('Book published to your Journal')
@@ -114,7 +114,7 @@ def _publish(title, jobject):
     zipfilename = '/tmp/infoslicer.xol'
     zip = zipfile.ZipFile(zipfilename, 'w')
 
-    uid = book.custom.uid
+    uid = book.CUSTOM.uid
 
     for i in glob(os.path.join(get_bundle_path(), 'Stylesheets', '*')):
         zip.write(i, os.path.join(uid, 'slicecontent', os.path.basename(i)))
@@ -140,17 +140,17 @@ def _dita_management(zip, uid, title):
 
     images = {}
 
-    for entry in book.custom.index:
+    for entry in book.CUSTOM.index:
         if not entry['ready']:
             continue
 
         atitle = entry['title']
         auid = entry['uid']
 
-        content = BeautifulStoneSoup(book.custom._load(auid))
+        content = BeautifulStoneSoup(book.CUSTOM._load(auid))
 
         for image in content.findAll('image'):
-            image_path = book.wiki.root + '/' + image['href']
+            image_path = book.WIKI.root + '/' + image['href']
             image_name = os.path.basename(image_path)
             image_ext = os.path.splitext(image_name)[1]
 
@@ -204,7 +204,7 @@ def _info_file(zip, uid, title):
                    'bundle_class = %s' % uid,\
                    'global_name = info.slice.%s' % title,\
                    'long_name = %s' % title,\
-                   'library_version = %d' % book.custom.revision,\
+                   'library_version = %d' % book.CUSTOM.revision,\
                    'host_version = 1',\
                    'l10n = false',\
                    'locale = en',\

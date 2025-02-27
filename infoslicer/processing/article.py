@@ -41,17 +41,20 @@ class Article:
     """
     Created by Jonathan Mace
 
-    The Article class maintains a concrete representation of the article, in the form of a Gtk.TextBuffer
+    The Article class maintains a concrete representation of the article, 
+    in the form of a Gtk.TextBuffer Positions within the text are represented 
+    by Gtk.TextIter
 
-    Positions within the text are represented by Gtk.TextIter
+    The class contains methods for inserting and deleting new sentences, 
+    paragraphs and sections.
 
-    The class contains methods for inserting and deleting new sentences, paragraphs and sections.
-
-    The class also has methods for finding the most appropriate insertion point for new sections.
+    The class also has methods for finding the most appropriate insertion 
+    point for new sections.
 
     The class maintains the section-based structure of the article.
 
-    At any point, the article_data class corresponding to the current state of the article can be retrieved
+    At any point, the article_data class corresponding to the current 
+    state of the article can be retrieved
     """
 
     def __init__(self, article_data=ArticleData()) -> None:
@@ -122,8 +125,8 @@ class Article:
 
     def check_integrity(self) -> None:
         """
-        When a user freely edits the text of an article, they can perform actions such as completely deleting a sentence,
-        or concatenating two sections, etc.
+        When a user freely edits the text of an article, they can perform actions
+        such as completely deleting a sentence, or concatenating two sections, etc.
         This method reparses the structure of the article.
         """
         i = 0
@@ -413,9 +416,9 @@ class Article:
         """
         insertioniter = self.get_best_section(lociter).getStart()
         insertionmark = self.__buf.create_mark(None, insertioniter, False)
-        for object in objects:
+        for obj in objects:
             insertioniter = self.__buf.get_iter_at_mark(insertionmark)
-            self.insert_section(object, insertioniter)
+            self.insert_section(obj, insertioniter)
 
     def get_selection(self):
         """
@@ -604,9 +607,11 @@ class Article:
 
     def __get_best_section(self, lociter):
         """
-        Given any position within the buffer, this method determines where the closest section gap is.
+        Given any position within the buffer, this method determines where the 
+        closest section gap is.
 
-        It then returns the index of the section, within the self.__sections list, of the preceeding section.
+        It then returns the index of the section, within the 
+        self.__sections list, of the preceeding section.
         """
         sectionindex = self.__get_exact_section(lociter)
         section = self.__sections[sectionindex]
@@ -622,7 +627,8 @@ class Article:
 
     def __get_exact_section(self, lociter):
         """
-        Given any position within the buffer, this method determines which section the lociter is inside.
+        Given any position within the buffer, this method determines which 
+        section the lociter is inside.
         """
         for i in range(len(self.__sections) - 1):
             start = self.__sections[i + 1].getStart()
@@ -651,7 +657,6 @@ class Article:
         self.markmark = self.__buf.create_mark(None, lociter, True)
         self.__buf.insert(lociter, " ")
         lociter = self.__buf.get_iter_at_mark(self.markmark)
-        # FIXME: I don't know what the arrow_xpm type should be
         # https://bugzilla.gnome.org/show_bug.cgi?id=651962
         # arrow = GdkPixbuf.Pixbuf.new_from_xpm_data(arrow_xpm)
         # self.__buf.insert_pixbuf(lociter, arrow)
@@ -730,7 +735,8 @@ class Article:
 
         It then finds the closest paragraph gap to lociter.
 
-        The section is then split into two sections, one containing all the paragraphs before the gap,
+        The section is then split into two sections, one containing all the 
+        paragraphs before the gap,
         the other containing all the paragraphs after the gap.
         """
         sectionindex = self.__get_exact_section(lociter)

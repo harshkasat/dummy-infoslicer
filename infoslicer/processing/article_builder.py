@@ -29,7 +29,8 @@ ID descriptions:
 
 def get_article_from_dita(image_path, dita):
     """
-    This method takes an article in DITA format as input, parses the DITA, and outputs the corresponding article_data object
+    This method takes an article in DITA format as input, parses the DITA, and 
+    outputs the corresponding article_data object
     """
     has_shortdesc = False
     soup = BeautifulStoneSoup(dita)
@@ -224,7 +225,8 @@ def get_article_from_dita(image_path, dita):
 def get_dita_from_article(image_path, article):
     """
     This method takes as input an instance of the Article class.
-    It calls the getData method of the article class to get the article_data representation of the article.
+    It calls the getData method of the article class to get the article_data 
+    representation of the article.
     It then constructs the corresponding DITA representation of the article.
     """
     article_data = article.getData()
