@@ -16,6 +16,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 from sugar3.activity import bundlebuilder
+install_requires = ['bs4']
 if __name__ == "__main__":
     bundlebuilder.start()
 
