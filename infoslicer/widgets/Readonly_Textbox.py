@@ -157,7 +157,7 @@ class Readonly_Textbox( Textbox ):
                 self.block = True
             
     def unclicked_event(self, widget, event, data):
-        self.article.clearArrow()
+        self.article.clear_arrow()
         self.do_button_release_event(widget, event)
         self.selecting = False
         self.stop_emission("button-release-event")
