@@ -3,7 +3,7 @@
 import logging
 import re
 from datetime import date
-from bs4 import BeautifulSoup, Tag, NavigableString
+from bs4 import BeautifulSoup, Tag
 # from NewtifulSoup import NewtifulStoneSoup as BeautifulStoneSoup
 from infoslicer.processing.newtiful_soup import NewtifulStoneSoup as BeautifulStoneSoup
 logger = logging.getLogger('infoslicer:HTML_Parser')
@@ -268,29 +268,10 @@ class HTMLParser:
         Prepares the input for parsing.
         """
         logger.info('Starting pre-parse phase')
-        try:
-            # Find all root level tags
-            root_tags = self.input.findAll(True, recursive=False)
-            if not root_tags:
-                logger.warning('No root level tags found')
-                return
-
-            for tag in root_tags:
-                if not tag or not tag.name:
-                    logger.warning('Skipping invalid tag')
-                    continue
-                    
-                logger.info(f'Processing tag: {tag.name}')
-                try:
-                    self.untag(tag)
-                except Exception as e:
-                    logger.error(f'Error processing tag {tag.name}: {e}')
-                    continue
-                    
-            logger.info('Pre-parse phase completed')
-        except Exception as e:
-            logger.error(f'Error in pre_parse: {e}')
-            raise
+        for tag in self.input.findAll(True, recursive=False):
+            logger.error(f'Processing tag: {tag.name}')
+            self.untag(tag)
+        logger.info('Pre-parse phase completed')
 
     def specialise(self):
         logger.debug('Running specialise step')
@@ -302,23 +283,23 @@ class HTMLParser:
     def tag_generator(self, tag, contents=None, attrs=None):
         logger.debug(f'Generating new tag: {tag}')
         try:
-            # Validate tag name
-            if not tag or not isinstance(tag, str):
-                logger.error(f'Invalid tag name: {tag}')
-                raise ValueError('Tag name must be a non-empty string')
-            
-            tag = tag.strip()
             if not tag:
-                logger.error('Empty tag name after stripping')
+                logger.error('Empty tag name provided')
                 raise ValueError('Tag name cannot be empty')
-
-            # Initialize attrs
+                
             if attrs is None:
                 attrs = {}
             elif isinstance(attrs, list):
+                # Convert list of tuples to dictionary
                 attrs = dict(attrs)
+                
+            # Ensure tag is a string
+            tag = str(tag).strip()
+            if not tag:
+                logger.error('Invalid tag name after conversion')
+                raise ValueError('Invalid tag name')
 
-            # Create new tag
+            # Create new tag using BeautifulSoup's parser
             new_tag = self.output_soup.new_tag(tag, **attrs)
 
             # Add ID if needed
@@ -328,16 +309,20 @@ class HTMLParser:
 
             # Handle contents
             if contents is not None:
-                if isinstance(contents, (str, bytes)):
-                    new_tag.string = str(contents)
-                else:
-                    new_tag.append(contents)
+                try:
+                    if isinstance(contents, (str, bytes)):
+                        new_tag.string = str(contents)
+                    else:
+                        new_tag.append(contents)
+                except Exception as e:
+                    logger.error(f'Failed to insert contents into tag: {e}')
+                    new_tag.string = ''
 
             return new_tag
 
         except Exception as e:
             logger.error(f'Error generating tag {tag}: {e}')
-            raise
+            raise ValueError(f'Failed to generate tag: {e}')
 
     def untag(self, tag):
         """
@@ -356,10 +341,7 @@ class HTMLParser:
                     continue
                     
             if (self.remove_classes_regexp != "") and \
-               (tag.get("class") and re.match(
-                   self.remove_classes_regexp, 
-                   " ".join(tag.get("class")) if isinstance(tag.get("class"), list) else tag.get("class")
-               )):
+               (tag.get("class") and re.match(self.remove_classes_regexp, " ".join(tag.get("class")) if isinstance(tag.get("class"), list) else tag.get("class"))):
                 tag.extract()
             elif tag.name in self.keep_tags:
                 try:
@@ -378,7 +360,7 @@ class HTMLParser:
                         new_tag.append(child)
                     tag.replaceWith(new_tag)
                 else:
-                    tag.replaceWith(NavigableString(tag.renderContents().decode('utf-8')))
+                    tag.replaceWith(tag.renderContents())
             else:
                 tag.extract()
         except AttributeError as e:
