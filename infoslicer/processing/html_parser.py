@@ -150,11 +150,11 @@ class HTMLParser:
                 logger.error('Error finding reference in output_soup: %s', e)
                 raise
 
-            try:
-                self.add_metadata(output_reference)
-            except Exception as e:
-                logger.error('Error adding metadata: %s', e)
-                raise
+            # try:
+            #     self.add_metadata(output_reference)
+            # except Exception as e:
+            #     logger.error('Error adding metadata: %s', e)
+            #     raise
 
             try:
                 self.process_tags(output_reference)
