@@ -250,7 +250,7 @@ class HTMLParser:
             Prepares the input for parsing
         """
         for tag in self.input.findAll(True, recursive=False):
-            self.unTag(tag)
+            self.untag(tag)
         logger.info('Pre-parse phase completed')
 
     def specialise(self):
@@ -304,18 +304,20 @@ class HTMLParser:
             logger.error(f'Error generating tag {tag}: {e}')
             raise ValueError(f'Failed to generate tag: {e}')
 
-    def unTag(self, tag):
-        logger.debug(f'Processing tag for removal: {tag.name}')
+    def untag(self, tag):
+        """
+        Recursively removes unwanted tags according to defined lists.
+        
+        Args:
+            tag: Tag hierarchy to work on.
+        """
+        logger.debug('Processing tag for removal: %s', tag.name)
         try:
-            """
-                recursively removes unwanted tags according to defined lists
-                @param tag: tag hierarchy to work on
-            """
             for child in tag.findChildren(True, recursive=False):
                 try:
-                    self.unTag(child)
-                except Exception as e:
-                    logger.error(f'Error untagging child: {e}')
+                    self.untag(child)
+                except AttributeError as e:
+                    logger.error('Error untagging child: %s', e)
                     continue
                     
             if (self.remove_classes_regexp != "") and \
@@ -326,11 +328,11 @@ class HTMLParser:
                     new_tag = Tag(self.input, tag.name)
                     new_tag.contents = tag.contents
                     tag.replaceWith(new_tag)
-                except Exception as e:
-                    logger.error(f'Error replacing tag: {e}')
+                except AttributeError as e:
+                    logger.error('Error replacing tag: %s', e)
             elif tag.name in self.remove_tags_keep_content:
                 children = tag.findChildren(True, recursive=False)
-                if len(children)==1:
+                if len(children) == 1:
                     tag.replaceWith(children[0])
                 elif len(children) > 1:
                     new_tag = Tag(self.input, "p")
@@ -341,5 +343,5 @@ class HTMLParser:
                     tag.replaceWith(tag.renderContents())
             else:
                 tag.extract()
-        except Exception as e:
-            logger.error(f'Error in unTag: {e}')
+        except AttributeError as e:
+            logger.error('Error in untag: %s', e)
