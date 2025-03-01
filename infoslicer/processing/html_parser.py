@@ -341,7 +341,10 @@ class HTMLParser:
                     continue
                     
             if (self.remove_classes_regexp != "") and \
-               (tag.get("class") and re.match(self.remove_classes_regexp, " ".join(tag.get("class")) if isinstance(tag.get("class"), list) else tag.get("class"))):
+               (tag.get("class") and re.match(
+                   self.remove_classes_regexp, 
+                   " ".join(tag.get("class")) if isinstance(tag.get("class"), list) else tag.get("class")
+               )):
                 tag.extract()
             elif tag.name in self.keep_tags:
                 try:
