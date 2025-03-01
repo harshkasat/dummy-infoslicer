@@ -131,118 +131,117 @@ class HTMLParser:
         return self.tag_generator("shortdesc")
 
     def parse(self):
+        """
+        Parses the HTML document and converts it to a structured format.
+        """
         logger.info('Starting document parsing')
         try:
-            #remove images
             self.image_handler()
-            # pre-parse
             self.pre_parse()
-            #identify the containing reference tag
             output_reference = self.output_soup.find("reference")
-            #add the short description
-            output_reference.append(self.make_shortdesc())
-            #add the <prolog> tag to hold metadata
-            output_reference.append(self.tag_generator("prolog"))
-            #add the source url
-            output_reference.prolog.append(f'<source href="{self.source}" />')
-            #add the publisher
-            output_reference.prolog.append(self.tag_generator("publisher", self.get_publisher()))
-            the_date = date.today().strftime("%Y-%m-%d")
-            #add created and modified dates
-            output_reference.prolog.append(
-                self.tag_generator(
-                    'critdates', 
-                    f'<created date="{the_date}" /><revised modified="{the_date}" />'
-                )
-            )
-            #add the first refbody
-            output_reference.append(self.tag_generator("refbody"))
-            #track whether text should be inserted in a section or into the refbody
-            in_section = False
-            #set current refbody and section pointers
-            current_refbody = output_reference.refbody
-            current_section = None
-            #call specialised method (redundant in this class, used for inheritance)
-            self.specialise()
-            #find the first tag
-            tag = self.input.find(self.root_node)
-            if not tag:
-                logger.error(f'Root node {self.root_node} not found')
-                raise ValueError(f'Root node {self.root_node} not found')
-                
-            tag = tag.findChild()
-            while tag is not None:
-                try:
-                    logger.debug(f'Processing tag: {tag.name}')
-                    #set variable to avoid hammering the string conversion function
-                    tag_name = tag.name
-                    #for debugging:
-                    #ignore the root node
-                    if tag_name == self.root_node:
-                        pass
-                    #paragraph action:
-                    elif tag_name == "p":
-                        if in_section:
-                            #tag contents as sentences and add to current section
-                            current_section.append(self.create_paragraph(tag.renderContents()))
-                        else:
-                            #tag contents as sentences and add to current refbody
-                            current_refbody.append(self.create_paragraph(tag.renderContents()))
-                    #section separator action
-                    elif tag_name in self.section_separators:
-                        #create a new section tag
-                        new_section = self.tag_generator("section")
-                        #make a title for the tag from heading contents
-                        new_section.append(self.tag_generator("title", tag.renderContents()))
-                        #hold a pointer to the new section
-                        current_section = new_section
-                        #add the new section to the current refbody
-                        current_refbody.append(new_section)
-                        #currently working in a section, not a refbody
-                        in_section = True
-                    #reference separator action:
-                    elif tag_name in self.reference_separators:
-                        #no longer working in a section
-                        in_section = False
-                        #create a new reference tag
-                        new_reference = self.tag_generator("reference")
-                        #make a title for the tag from heading contents
-                        new_reference.append(self.tag_generator("title", tag.renderContents()))
-                        #create a refbody tag for the reference
-                        new_refbody = self.tag_generator("refbody")
-                        #add refbody to the reference tag
-                        new_reference.append(new_refbody)
-                        #remember the current refbody tag
-                        current_refbody = new_refbody
-                        #add the new reference to the containing reference tag in the output
-                        output_reference.append(new_reference)
-                    #block element action
-                    elif tag_name in self.block_elements:
-                        current_refbody.append(
-                            self.tag_generator(
-                                "section", 
-                                self.tag_generator(tag_name, tag.renderContents())
-                            )
-                        )
-                        #add block element to current section
-                        current_section.append(self.tag_generator(tag_name, tag.renderContents()))
-                    else:
-                        #add block element to new section
-                        current_refbody.append(self.tag_generator("section", self.tag_generator(tag_name, tag.renderContents())))
-                except Exception as e:
-                    logger.error(f'Error processing tag {tag.name}: {e}')
-                    tag = tag.findNextSibling()
-                    continue
-                #find the next tag and continue
-                tag = tag.findNextSibling()
+            self.add_metadata(output_reference)
+            self.process_tags(output_reference)
             logger.info('Document parsing completed')
-            #append the image list
             self.output_soup.reference.append(self.image_list)
-            #return output as a properly indented string
             return self.output_soup.prettify()
         except Exception as e:
-            logger.error(f'Error during parsing: {e}')
+            logger.error('Error during parsing: %s', e)
             raise
+
+    def add_metadata(self, output_reference):
+        """
+        Adds metadata to the output reference.
+        """
+        output_reference.append(self.make_shortdesc())
+        output_reference.append(self.tag_generator("prolog"))
+        output_reference.prolog.append('<source href="%s" />' % self.source)
+        output_reference.prolog.append(self.tag_generator("publisher", self.get_publisher()))
+        the_date = date.today().strftime("%Y-%m-%d")
+        output_reference.prolog.append(
+            self.tag_generator(
+                'critdates', 
+                '<created date="%s" /><revised modified="%s" />' % (the_date, the_date)
+            )
+        )
+        output_reference.append(self.tag_generator("refbody"))
+
+    def process_tags(self, output_reference):
+        """
+        Processes the tags in the input document.
+        """
+        in_section = False
+        current_refbody = output_reference.refbody
+        current_section = None
+        self.specialise()
+        tag = self.input.find(self.root_node)
+        if not tag:
+            logger.error('Root node %s not found', self.root_node)
+            raise ValueError('Root node %s not found' % self.root_node)
+        tag = tag.findChild()
+        while tag is not None:
+            try:
+                logger.debug('Processing tag: %s', tag.name)
+                tag_name = tag.name
+                if tag_name == self.root_node:
+                    pass
+                elif tag_name == "p":
+                    self.process_paragraph(tag, in_section, current_section, current_refbody)
+                elif tag_name in self.section_separators:
+                    current_section = self.process_section_separator(tag, current_refbody)
+                    in_section = True
+                elif tag_name in self.reference_separators:
+                    in_section = False
+                    current_refbody = self.process_reference_separator(tag, output_reference)
+                elif tag_name in self.block_elements:
+                    self.process_block_element(tag, current_refbody, current_section)
+                else:
+                    current_refbody.append(self.tag_generator("section", self.tag_generator(tag_name, tag.renderContents())))
+            except Exception as e:
+                logger.error('Error processing tag %s: %s', tag.name, e)
+                tag = tag.findNextSibling()
+                continue
+            tag = tag.findNextSibling()
+
+    def process_paragraph(self, tag, in_section, current_section, current_refbody):
+        """
+        Processes a paragraph tag.
+        """
+        if in_section:
+            current_section.append(self.create_paragraph(tag.renderContents()))
+        else:
+            current_refbody.append(self.create_paragraph(tag.renderContents()))
+
+    def process_section_separator(self, tag, current_refbody):
+        """
+        Processes a section separator tag.
+        """
+        new_section = self.tag_generator("section")
+        new_section.append(self.tag_generator("title", tag.renderContents()))
+        current_refbody.append(new_section)
+        return new_section
+
+    def process_reference_separator(self, tag, output_reference):
+        """
+        Processes a reference separator tag.
+        """
+        new_reference = self.tag_generator("reference")
+        new_reference.append(self.tag_generator("title", tag.renderContents()))
+        new_refbody = self.tag_generator("refbody")
+        new_reference.append(new_refbody)
+        output_reference.append(new_reference)
+        return new_refbody
+
+    def process_block_element(self, tag, current_refbody, current_section):
+        """
+        Processes a block element tag.
+        """
+        current_refbody.append(
+            self.tag_generator(
+                "section", 
+                self.tag_generator(tag.name, tag.renderContents())
+            )
+        )
+        current_section.append(self.tag_generator(tag.name, tag.renderContents()))
 
     def pre_parse(self):
         logger.info('Starting pre-parse phase')
