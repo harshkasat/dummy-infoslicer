@@ -172,15 +172,15 @@ class HTMLParser:
         """
         Adds metadata to the output reference.
         """
+        logger.debug('Adding metadata to output reference')
         output_reference.append(self.make_shortdesc())
-        output_reference.append(self.tag_generator("prolog"))
-        output_reference.prolog.append('<source href="%s" />' % self.source)
+        output_reference.prolog.append(f'<source href="{self.source}" />')
         output_reference.prolog.append(self.tag_generator("publisher", self.get_publisher()))
         the_date = date.today().strftime("%Y-%m-%d")
         output_reference.prolog.append(
             self.tag_generator(
                 'critdates', 
-                '<created date="%s" /><revised modified="%s" />' % (the_date, the_date)
+                f'<created date="{the_date}" /><revised modified="{the_date}" />'
             )
         )
         output_reference.append(self.tag_generator("refbody"))
@@ -264,10 +264,10 @@ class HTMLParser:
         current_section.append(self.tag_generator(tag.name, tag.renderContents()))
 
     def pre_parse(self):
+        """
+        Prepares the input for parsing.
+        """
         logger.info('Starting pre-parse phase')
-        """
-            Prepares the input for parsing
-        """
         for tag in self.input.findAll(True, recursive=False):
             self.untag(tag)
         logger.info('Pre-parse phase completed')
