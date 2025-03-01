@@ -8,7 +8,7 @@ import pickle
 import logging
 
 from .Editable_Textbox import Editable_Textbox
-from infoslicer.processing.article_data import *
+from infoslicer.processing.article_data import SectionData, PictureData, SentenceData, ParagraphData
 from infoslicer.processing.article import Article
 import book
 
@@ -155,13 +155,13 @@ class Gallery_View( Gtk.HBox ):
     def drag_data_get_event(self, widget, context, selection_data, info, timestamp, data):
         logger.debug('############# Gallery_View.drag_data_get_event')
         atom = Gdk.atom_intern("section", only_if_exists=False)
-        imagedata = Picture_Data(self.source_article_id,
+        imagedata = PictureData(self.source_article_id,
                 self.image_list[self.current_index][0],
                 self.image_list[self.current_index][2])
         captiondata = SentenceData(0, self.source_article_id, 0, 0, 0, self.image_list[self.current_index][1])
-        paragraph1data = Paragraph_Data(0, self.source_article_id, 0, 0, [imagedata])
-        paragraph2data = Paragraph_Data(0, self.source_article_id, 0, 0, [captiondata])
-        sectionsdata = [Section_Data(0, self.source_article_id, 0, [paragraph1data, paragraph2data])]
+        paragraph1data = ParagraphData(0, self.source_article_id, 0, 0, [imagedata])
+        paragraph2data = ParagraphData(0, self.source_article_id, 0, 0, [captiondata])
+        sectionsdata = [SectionData(0, self.source_article_id, 0, [paragraph1data, paragraph2data])]
         string = pickle.dumps(sectionsdata)
         selection_data.set(atom, 8, string)
         
