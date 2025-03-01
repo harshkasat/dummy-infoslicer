@@ -32,7 +32,7 @@ class Textbox( Gtk.TextView ):
         
     def set_article(self, article):
         self.article = article
-        self.set_buffer(article.getBuffer())
+        self.set_buffer(article.get_buffer())
         
     def get_article(self):
         return self.article
