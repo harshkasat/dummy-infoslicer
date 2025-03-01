@@ -269,6 +269,7 @@ class HTMLParser:
         """
         logger.info('Starting pre-parse phase')
         for tag in self.input.findAll(True, recursive=False):
+            logger.info(f'Processing tag: {tag.name}')
             self.untag(tag)
         logger.info('Pre-parse phase completed')
 
@@ -340,7 +341,7 @@ class HTMLParser:
                     continue
                     
             if (self.remove_classes_regexp != "") and \
-               (tag.get("class") and re.match(self.remove_classes_regexp, tag["class"])):
+               (tag.get("class") and re.match(self.remove_classes_regexp, " ".join(tag.get("class")) if isinstance(tag.get("class"), list) else tag.get("class"))):
                 tag.extract()
             elif tag.name in self.keep_tags:
                 try:
