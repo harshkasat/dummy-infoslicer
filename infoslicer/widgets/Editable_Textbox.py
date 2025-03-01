@@ -47,7 +47,7 @@ class Editable_Textbox( Textbox ):
 
     def set_article(self, article):
         self.article = article
-        self.set_buffer(article.getBuffer())
+        self.set_buffer(article.get_buffer())
         
     def get_article(self):
         return self.article
@@ -119,24 +119,25 @@ class Editable_Textbox( Textbox ):
                 buf = self.get_buffer()            
                 mouseiter = self.get_mouse_iter(int(event.x), int(event.y))
                 article = self.get_article()                
-                
+                selectionend = None
+                selectionstart = None
                 if mouseiter.compare(self.selectionstart) == 1:
                     if self.snapto == SNAP_SENTENCE: 
-                        selectionstart = article.getSentence(self.selectionstart).getStart()
-                        selectionend = article.getSentence(mouseiter).getEnd()
+                        selectionstart = article.get_sentence(self.selectionstart).getStart()
+                        selectionend = article.get_sentence(mouseiter).getEnd()
                     if self.snapto == SNAP_PARAGRAPH:
-                        selectionstart = article.getParagraph(self.selectionstart).getStart()
-                        selectionend = article.getParagraph(mouseiter).getEnd()
+                        selectionstart = article.get_paragraph(self.selectionstart).getStart()
+                        selectionend = article.get_paragraph(mouseiter).getEnd()
                     if self.snapto == SNAP_SECTION:
                         selectionstart = article.getSection(self.selectionstart).getStart()
                         selectionend = article.getSection(mouseiter).getEnd()
                 else:
                     if self.snapto == SNAP_SENTENCE: 
-                        selectionstart = article.getSentence(mouseiter).getStart()
-                        selectionend = article.getSentence(self.selectionstart).getEnd()
+                        selectionstart = article.get_sentence(mouseiter).getStart()
+                        selectionend = article.get_sentence(self.selectionstart).getEnd()
                     if self.snapto == SNAP_PARAGRAPH:
-                        selectionstart = article.getParagraph(mouseiter).getStart()
-                        selectionend = article.getParagraph(self.selectionstart).getEnd()
+                        selectionstart = article.get_paragraph(mouseiter).getStart()
+                        selectionend = article.get_paragraph(self.selectionstart).getEnd()
                     if self.snapto == SNAP_SECTION:
                         selectionstart = article.getSection(mouseiter).getStart()
                         selectionend = article.getSection(self.selectionstart).getEnd()
@@ -157,7 +158,7 @@ class Editable_Textbox( Textbox ):
             buf = self.get_buffer()
             article = self.get_article()
             
-            article.checkIntegrity()
+            article.check_integrity()
             self.changed = False  
         if not self.get_buffer().get_has_selection():
             result = self.do_button_press_event(widget, event)
@@ -189,8 +190,8 @@ class Editable_Textbox( Textbox ):
     def leave_notify(self, widget, event, data):
         if self.changed == True:
             offset = self.get_buffer().get_property("cursor-position")
-            self.article.checkIntegrity()
-            newbuf = self.article.getBuffer()
+            self.article.check_integrity()
+            newbuf = self.article.get_buffer()
             self.set_buffer(newbuf)
             self.changed = False
             iter = newbuf.get_iter_at_offset(offset)
@@ -198,7 +199,7 @@ class Editable_Textbox( Textbox ):
         
     def unclicked_event(self, widget, event, data):
         if self.snapto != SNAP_NONE:
-            self.article.clearArrow()
+            self.article.clear_arrow()
             self.do_button_release_event(widget, event)
             self.selecting = False
             return True
@@ -215,7 +216,7 @@ class Editable_Textbox( Textbox ):
     
     def drag_drop_event(self, widget, context, x, y, time, data):
         if self.snapto != SNAP_NONE:
-            self.article.clearArrow()
+            self.article.clear_arrow()
             self.set_cursor_visible(True)
     
     def drag_motion_event(self, widget, drag_context, x, y, time, data):
@@ -247,7 +248,7 @@ class Editable_Textbox( Textbox ):
     def drag_leave_event(self, widget, context, time, data):
         if self.snapto != SNAP_NONE and not self.ignore_snap_self or (not self.drag_source and self.ignore_snap_self):
             self.delete_on_fail = True
-            self.article.clearArrow()
+            self.article.clear_arrow()
             self.do_drag_leave(widget, context, time)
             self.stop_emission("drag-leave")
             self.changed = False

@@ -165,7 +165,7 @@ class Readonly_Textbox( Textbox ):
     def drag_data_get_event(self, widget, context, selection_data, info, time, data):
         logging.debug('######## Readonly_Textbox.drag_data_get_event')
         logging.debug('############################## %s', self.MANUEL)
-        a = self.article
+        article = self.article
         
         if self.selectionmode == SELECT_SENTENCE:
             atom = Gdk.atom_intern("sentence", only_if_exists=False)
@@ -174,7 +174,7 @@ class Readonly_Textbox( Textbox ):
         if self.selectionmode == SELECT_SECTION:
             atom = Gdk.atom_intern("section", only_if_exists=False)
             
-        string = pickle.dumps(a.getSelection())
+        string = pickle.dumps(article.get_selection())
         selection_data.set(atom, 8, string)
         self.stop_emission("drag-data-get")
         self.set_editable(False)
