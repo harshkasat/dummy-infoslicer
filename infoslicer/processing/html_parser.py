@@ -283,9 +283,9 @@ class HTMLParser:
     def tag_generator(self, tag, contents=None, attrs=None):
         logger.debug(f'Generating new tag: {tag}')
         try:
-            if not tag:
-                logger.error('Empty tag name provided')
-                raise ValueError('Tag name cannot be empty')
+            if not tag or not isinstance(tag, str):
+                logger.error('Invalid tag name provided: %s', tag)
+                raise ValueError('Tag name must be a non-empty string')
                 
             if attrs is None:
                 attrs = {}
@@ -333,15 +333,16 @@ class HTMLParser:
         """
         logger.debug('Processing tag for removal: %s', tag.name)
         try:
-            for child in tag.findChildren(True, recursive=False):
+            # Process only children that are actually Tag objects, not strings
+            for child in [c for c in tag.children if isinstance(c, Tag)]:
                 try:
                     self.untag(child)
                 except AttributeError as e:
                     logger.error('Error untagging child: %s', e)
                     continue
-                    
+
             if (self.remove_classes_regexp != "") and \
-               (tag.get("class") and re.match(self.remove_classes_regexp, " ".join(tag.get("class")) if isinstance(tag.get("class"), list) else tag.get("class"))):
+            (tag.get("class") and re.match(self.remove_classes_regexp, " ".join(tag.get("class")) if isinstance(tag.get("class"), list) else tag.get("class"))):
                 tag.extract()
             elif tag.name in self.keep_tags:
                 try:
@@ -351,12 +352,13 @@ class HTMLParser:
                 except AttributeError as e:
                     logger.error('Error replacing tag: %s', e)
             elif tag.name in self.remove_tags_keep_content:
-                children = tag.findChildren(True, recursive=False)
+                # Find only children that are Tag objects, not strings
+                children = [c for c in tag.children if isinstance(c, Tag)]
                 if len(children) == 1:
                     tag.replaceWith(children[0])
                 elif len(children) > 1:
                     new_tag = Tag(self.input, "p")
-                    for child in tag.findChildren(True, recursive=False):
+                    for child in children:
                         new_tag.append(child)
                     tag.replaceWith(new_tag)
                 else:
