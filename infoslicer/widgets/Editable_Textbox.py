@@ -266,8 +266,8 @@ class Editable_Textbox( Textbox ):
         if self.snapto != SNAP_NONE and not self.ignore_snap_self or (not self.drag_source and self.ignore_snap_self):    
             a = self.article
             insert_loc = self.get_mouse_iter(x, y)
-            data_received_type = str(selection_data.get_data_type())    
-            data = pickle.loads(str(selection_data.get_data()))
+            data_received_type = str(selection_data.get_data_type())
+            data = pickle.loads(selection_data.get_data())
             
             if data_received_type == "sentence":
                 bestpoint = insert_loc
