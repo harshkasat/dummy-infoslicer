@@ -85,7 +85,7 @@ def get_article_from_dita(image_path, dita):
             source_section_id = current_section_id
             source_article_id = article_id
             text = (
-                tag.renderContents().replace("\n", "").replace("&amp;#160;", "").strip()
+                tag.renderContents().decode('utf-8').replace("\n", "").replace("&amp;#160;", "").strip()
                 + " "
             )
             sentence_data = SentenceData(
