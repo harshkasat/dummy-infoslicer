@@ -3,7 +3,7 @@
 import logging
 import re
 from datetime import date
-from bs4 import BeautifulSoup, Tag
+from bs4 import BeautifulSoup, Tag, NavigableString
 # from NewtifulSoup import NewtifulStoneSoup as BeautifulStoneSoup
 from infoslicer.processing.newtiful_soup import NewtifulStoneSoup as BeautifulStoneSoup
 logger = logging.getLogger('infoslicer:HTML_Parser')
@@ -360,7 +360,7 @@ class HTMLParser:
                         new_tag.append(child)
                     tag.replaceWith(new_tag)
                 else:
-                    tag.replaceWith(tag.renderContents())
+                    tag.replaceWith(NavigableString(tag.renderContents().decode('utf-8')))
             else:
                 tag.extract()
         except AttributeError as e:
