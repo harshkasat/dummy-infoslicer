@@ -37,7 +37,10 @@ proxies = None
 def download_wiki_article(title, wiki, progress):
     try:
         progress.set_label(_('"%s" download in progress...') % title)
-        article, url = MediaWiki_Helper().getArticleAsHTMLByTitle(title, wiki)
+        try:
+            article, url = MediaWiki_Helper().getArticleAsHTMLByTitle(title, wiki)
+        except Exception as e:
+            progress.set_label(_('Error getArticleAsHTMLByTitle: ') % e)
 
         progress.set_label(_('Processing "%s"...') % title)
         parser = MediaWiki_Parser(article, title, url)
