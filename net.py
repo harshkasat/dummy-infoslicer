@@ -54,7 +54,7 @@ def download_wiki_article(title, wiki, progress):
 
     except Exception as e:
         elogger.debug('download_and_add: %s' % e)
-        progress.set_label(_('Error downloading "%s"; check your connection. the error was %s') % title, e)
+        progress.set_label(_('Error downloading "%s"; check your connection. the error was %s') % (title, e))
 
 def image_handler(root, uid, document):
     """
