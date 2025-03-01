@@ -199,10 +199,10 @@ def get_article_from_dita(image_path, dita):
                     )
                     sentence_data_list.insert(0, picture_data)
 
-    article_title = input.find("title").renderContents().replace("\n", "").strip()
+    article_title = soup.find("title").renderContents().replace("\n", "").strip()
 
     image_list = []
-    imglist_tag = input.find(True, attrs={"id": "imagelist"})
+    imglist_tag = soup.find(True, attrs={"id": "imagelist"})
     if imglist_tag is not None:
         for img in imglist_tag.findAll("image"):
             caption = img.findChild("alt")
