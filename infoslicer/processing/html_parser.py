@@ -120,12 +120,17 @@ class HTMLParser:
         #add the <prolog> tag to hold metadata
         output_reference.append(self.tag_generator("prolog"))
         #add the source url
-        output_reference.prolog.append('<source href="%s" />' % self.source)
+        output_reference.prolog.append(f'<source href="{self.source}" />')
         #add the publisher
         output_reference.prolog.append(self.tag_generator("publisher", self.get_publisher()))
         the_date = date.today().strftime("%Y-%m-%d")
         #add created and modified dates
-        output_reference.prolog.append(self.tag_generator('critdates', '<created date="%s" /><revised modified="%s" />' % (the_date, the_date)))
+        output_reference.prolog.append(
+            self.tag_generator(
+                'critdates', 
+                f'<created date="{the_date}" /><revised modified="{the_date}" />'
+            )
+        )
         #add the first refbody
         output_reference.append(self.tag_generator("refbody"))
         #track whether text should be inserted in a section or into the refbody
@@ -182,12 +187,17 @@ class HTMLParser:
                 output_reference.append(new_reference)
             #block element action
             elif tag_name in self.block_elements:
-                if in_section:
-                    #add block element to current section
-                    current_section.append(self.tag_generator(tag_name, tag.renderContents()))
-                else:
-                    #add block element to new section
-                    current_refbody.append(self.tag_generator("section", self.tag_generator(tag_name, tag.renderContents())))
+                current_refbody.append(
+                    self.tag_generator(
+                        "section", 
+                        self.tag_generator(tag_name, tag.renderContents())
+                    )
+                )
+                #add block element to current section
+                current_section.append(self.tag_generator(tag_name, tag.renderContents()))
+            else:
+                #add block element to new section
+                current_refbody.append(self.tag_generator("section", self.tag_generator(tag_name, tag.renderContents())))
             #find the next tag and continue
             tag = tag.findNextSibling()
         #append the image list
