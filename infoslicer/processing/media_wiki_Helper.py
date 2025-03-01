@@ -105,7 +105,7 @@ class MediaWiki_Helper:
             logger.info(path)
             #remove xml tags around article and fix HTML tags and quotes
             #return fixHTML(stripTags(getDoc(path), "text"))
-            return self.fixHTML(self.getDoc(path)), path
+            return self.fixHTML(self.getDoc(path).decode('utf-8')), path
         except Exception as e:
             logger.warning(f"The erro found in getArticleAsHTMLByTitle: {e}")
     def getDoc(self, path):
