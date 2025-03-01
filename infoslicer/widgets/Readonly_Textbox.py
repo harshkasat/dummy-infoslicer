@@ -128,28 +128,30 @@ class Readonly_Textbox( Textbox ):
                 buf = self.get_buffer()            
                 mouseiter = self.get_mouse_iter(int(event.x), int(event.y))
                 article = self.get_article()
+                selectionend = None
+                selectionstart = None
                 if mouseiter.compare(self.selectionstart) == 1:
-                    if self.selectionmode == SELECT_SENTENCE: 
-                        selectionstart = article.getSentence(self.selectionstart).getStart()
-                        selectionend = article.getSentence(mouseiter).getEnd()
+                    if self.selectionmode == SELECT_SENTENCE:
+                        selectionstart = article.get_sentence(self.selectionstart).getStart()
+                        selectionend = article.get_sentence(mouseiter).getEnd()
                     if self.selectionmode == SELECT_PARAGRAPH:
-                        selectionstart = article.getParagraph(self.selectionstart).getStart()
-                        selectionend = article.getParagraph(mouseiter).getEnd()
+                        selectionstart = article.get_paragraph(self.selectionstart).getStart()
+                        selectionend = article.get_paragraph(mouseiter).getEnd()
                     if self.selectionmode == SELECT_SECTION:
                         selectionstart = article.getSection(self.selectionstart).getStart()
                         selectionend = article.getSection(mouseiter).getEnd()
                 else:
                     if self.selectionmode == SELECT_SENTENCE: 
-                        selectionstart = article.getSentence(mouseiter).getStart()
-                        selectionend = article.getSentence(self.selectionstart).getEnd()
+                        selectionstart = article.get_sentence(mouseiter).getStart()
+                        selectionend = article.get_sentence(self.selectionstart).getEnd()
                     if self.selectionmode == SELECT_PARAGRAPH:
-                        selectionstart = article.getParagraph(mouseiter).getStart()
-                        selectionend = article.getParagraph(self.selectionstart).getEnd()
+                        selectionstart = article.get_paragraph(mouseiter).getStart()
+                        selectionend = article.get_paragraph(self.selectionstart).getEnd()
                     if self.selectionmode == SELECT_SECTION:
                         selectionstart = article.getSection(mouseiter).getStart()
                         selectionend = article.getSection(self.selectionstart).getEnd()
                 self.scroll_to_iter(mouseiter, 0, False, 0.5, 0.5)
-                article.highlight(selectionstart, selectionend)                
+                article.highlight(selectionstart, selectionend)
                     
             else:
                 self.block = True
