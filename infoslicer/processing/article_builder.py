@@ -49,7 +49,7 @@ def get_article_from_dita(image_path, dita):
             source_section_id = "shortdesc"
             source_article_id = article_id
             text = (
-                ph.renderContents().replace("\n", "").replace("&amp;#160;", "").strip()
+                ph.renderContents().decode('utf-8').replace("\n", "").replace("&amp;#160;", "").strip()
                 + " "
             )
             if text[0:5] == "Satur":
