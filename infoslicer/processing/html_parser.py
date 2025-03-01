@@ -268,10 +268,29 @@ class HTMLParser:
         Prepares the input for parsing.
         """
         logger.info('Starting pre-parse phase')
-        for tag in self.input.findAll(True, recursive=False):
-            logger.info(f'Processing tag: {tag.name}')
-            self.untag(tag)
-        logger.info('Pre-parse phase completed')
+        try:
+            # Find all root level tags
+            root_tags = self.input.findAll(True, recursive=False)
+            if not root_tags:
+                logger.warning('No root level tags found')
+                return
+
+            for tag in root_tags:
+                if not tag or not tag.name:
+                    logger.warning('Skipping invalid tag')
+                    continue
+                    
+                logger.info(f'Processing tag: {tag.name}')
+                try:
+                    self.untag(tag)
+                except Exception as e:
+                    logger.error(f'Error processing tag {tag.name}: {e}')
+                    continue
+                    
+            logger.info('Pre-parse phase completed')
+        except Exception as e:
+            logger.error(f'Error in pre_parse: {e}')
+            raise
 
     def specialise(self):
         logger.debug('Running specialise step')
@@ -283,23 +302,23 @@ class HTMLParser:
     def tag_generator(self, tag, contents=None, attrs=None):
         logger.debug(f'Generating new tag: {tag}')
         try:
+            # Validate tag name
+            if not tag or not isinstance(tag, str):
+                logger.error(f'Invalid tag name: {tag}')
+                raise ValueError('Tag name must be a non-empty string')
+            
+            tag = tag.strip()
             if not tag:
-                logger.error('Empty tag name provided')
+                logger.error('Empty tag name after stripping')
                 raise ValueError('Tag name cannot be empty')
-                
+
+            # Initialize attrs
             if attrs is None:
                 attrs = {}
             elif isinstance(attrs, list):
-                # Convert list of tuples to dictionary
                 attrs = dict(attrs)
-                
-            # Ensure tag is a string
-            tag = str(tag).strip()
-            if not tag:
-                logger.error('Invalid tag name after conversion')
-                raise ValueError('Invalid tag name')
 
-            # Create new tag using BeautifulSoup's parser
+            # Create new tag
             new_tag = self.output_soup.new_tag(tag, **attrs)
 
             # Add ID if needed
@@ -309,20 +328,16 @@ class HTMLParser:
 
             # Handle contents
             if contents is not None:
-                try:
-                    if isinstance(contents, (str, bytes)):
-                        new_tag.string = str(contents)
-                    else:
-                        new_tag.append(contents)
-                except Exception as e:
-                    logger.error(f'Failed to insert contents into tag: {e}')
-                    new_tag.string = ''
+                if isinstance(contents, (str, bytes)):
+                    new_tag.string = str(contents)
+                else:
+                    new_tag.append(contents)
 
             return new_tag
 
         except Exception as e:
             logger.error(f'Error generating tag {tag}: {e}')
-            raise ValueError(f'Failed to generate tag: {e}')
+            raise
 
     def untag(self, tag):
         """
