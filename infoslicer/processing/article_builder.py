@@ -199,7 +199,7 @@ def get_article_from_dita(image_path, dita):
                     )
                     sentence_data_list.insert(0, picture_data)
 
-    article_title = soup.find("title").renderContents().replace("\n", "").strip()
+    article_title = soup.find("title").renderContents().decode('utf-8').replace("\n", "").strip()
 
     image_list = []
     imglist_tag = soup.find(True, attrs={"id": "imagelist"})
