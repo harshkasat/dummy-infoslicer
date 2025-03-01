@@ -136,11 +136,17 @@ class HTMLParser:
         """
         logger.info('Starting document parsing')
         try:
-            self.image_handler()
-            self.pre_parse()
-            output_reference = self.output_soup.find("reference")
-            self.add_metadata(output_reference)
-            self.process_tags(output_reference)
+            try:
+                self.image_handler()
+                self.pre_parse()
+            except Exception as e:
+                logger.error('Error during image handler and pre_parse %s', e)
+            try:
+                output_reference = self.output_soup.find("reference")
+                self.add_metadata(output_reference)
+                self.process_tags(output_reference)
+            except Exception as e:
+                logger.error('Error during add_metdata and process tags %s', e)
             logger.info('Document parsing completed')
             self.output_soup.reference.append(self.image_list)
             return self.output_soup.prettify()
