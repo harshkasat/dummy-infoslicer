@@ -52,25 +52,28 @@ class MediaWiki_Helper:
         @return: validated article title
         @rtype: string
         @raise PageNotFoundError: if page not found"""
-        #replace spaces with underscores
-        title = title.replace(" ", "_")
-        #create the API request string
-        path = "http://%s/w/api.php?action=query&titles=%s&redirects&format=xml" % (wiki, title)
-        #parse the xml
-        xmldoc = minidom.parseString(self.getDoc(path))
-        #check page exists, return None if it doesn't
-        page = xmldoc.getElementsByTagName("page")
-        if (page != []):
-            if ("missing" in page[0].attributes.keys()):
-                raise PageNotFoundError("The article with title '%s' could not be found on wiki '%s'" % (title, wiki))
-        #check if there are any redirection tags defined
-        redirectList = xmldoc.getElementsByTagName("r")
-        #if the redirect list is empty, return the title
-        if redirectList == []:
-            return title
-        #if there is a redirect, recursively follow the chain
-        else:
-            return self.resolveTitle(redirectList[0].attributes["to"].value, wiki=wiki)
+        try:
+            #replace spaces with underscores
+            title = title.replace(" ", "_")
+            #create the API request string
+            path = "http://%s/w/api.php?action=query&titles=%s&redirects&format=xml" % (wiki, title)
+            #parse the xml
+            xmldoc = minidom.parseString(self.getDoc(path))
+            #check page exists, return None if it doesn't
+            page = xmldoc.getElementsByTagName("page")
+            if (page != []):
+                if ("missing" in page[0].attributes.keys()):
+                    raise PageNotFoundError("The article with title '%s' could not be found on wiki '%s'" % (title, wiki))
+            #check if there are any redirection tags defined
+            redirectList = xmldoc.getElementsByTagName("r")
+            #if the redirect list is empty, return the title
+            if redirectList == []:
+                return title
+            #if there is a redirect, recursively follow the chain
+            else:
+                return self.resolveTitle(redirectList[0].attributes["to"].value, wiki=wiki)
+        except Exception as e:
+            logger.warning(e)
     
     def resolveRevision(self, revision, wiki=defaultWiki):
         """ get an article by revision number.
@@ -94,13 +97,15 @@ class MediaWiki_Helper:
         @return: article content in HTML markup
         @rtype: string"""
         #resolve article title
-        title = self.resolveTitle(title, wiki)
-        #create the API request string
-        path = "http://%s/w/api.php?action=parse&page=%s&format=xml" % (wiki,title)
-        #remove xml tags around article and fix HTML tags and quotes
-        #return fixHTML(stripTags(getDoc(path), "text"))
-        return self.fixHTML(self.getDoc(path)), path
-
+        try:
+            title = self.resolveTitle(title, wiki)
+            #create the API request string
+            path = "http://%s/w/api.php?action=parse&page=%s&format=xml" % (wiki,title)
+            #remove xml tags around article and fix HTML tags and quotes
+            #return fixHTML(stripTags(getDoc(path), "text"))
+            return self.fixHTML(self.getDoc(path)), path
+        except Exception as e:
+            logger.warning(e)
     def getDoc(self, path):
         """opens a remote file by http and retrieves data
         

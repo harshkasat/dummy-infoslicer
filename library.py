@@ -45,6 +45,8 @@ class View(Gtk.EventBox):
         self.custom.sync()
 
     def __init__(self, activity):
+        logger.info("View initialized with activity: %s", activity)
+
         GObject.GObject.__init__(self)
         self.activity = activity
 
