@@ -268,7 +268,10 @@ class HTMLParser:
                 raise ValueError('Tag name cannot be empty')
                 
             if attrs is None:
-                attrs = []
+                attrs = {}
+            elif isinstance(attrs, list):
+                # Convert list of tuples to dictionary
+                attrs = dict(attrs)
                 
             # Ensure tag is a string
             tag = str(tag).strip()
@@ -276,11 +279,8 @@ class HTMLParser:
                 logger.error('Invalid tag name after conversion')
                 raise ValueError('Invalid tag name')
 
-            # Create new tag
-            if attrs != []:
-                new_tag = Tag(self.output_soup, tag, attrs)
-            else:
-                new_tag = Tag(self.output_soup, tag)
+            # Create new tag using BeautifulSoup's parser
+            new_tag = self.output_soup.new_tag(tag, **attrs)
 
             # Add ID if needed
             if tag in self.ids and not attrs:
@@ -290,10 +290,13 @@ class HTMLParser:
             # Handle contents
             if contents is not None:
                 try:
-                    new_tag.insert(0, str(contents))
+                    if isinstance(contents, (str, bytes)):
+                        new_tag.string = str(contents)
+                    else:
+                        new_tag.append(contents)
                 except Exception as e:
                     logger.error(f'Failed to insert contents into tag: {e}')
-                    new_tag.insert(0, '')
+                    new_tag.string = ''
 
             return new_tag
 
