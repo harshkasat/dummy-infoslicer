@@ -85,7 +85,7 @@ def get_article_from_dita(image_path, dita):
             source_section_id = current_section_id
             source_article_id = article_id
             text = (
-                tag.renderContents().replace("\n", "").replace("&amp;#160;", "").strip()
+                tag.renderContents().decode('utf-8').replace("\n", "").replace("&amp;#160;", "").strip()
                 + " "
             )
             sentence_data = SentenceData(
@@ -132,7 +132,7 @@ def get_article_from_dita(image_path, dita):
             if tag.findChild("title", recursive=False) is not None:
                 heading = (
                     tag.findChild("title")
-                    .renderContents()
+                    .renderContents().decode('utf-8')
                     .replace("\n", "")
                     .replace("&amp;#160;", "")
                     .strip()
@@ -167,7 +167,7 @@ def get_article_from_dita(image_path, dita):
             if tag.findChild("title", recursive=False) is not None:
                 heading = (
                     tag.findChild("title")
-                    .renderContents()
+                    .renderContents().decode('utf-8')
                     .replace("\n", "")
                     .replace("&amp;#160;", "")
                     .strip()
@@ -207,7 +207,7 @@ def get_article_from_dita(image_path, dita):
         for img in imglist_tag.findAll("image"):
             caption = img.findChild("alt")
             if caption is not None:
-                caption = caption.renderContents().replace("\n", "").strip()
+                caption = caption.renderContents().decode('utf-8').replace("\n", "").strip()
             else:
                 caption = ""
             if not os.path.exists(os.path.join(image_path, img["href"])):
