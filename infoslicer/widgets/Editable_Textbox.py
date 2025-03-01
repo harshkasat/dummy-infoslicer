@@ -211,31 +211,31 @@ class Editable_Textbox( Textbox ):
         self.grab_focus()
         if self.snapto != SNAP_NONE:
             a = self.article
-            a.rememberSelection()
+            a.remember_selection()
             self.drag_source = True
-    
+
     def drag_drop_event(self, widget, context, x, y, time, data):
         if self.snapto != SNAP_NONE:
             self.article.clear_arrow()
             self.set_cursor_visible(True)
-    
+
     def drag_motion_event(self, widget, drag_context, x, y, time, data):
         if self.snapto != SNAP_NONE and not self.ignore_snap_self or (not self.drag_source and self.ignore_snap_self):
             self.delete_on_fail = False
             self.set_cursor_visible(False)
             a = self.article
             loc_iter = self.get_mouse_iter(x, y)
-            
+
             if self.snapto == SNAP_SENTENCE:
-                a.mark(a.getBestSentence(loc_iter).getStart())
+                a.mark(a.get_best_sentence(loc_iter).getStart())
                 #a.markSentence(loc_iter)
             if self.snapto == SNAP_PARAGRAPH:
-                a.mark(a.getBestParagraph(loc_iter).getStart())
+                a.mark(a.get_best_paragraph(loc_iter).getStart())
                 #a.markParagraph(loc_iter)
             if self.snapto == SNAP_SECTION:
-                a.mark(a.getBestSection(loc_iter).getStart())
+                a.mark(a.get_best_section(loc_iter).getStart())
                 #a.markSection(loc_iter)
-              
+
             result = self.do_drag_motion(widget, drag_context, x, y, time)
             self.stop_emission("drag-motion")
             return result
@@ -243,8 +243,8 @@ class Editable_Textbox( Textbox ):
         else:
             self.set_cursor_visible(True)
             self.drag_source = True
-    
-    
+
+
     def drag_leave_event(self, widget, context, time, data):
         if self.snapto != SNAP_NONE and not self.ignore_snap_self or (not self.drag_source and self.ignore_snap_self):
             self.delete_on_fail = True
@@ -257,7 +257,7 @@ class Editable_Textbox( Textbox ):
     def drag_data_delete_event(self, widget, context, data):
         if self.snapto != SNAP_NONE and not self.ignore_snap_self or (not self.drag_source and self.ignore_snap_self):
             a = self.article
-            a.deleteDragSelection()
+            a.delete_drag_selection()
             self.stop_emission("drag-data-delete")
             self.changed = False
         
@@ -270,11 +270,11 @@ class Editable_Textbox( Textbox ):
             data = pickle.loads(str(selection_data.get_data()))
             
             if data_received_type == "sentence":
-                bestpoint = insert_loc  
+                bestpoint = insert_loc
             if data_received_type == "paragraph":
-                bestpoint = a.getBestParagraph(insert_loc).getStart()
+                bestpoint = a.get_best_paragraph(insert_loc).getStart()
             if data_received_type == "section":
-                bestpoint = a.getBestSection(insert_loc).getStart()
+                bestpoint = a.get_best_section(insert_loc).getStart()
                 
             a.insert(data, insert_loc)
                 
@@ -294,7 +294,7 @@ class Editable_Textbox( Textbox ):
             if self.snapto == SNAP_SECTION:
                 atom = Gdk.atom_intern("section", only_if_exists=False)
                 
-            string = pickle.dumps(a.getSelection())
+            string = pickle.dumps(a.get_selection())
             selection_data.set(atom, 8, string)
             self.stop_emission("drag-data-get")
             
