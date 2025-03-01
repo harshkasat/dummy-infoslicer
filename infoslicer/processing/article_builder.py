@@ -73,9 +73,9 @@ def get_article_from_dita(image_path, dita):
         )
         section_data_list.append(section_data)
         sentence_data_list = []
-        input.shortdesc.extract()
+        soup.shortdesc.extract()
         has_shortdesc = True
-    taglist = input.findAll(re.compile("refbody|section|p|ph|image"))
+    taglist = soup.findAll(re.compile("refbody|section|p|ph|image"))
     for i in range(len(taglist)):
         tag = taglist[len(taglist) - i - 1]
         if tag.name == "ph":
