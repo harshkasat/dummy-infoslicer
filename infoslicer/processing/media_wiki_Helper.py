@@ -98,9 +98,11 @@ class MediaWiki_Helper:
         @rtype: string"""
         #resolve article title
         try:
+            logger.info(title)
             title = self.resolveTitle(title, wiki)
             #create the API request string
             path = f"http://{wiki}/w/api.php?action=parse&page={title}&format=xml"
+            logger.info(path)
             #remove xml tags around article and fix HTML tags and quotes
             #return fixHTML(stripTags(getDoc(path), "text"))
             return self.fixHTML(self.getDoc(path)), path
