@@ -263,29 +263,43 @@ class HTMLParser:
     def tag_generator(self, tag, contents=None, attrs=None):
         logger.debug(f'Generating new tag: {tag}')
         try:
-            """
-                Generates new tags for the output, adding IDs where appropriate
-                @param tag: name of new tag
-                @param contents: Optional, contents to add to tag
-                @param attrs: Optional, attributes to add to tag
-                @return: new Tag object
-            """
+            if not tag:
+                logger.error('Empty tag name provided')
+                raise ValueError('Tag name cannot be empty')
+                
             if attrs is None:
                 attrs = []
-            if tag in self.ids and attrs == []:
-                self.ids[tag] += 1
-                attrs = [("id", str(self.ids[tag]))]
+                
+            # Ensure tag is a string
+            tag = str(tag).strip()
+            if not tag:
+                logger.error('Invalid tag name after conversion')
+                raise ValueError('Invalid tag name')
+
+            # Create new tag
             if attrs != []:
                 new_tag = Tag(self.output_soup, tag, attrs)
             else:
                 new_tag = Tag(self.output_soup, tag)
+
+            # Add ID if needed
+            if tag in self.ids and not attrs:
+                self.ids[tag] += 1
+                new_tag['id'] = str(self.ids[tag])
+
+            # Handle contents
             if contents is not None:
-                new_tag.insert(0, contents)
-            attrs = []
+                try:
+                    new_tag.insert(0, str(contents))
+                except Exception as e:
+                    logger.error(f'Failed to insert contents into tag: {e}')
+                    new_tag.insert(0, '')
+
             return new_tag
+
         except Exception as e:
             logger.error(f'Error generating tag {tag}: {e}')
-            raise
+            raise ValueError(f'Failed to generate tag: {e}')
 
     def unTag(self, tag):
         logger.debug(f'Processing tag for removal: {tag.name}')
