@@ -25,7 +25,7 @@ class Textbox( Gtk.TextView ):
         self.event_handlers = []
         self.set_wrap_mode(Gtk.WrapMode.WORD)
         self.set_cursor_visible(False)
-        self.set_editable(False)  
+        self.set_editable(False)
         self.modify_font(Pango.FontDescription('arial 9'))
         self.article = None
         self.set_property("left-margin", 2)
@@ -38,10 +38,10 @@ class Textbox( Gtk.TextView ):
         return self.article
         
     def show(self):
-        Gtk.TextView.show(self)  
+        Gtk.TextView.show(self)
         
     def clear(self):
-        self.article.delete()     
+        self.article.delete()
         
     def disconnect_handlers(self):
         self.set_editable(False)
