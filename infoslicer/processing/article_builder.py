@@ -229,7 +229,7 @@ def get_dita_from_article(image_path, article):
     representation of the article.
     It then constructs the corresponding DITA representation of the article.
     """
-    article_data = article.getData()
+    article_data = article.get_data()
     output = BeautifulStoneSoup(
         "<?xml version='1.0' encoding='utf-8'?><!DOCTYPE reference PUBLIC \"-//IBM//DTD DITA IBM Reference//EN\" \"ibm-reference.dtd\"><reference><title>%s</title><prolog></prolog></reference>"
         % article_data.article_title
