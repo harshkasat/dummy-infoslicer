@@ -73,7 +73,7 @@ class MediaWiki_Helper:
             else:
                 return self.resolveTitle(redirectList[0].attributes["to"].value, wiki=wiki)
         except Exception as e:
-            logger.warning(e)
+            logger.warning(f"The error found in resolveTitle: {e}")
     
     def resolveRevision(self, revision, wiki=defaultWiki):
         """ get an article by revision number.
@@ -100,12 +100,12 @@ class MediaWiki_Helper:
         try:
             title = self.resolveTitle(title, wiki)
             #create the API request string
-            path = "http://%s/w/api.php?action=parse&page=%s&format=xml" % (wiki,title)
+            path = f"http://{wiki}/w/api.php?action=parse&page={title}&format=xml"
             #remove xml tags around article and fix HTML tags and quotes
             #return fixHTML(stripTags(getDoc(path), "text"))
             return self.fixHTML(self.getDoc(path)), path
         except Exception as e:
-            logger.warning(e)
+            logger.warning(f"The erro found in getArticleAsHTMLByTitle: {e}")
     def getDoc(self, path):
         """opens a remote file by http and retrieves data
         
