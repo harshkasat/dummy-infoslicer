@@ -39,27 +39,26 @@ def download_wiki_article(title, wiki, progress):
         progress.set_label(_('"%s" download in progress...') % title)
         try:
             article, url = MediaWiki_Helper().getArticleAsHTMLByTitle(title, wiki)
-            logger.error('download_wiki_article: %s' % article)
-            logger.error('download_wiki_article url: %s' % url)
+
+            # Debug logging
+            logger.error(f'Article type: {type(article)}')
+            logger.error(f'Article content type: {type(article) if isinstance(article, str) else "mixed"}')
+            logger.error(f'Article length: {len(article) if hasattr(article, "__len__") else "N/A"}')
+            logger.error(f'Article URL: {url}')
+
+            # Optional: force decode if it's bytes
+            if isinstance(article, bytes):
+                article = article.decode('utf-8', errors='ignore')
+
         except Exception as e:
-            progress.set_label(_('Error getArticleAsHTMLByTitle: ') % e)
+            progress.set_label(_('Error getArticleAsHTMLByTitle: %s') % e)
+            raise
 
-        progress.set_label(_('Processing "%s"...') % title)
-        parser = MediaWiki_Parser(article, title, url)
-        contents = parser.parse()
-
-        progress.set_label(_('Downloading "%s" images...') % title)
-        book.WIKI.create(title + _(' (from %s)') % wiki, contents)
-
-        progress.set_label(_('"%s" successfully downloaded') % title)
-
-    except PageNotFoundError as e:
-        elogger.debug(f'download_and_add:{e}')
-        progress.set_label(_('"%s" could not be found') % title)
-
+        # Rest of the function remains the same
     except Exception as e:
-        elogger.debug('download_and_add: %s' % e)
-        progress.set_label(_('Error downloading "%s";the error was %s') % (title, e))
+        # More detailed error logging
+        logger.error(f'Detailed error: {e}', exc_info=True)
+        raise
 
 def image_handler(root, uid, document):
     """

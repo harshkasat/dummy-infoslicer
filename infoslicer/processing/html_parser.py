@@ -268,10 +268,33 @@ class HTMLParser:
         Prepares the input for parsing.
         """
         logger.info('Starting pre-parse phase')
-        for tag in self.input.findAll(True, recursive=False):
-            logger.error(f'Processing tag: {tag.name}')
-            self.untag(tag)
-        logger.info('Pre-parse phase completed')
+        try:
+            # Ensure we're working with a valid BeautifulSoup object
+            if not hasattr(self.input, 'findAll'):
+                logger.error('Invalid input: not a BeautifulSoup object')
+                raise ValueError('Input must be a BeautifulSoup object')
+
+            # Find all tags at the root level, recursively
+            root_tags = self.input.findAll(True, recursive=False)
+            
+            if not root_tags:
+                logger.warning('No tags found in the input document')
+                return
+
+            for tag in root_tags:
+                try:
+                    logger.debug(f'Processing tag: {tag.name}')
+                    self.untag(tag)
+                except Exception as tag_err:
+                    logger.error(f'Error processing tag {tag.name}: {tag_err}')
+                    # Optionally continue processing other tags
+                    continue
+
+        except Exception as e:
+            logger.error(f'Error during pre-parse: {e}')
+            raise
+        finally:
+            logger.info('Pre-parse phase completed')
 
     def specialise(self):
         logger.debug('Running specialise step')
@@ -331,32 +354,41 @@ class HTMLParser:
         Args:
             tag: Tag hierarchy to work on.
         """
-        logger.debug('Processing tag for removal: %s', tag.name)
+        logger.debug('Processing tag for removal: %s', getattr(tag, 'name', 'Unknown'))
+        
         try:
-            # Ensure we're working with a Tag object
+            # Handle different possible input types
+            if isinstance(tag, bytes):
+                logger.warning(f'Skipping byte object: {tag}')
+                return
+            
             if not isinstance(tag, Tag):
                 logger.warning(f'Skipping non-Tag object: {type(tag)}')
                 return
 
-            # Process only children that are actually Tag objects, not strings
+            # Process only children that are actually Tag objects, not strings or NavigableString
             children = [c for c in tag.children if isinstance(c, Tag)]
+            
+            # Recursively process children
             for child in children:
                 try:
                     self.untag(child)
-                except AttributeError as e:
-                    logger.error('Error untagging child: %s', e)
+                except Exception as child_err:
+                    logger.error(f'Error processing child: {child_err}')
                     continue
 
+            # Tag handling logic
             if (self.remove_classes_regexp != "") and \
             (tag.get("class") and re.match(self.remove_classes_regexp, " ".join(tag.get("class")) if isinstance(tag.get("class"), list) else tag.get("class"))):
                 tag.extract()
             elif tag.name in self.keep_tags:
                 try:
+                    # Ensure we're working with the correct parser
                     new_tag = Tag(self.input, tag.name)
                     new_tag.contents = tag.contents
                     tag.replaceWith(new_tag)
-                except AttributeError as e:
-                    logger.error('Error replacing tag: %s', e)
+                except Exception as replace_err:
+                    logger.error(f'Error replacing tag: {replace_err}')
             elif tag.name in self.remove_tags_keep_content:
                 # Find only children that are Tag objects, not strings
                 children = [c for c in tag.children if isinstance(c, Tag)]
@@ -373,4 +405,9 @@ class HTMLParser:
                 tag.extract()
         except Exception as e:
             logger.error(f'Unexpected error in untag: {e}')
-            # Optionally re-raise or handle more specifically
+            # Log additional context
+            logger.error(f'Tag type: {type(tag)}')
+            logger.error(f'Tag attributes: {tag.attrs if hasattr(tag, "attrs") else "N/A"}')
+            
+            # Re-raise or handle as needed
+            raise
