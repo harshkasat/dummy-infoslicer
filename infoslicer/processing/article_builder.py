@@ -34,6 +34,7 @@ def get_article_from_dita(image_path, dita):
     """
     has_shortdesc = False
     soup = BeautifulStoneSoup(dita)
+    logger.error('what is soup %s', soup)
     article_id = soup.resourceid["id"]
     current_section_id = ""
     current_p_id = ""
