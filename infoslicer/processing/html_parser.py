@@ -265,33 +265,38 @@ class HTMLParser:
 
     def pre_parse(self):
         """
-        Prepares the input for parsing.
+        Prepares the input for parsing with robust error handling.
         """
         logger.info('Starting pre-parse phase')
         try:
-            # Ensure we're working with a valid BeautifulSoup object
+            # Validate 
             if not hasattr(self.input, 'findAll'):
                 logger.error('Invalid input: not a BeautifulSoup object')
                 raise ValueError('Input must be a BeautifulSoup object')
 
-            # Find all tags at the root level, recursively
-            root_tags = self.input.findAll(True, recursive=False)
-            
+            # Find all tags at the root level
+            try:
+                root_tags = self.input.findAll(True, recursive=False)
+            except Exception as find_err:
+                logger.error(f'Error finding tags: {find_err}')
+                root_tags = []
+
             if not root_tags:
                 logger.warning('No tags found in the input document')
                 return
 
+            # Process each tag with individual error handling
             for tag in root_tags:
                 try:
-                    logger.debug(f'Processing tag: {tag.name}')
+                    logger.debug(f'Processing tag: {getattr(tag, "name", "Unknown")}')
                     self.untag(tag)
                 except Exception as tag_err:
-                    logger.error(f'Error processing tag {tag.name}: {tag_err}')
-                    # Optionally continue processing other tags
+                    logger.error(f'Error processing tag {getattr(tag, "name", "Unknown")}: {tag_err}')
+                    # Continue processing other tags
                     continue
 
         except Exception as e:
-            logger.error(f'Error during pre-parse: {e}')
+            logger.error(f'Critical error during pre-parse: {e}')
             raise
         finally:
             logger.info('Pre-parse phase completed')
@@ -354,60 +359,81 @@ class HTMLParser:
         Args:
             tag: Tag hierarchy to work on.
         """
-        logger.debug('Processing tag for removal: %s', getattr(tag, 'name', 'Unknown'))
+        logger.debug('Processing tag for removal')
         
         try:
-            # Handle different possible input types
-            if isinstance(tag, bytes):
-                logger.warning(f'Skipping byte object: {tag}')
-                return
-            
+            # Early exit for non-Tag objects
             if not isinstance(tag, Tag):
-                logger.warning(f'Skipping non-Tag object: {type(tag)}')
+                if isinstance(tag, bytes):
+                    logger.warning(f'Skipping byte object: {tag}')
+                else:
+                    logger.warning(f'Skipping non-Tag object: {type(tag)}')
                 return
 
-            # Process only children that are actually Tag objects, not strings or NavigableString
-            children = [c for c in tag.children if isinstance(c, Tag)]
-            
+            # Safely get children, filtering out non-Tag objects
+            children = []
+            try:
+                children = [c for c in tag.children if isinstance(c, Tag)]
+            except Exception as child_err:
+                logger.error(f'Error extracting children: {child_err}')
+
             # Recursively process children
             for child in children:
                 try:
                     self.untag(child)
                 except Exception as child_err:
                     logger.error(f'Error processing child: {child_err}')
+                    # Log child details for debugging
+                    logger.error(f'Problematic child type: {type(child)}')
+                    logger.error(f'Problematic child attributes: {getattr(child, "attrs", "N/A")}')
                     continue
 
-            # Tag handling logic
-            if (self.remove_classes_regexp != "") and \
-            (tag.get("class") and re.match(self.remove_classes_regexp, " ".join(tag.get("class")) if isinstance(tag.get("class"), list) else tag.get("class"))):
-                tag.extract()
-            elif tag.name in self.keep_tags:
-                try:
-                    # Ensure we're working with the correct parser
-                    new_tag = Tag(self.input, tag.name)
-                    new_tag.contents = tag.contents
-                    tag.replaceWith(new_tag)
-                except Exception as replace_err:
-                    logger.error(f'Error replacing tag: {replace_err}')
-            elif tag.name in self.remove_tags_keep_content:
-                # Find only children that are Tag objects, not strings
-                children = [c for c in tag.children if isinstance(c, Tag)]
-                if len(children) == 1:
-                    tag.replaceWith(children[0])
-                elif len(children) > 1:
-                    new_tag = Tag(self.input, "p")
-                    for child in children:
-                        new_tag.append(child)
-                    tag.replaceWith(new_tag)
+            # Tag handling logic with extensive error handling
+            try:
+                # Handle class-based removal
+                if (self.remove_classes_regexp != "") and \
+                (tag.get("class") and re.match(self.remove_classes_regexp, 
+                    " ".join(tag.get("class")) if isinstance(tag.get("class"), list) else tag.get("class"))):
+                    tag.extract()
+                    return
+
+                # Keep specific tags
+                if tag.name in self.keep_tags:
+                    try:
+                        new_tag = Tag(self.input, tag.name)
+                        new_tag.contents = tag.contents
+                        tag.replaceWith(new_tag)
+                    except Exception as replace_err:
+                        logger.error(f'Error replacing tag: {replace_err}')
+                        return
+
+                # Handle tags to remove but keep content
+                elif tag.name in self.remove_tags_keep_content:
+                    # Find only children that are Tag objects
+                    children = [c for c in tag.children if isinstance(c, Tag)]
+                    
+                    if len(children) == 1:
+                        tag.replaceWith(children[0])
+                    elif len(children) > 1:
+                        new_tag = Tag(self.input, "p")
+                        for child in children:
+                            new_tag.append(child)
+                        tag.replaceWith(new_tag)
+                    else:
+                        tag.replaceWith(tag.renderContents())
                 else:
-                    tag.replaceWith(tag.renderContents())
-            else:
-                tag.extract()
+                    tag.extract()
+
+            except Exception as handling_err:
+                logger.error(f'Error in tag handling: {handling_err}')
+                logger.error(f'Problematic tag name: {tag.name}')
+                logger.error(f'Problematic tag attributes: {tag.attrs}')
+
         except Exception as e:
             logger.error(f'Unexpected error in untag: {e}')
-            # Log additional context
-            logger.error(f'Tag type: {type(tag)}')
-            logger.error(f'Tag attributes: {tag.attrs if hasattr(tag, "attrs") else "N/A"}')
+            # Additional context logging
+            logger.error(f'Error context - Tag type: {type(tag)}')
+            logger.error(f'Error context - Tag attributes: {getattr(tag, "attrs", "N/A")}')
             
-            # Re-raise or handle as needed
+            # Optionally re-raise or handle as needed
             raise
