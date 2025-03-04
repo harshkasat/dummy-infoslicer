@@ -333,8 +333,14 @@ class HTMLParser:
         """
         logger.debug('Processing tag for removal: %s', tag.name)
         try:
+            # Ensure we're working with a Tag object
+            if not isinstance(tag, Tag):
+                logger.warning(f'Skipping non-Tag object: {type(tag)}')
+                return
+
             # Process only children that are actually Tag objects, not strings
-            for child in [c for c in tag.children if isinstance(c, Tag)]:
+            children = [c for c in tag.children if isinstance(c, Tag)]
+            for child in children:
                 try:
                     self.untag(child)
                 except AttributeError as e:
@@ -365,5 +371,6 @@ class HTMLParser:
                     tag.replaceWith(tag.renderContents())
             else:
                 tag.extract()
-        except AttributeError as e:
-            logger.error('Error in untag: %s', e)
+        except Exception as e:
+            logger.error(f'Unexpected error in untag: {e}')
+            # Optionally re-raise or handle more specifically
