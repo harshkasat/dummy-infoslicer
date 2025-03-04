@@ -41,7 +41,7 @@ def download_wiki_article(title, wiki, progress):
             article, url = MediaWiki_Helper().getArticleAsHTMLByTitle(title, wiki)
 
             # Debug logging
-            logger.error(f'Article type: {(typearticle)}')
+            logger.error(f'Article type: {type(article)}')
             logger.error(f'Article content type: {type(article) if isinstance(article, str) else "mixed"}')
             logger.error(f'Article length: {len(article) if hasattr(article, "__len__") else "N/A"}')
             logger.error(f'Article URL: {url}')
@@ -56,7 +56,7 @@ def download_wiki_article(title, wiki, progress):
 
         progress.set_label(_('Processing "%s"...') % title)
         parser = MediaWiki_Parser(article, title, url)
-        # contents = parser.parse()
+        contents = parser.parse()
 
         progress.set_label(_('Downloading "%s" images...') % title)
         # book.WIKI.create(title + _(' (from %s)') % wiki, contents)
