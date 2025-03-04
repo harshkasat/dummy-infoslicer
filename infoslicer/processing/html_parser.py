@@ -335,7 +335,8 @@ class HTMLParser:
             #         logger.error(f'Error processing tag {getattr(tag, "name", "Unknown")}: {tag_err}')
             #         # Continue processing other tags
             #         continue
-            logger.error(f'Processing root tags {root_tags}')
+            for tag in root_tags:
+                logger.error(f'Processing tag: {tag}')
 
         except Exception as e:
             logger.error(f'Critical error during pre-parse: {e}')
