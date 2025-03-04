@@ -140,10 +140,10 @@ class HTMLParser:
                 self.image_handler()
             except Exception as e:
                 logger.error('Error during image handling %s', e)
-            # try:
-            #     self.pre_parse()
-            # except Exception as e:
-            #     logger.error('Error during pre_parse %s', e)
+            try:
+                self.pre_parse()
+            except Exception as e:
+                logger.error('Error during pre_parse %s', e)
             try:
                 output_reference = self.output_soup.find("reference")
             except Exception as e:
