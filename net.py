@@ -39,6 +39,8 @@ def download_wiki_article(title, wiki, progress):
         progress.set_label(_('"%s" download in progress...') % title)
         try:
             article, url = MediaWiki_Helper().getArticleAsHTMLByTitle(title, wiki)
+            logger.error('download_wiki_article: %s' % article)
+            logger.error('download_wiki_article url: %s' % url)
         except Exception as e:
             progress.set_label(_('Error getArticleAsHTMLByTitle: ') % e)
 
