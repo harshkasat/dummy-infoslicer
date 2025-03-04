@@ -36,26 +36,42 @@ class HTMLParser:
     block_elements = ["img", "table", "ol", "ul"]
     #=======================================================================
 
-    def __init__(self, document_to_parse, title, source_url):
-        logger.info(f'Initializing HTMLParser with title: {title}')
-        if document_to_parse is None:
-            logger.error('No document provided to parse')
-            raise NoDocException("No content to parse - supply document to __init__")
+    def __init__(self, input_content, title, source_url):
+        """
+        Initialize the HTML parser with robust handling of input
+        
+        :param input_content: HTML content to parse
+        :param title: Title of the document
+        :param source_url: Source URL of the document
+        """
+        # Ensure input is a string, decode if bytes
+        if isinstance(input_content, bytes):
+            input_content = input_content.decode('utf-8', errors='ignore')
+        
+        # Handle empty input
+        if not input_content:
+            raise NoDocException("No content to parse")
+        
         try:
-            self.input = BeautifulSoup(document_to_parse)
+            # Use BeautifulSoup for parsing
+            self.input = BeautifulSoup(input_content, 'html.parser')
+            
+            # Create an output soup for further processing
+            self.output_soup = BeautifulSoup('<refbody></refbody>', 'html.parser')
+            
+            # Store metadata
+            self.title = title
+            self.source = {'href': source_url}
+            
         except Exception as e:
-            logger.error(f'Failed to parse HTML document: {e}')
-            raise
-        self.source = source_url
-        self.output_soup = BeautifulStoneSoup('<?xml version="1.0" encoding="utf-8"?><reference><title>%s</title></reference>' % title)
-        # First ID issued will be id below + 1
-        self.ids = {"reference" : 1,\
-                    "section" : 1,\
-                    "p" : 1,\
-                    "ph" : 1\
-                    }
-        self.image_list = self.tag_generator("reference", self.tag_generator("refbody"),[("id", "imagelist")])
-        logger.debug('HTMLParser initialized successfully')
+            logger.error(f"Error parsing HTML: {e}")
+            raise NoDocException(f"Failed to parse HTML: {e}")
+        
+        # Regular expression to remove unwanted classes
+        self.remove_classes_regexp = re.compile(
+            "toc|noprint|metadata|sisterproject|boilerplate|"
+            "reference(?!s)|thumb|navbox|editsection"
+        )
 
     def create_paragraph(self, text, tag="p"):
         logger.debug(f'Creating new paragraph with tag: {tag}')
@@ -132,41 +148,23 @@ class HTMLParser:
 
     def parse(self):
         """
-        Parses the HTML document and converts it to a structured format.
+        Main parsing method that processes the input HTML
+        
+        :return: Parsed content as a string
         """
-        logger.info('Starting document parsing')
         try:
-            try:
-                self.image_handler()
-            except Exception as e:
-                logger.error('Error during image handling %s', e)
-            try:
-                self.pre_parse()
-            except Exception as e:
-                logger.error('Error during pre_parse %s', e)
-            try:
-                output_reference = self.output_soup.find("reference")
-            except Exception as e:
-                logger.error('Error finding reference in output_soup: %s', e)
-                raise
-
-            # try:
-            #     self.add_metadata(output_reference)
-            # except Exception as e:
-            #     logger.error('Error adding metadata: %s', e)
-            #     raise
-
-            try:
-                self.process_tags(output_reference)
-            except Exception as e:
-                logger.error('Error processing tags: %s', e)
-                raise
-            logger.info('Document parsing completed')
-            self.output_soup.reference.append(self.image_list)
-            return self.output_soup.prettify()
+            # Remove unwanted elements first
+            self._remove_unwanted_elements()
+            
+            # Perform any specialized parsing
+            self.specialise()
+            
+            # Return prettified output
+            return str(self.output_soup)
+        
         except Exception as e:
-            logger.error('Error during parsing: %s', e)
-            raise
+            logger.error(f"Error during parsing: {e}")
+            return str(self.output_soup)
 
     def add_metadata(self, output_reference):
         """
@@ -184,6 +182,18 @@ class HTMLParser:
             )
         )
         output_reference.append(self.tag_generator("refbody"))
+
+    def _remove_unwanted_elements(self):
+        """
+        Remove elements with unwanted classes or metadata
+        """
+        # Remove elements with specific classes
+        for element in self.input.find_all(class_=self.remove_classes_regexp):
+            element.decompose()
+        
+        # Remove script, style, and comment tags
+        for unwanted in self.input(["script", "style", "comment"]):
+            unwanted.decompose()
 
     def process_tags(self, output_reference):
         """
@@ -263,6 +273,18 @@ class HTMLParser:
         )
         current_section.append(self.tag_generator(tag.name, tag.renderContents()))
 
+    def clean_text(self, text):
+        """
+        Clean and normalize text content
+        
+        :param text: Input text
+        :return: Cleaned text
+        """
+        if not text:
+            return ""
+        
+        # Remove extra whitespaces, normalize
+        return re.sub(r'\s+', ' ', text).strip()
     def pre_parse(self):
         """
         Prepares the input for parsing with robust error handling.
@@ -308,49 +330,27 @@ class HTMLParser:
         """
         pass
 
-    def tag_generator(self, tag, contents=None, attrs=None):
-        logger.debug(f'Generating new tag: {tag}')
-        try:
-            if not tag or not isinstance(tag, str):
-                logger.error('Invalid tag name provided: %s', tag)
-                raise ValueError('Tag name must be a non-empty string')
-                
-            if attrs is None:
-                attrs = {}
-            elif isinstance(attrs, list):
-                # Convert list of tuples to dictionary
-                attrs = dict(attrs)
-                
-            # Ensure tag is a string
-            tag = str(tag).strip()
-            if not tag:
-                logger.error('Invalid tag name after conversion')
-                raise ValueError('Invalid tag name')
-
-            # Create new tag using BeautifulSoup's parser
-            new_tag = self.output_soup.new_tag(tag, **attrs)
-
-            # Add ID if needed
-            if tag in self.ids and not attrs:
-                self.ids[tag] += 1
-                new_tag['id'] = str(self.ids[tag])
-
-            # Handle contents
-            if contents is not None:
-                try:
-                    if isinstance(contents, (str, bytes)):
-                        new_tag.string = str(contents)
-                    else:
-                        new_tag.append(contents)
-                except Exception as e:
-                    logger.error(f'Failed to insert contents into tag: {e}')
-                    new_tag.string = ''
-
-            return new_tag
-
-        except Exception as e:
-            logger.error(f'Error generating tag {tag}: {e}')
-            raise ValueError(f'Failed to generate tag: {e}')
+    def tag_generator(self, tag_name, content=None, attrs=None):
+        """
+        Generate a tag with optional content and attributes
+        
+        :param tag_name: Name of the tag
+        :param content: Content of the tag
+        :param attrs: List of (attribute, value) tuples
+        :return: Beautiful Soup Tag
+        """
+        tag = self.output_soup.new_tag(tag_name)
+        
+        # Add attributes if provided
+        if attrs:
+            for attr, value in attrs:
+                tag[attr] = value
+        
+        # Add content if provided
+        if content is not None:
+            tag.string = str(content)
+        
+        return tag
 
     def untag(self, tag):
         """
