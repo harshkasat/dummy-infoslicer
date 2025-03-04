@@ -62,6 +62,7 @@ class HTMLParser:
             # Store metadata
             self.title = title
             self.source = {'href': source_url}
+            self.image_list = self.tag_generator("reference", self.tag_generator("refbody"),[("id", "imagelist")])
             
         except Exception as e:
             logger.error(f"Error parsing HTML: {e}")
@@ -95,7 +96,7 @@ class HTMLParser:
             Extracts publisher from source URL
             @return: name of publisher
         """
-        output = self.source.replace("http://", "").split("/")[0].split(".")
+        output = self.source['href'].replace("http://", "").split("/")[0].split(".")
         logger.debug(f'Publisher extracted: {".".join([output[-2], output[-1]])}')
         return ".".join([output[-2], output[-1]])
 
@@ -148,23 +149,41 @@ class HTMLParser:
 
     def parse(self):
         """
-        Main parsing method that processes the input HTML
-        
-        :return: Parsed content as a string
+        Parses the HTML document and converts it to a structured format.
         """
+        logger.info('Starting document parsing')
         try:
-            # Remove unwanted elements first
-            self._remove_unwanted_elements()
-            
-            # Perform any specialized parsing
-            self.specialise()
-            
-            # Return prettified output
-            return str(self.output_soup)
-        
+            try:
+                self.image_handler()
+            except Exception as e:
+                logger.error('Error during image handling %s', e)
+            try:
+                self.pre_parse()
+            except Exception as e:
+                logger.error('Error during pre_parse %s', e)
+            try:
+                output_reference = self.output_soup.find("reference")
+            except Exception as e:
+                logger.error('Error finding reference in output_soup: %s', e)
+                raise
+
+            # try:
+            #     self.add_metadata(output_reference)
+            # except Exception as e:
+            #     logger.error('Error adding metadata: %s', e)
+            #     raise
+
+            try:
+                self.process_tags(output_reference)
+            except Exception as e:
+                logger.error('Error processing tags: %s', e)
+                raise
+            logger.info('Document parsing completed')
+            self.output_soup.reference.append(self.image_list)
+            return self.output_soup.prettify()
         except Exception as e:
-            logger.error(f"Error during parsing: {e}")
-            return str(self.output_soup)
+            logger.error('Error during parsing: %s', e)
+            raise
 
     def add_metadata(self, output_reference):
         """
