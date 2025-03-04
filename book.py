@@ -82,8 +82,16 @@ class Book(GObject.GObject):
 
     # save current article
     def sync_article(self):
-        # stub
-        pass
+        if not self._article:
+            return
+
+        self.find_by_uuid(self._article.uid)['title'] = \
+                self._article.article_title
+
+        contents = get_dita_from_article(
+                image_root, self._article)
+
+        self._save(self._article.uid, contents)
 
     def create(self, title, content):
         uid = str(uuid.uuid1())

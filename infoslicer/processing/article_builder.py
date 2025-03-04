@@ -34,8 +34,19 @@ def get_article_from_dita(image_path, dita):
     """
     has_shortdesc = False
     soup = BeautifulStoneSoup(dita)
-    logger.error('what is soup %s', soup)
-    article_id = soup.resourceid["id"]
+    
+    # Handle missing resourceid gracefully
+    resource = soup.find('resourceid')
+    if resource and resource.has_key('id'):
+        article_id = resource['id']
+    else:
+        # Generate a default ID or use title if available
+        title_tag = soup.find('title')
+        if title_tag:
+            article_id = "article_" + re.sub(r'\W+', '_', title_tag.text.strip()).lower()
+        else:
+            article_id = "article_" + str(hash(dita) % 10000)  # Generate a numeric ID
+    
     current_section_id = ""
     current_p_id = ""
     sentence_data_list = []
