@@ -138,8 +138,8 @@ class Readonly_Textbox( Textbox ):
                         selectionstart = article.get_paragraph(self.selectionstart).getStart()
                         selectionend = article.get_paragraph(mouseiter).getEnd()
                     if self.selectionmode == SELECT_SECTION:
-                        selectionstart = article.getSection(self.selectionstart).getStart()
-                        selectionend = article.getSection(mouseiter).getEnd()
+                        selectionstart = article.get_section(self.selectionstart).getStart()
+                        selectionend = article.get_section(mouseiter).getEnd()
                 else:
                     if self.selectionmode == SELECT_SENTENCE: 
                         selectionstart = article.get_sentence(mouseiter).getStart()
@@ -148,8 +148,8 @@ class Readonly_Textbox( Textbox ):
                         selectionstart = article.get_paragraph(mouseiter).getStart()
                         selectionend = article.get_paragraph(self.selectionstart).getEnd()
                     if self.selectionmode == SELECT_SECTION:
-                        selectionstart = article.getSection(mouseiter).getStart()
-                        selectionend = article.getSection(self.selectionstart).getEnd()
+                        selectionstart = article.get_section(mouseiter).getStart()
+                        selectionend = article.get_section(self.selectionstart).getEnd()
                 self.scroll_to_iter(mouseiter, 0, False, 0.5, 0.5)
                 article.highlight(selectionstart, selectionend)
                     
