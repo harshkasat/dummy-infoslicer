@@ -34,7 +34,7 @@ def get_article_from_dita(image_path, dita):
     """
     has_shortdesc = False
     soup = BeautifulStoneSoup(dita)
-    
+
     # Handle missing resourceid gracefully
     resource = soup.find('resourceid')
     if resource and resource.has_key('id'):
@@ -46,7 +46,7 @@ def get_article_from_dita(image_path, dita):
             article_id = "article_" + re.sub(r'\W+', '_', title_tag.text.strip()).lower()
         else:
             article_id = "article_" + str(hash(dita) % 10000)  # Generate a numeric ID
-    
+
     current_section_id = ""
     current_p_id = ""
     sentence_data_list = []
@@ -354,12 +354,22 @@ def get_dita_from_article(image_path, article):
 
 
 def _tag_generator(soup, name, attrs=None, contents=None):
+    """
+    Generate a new BS4 tag properly
+    """
     if attrs is None:
-        attrs = []
-    if attrs != []:
-        new_tag = Tag(soup, name, attrs)
+        attrs = {}
     else:
-        new_tag = Tag(soup, name)
+        # Convert list of tuples to dict for new BS4 format
+        attrs = dict(attrs)
+
+    # Create new tag using BeautifulSoup's API
+    new_tag = soup.new_tag(name, **attrs)
+
     if contents is not None:
-        new_tag.insert(0, contents)
+        if isinstance(contents, str):
+            new_tag.string = contents
+        else:
+            new_tag.append(contents)
+
     return new_tag
