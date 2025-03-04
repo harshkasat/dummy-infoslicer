@@ -89,25 +89,44 @@ class MediaWiki_Helper:
         else:
             raise PageNotFoundError("The article with revision id '%s' could not be found on wiki '%s'" % (revision, wiki))
 
+
     def getArticleAsHTMLByTitle(self, title, wiki=defaultWiki):
         """Gets the HTML markup of an article by its title from the wiki specified.
         
         @param title: title of article to retrieve
         @param wiki: optional. Defaults to default wiki
-        @return: article content in HTML markup
-        @rtype: string"""
-        #resolve article title
+        @return: tuple of (article content, url)
+        """
         try:
-            logger.info(title)
+            logger.info(f'Getting article: {title}')
             title = self.resolveTitle(title, wiki)
-            #create the API request string
-            path = f"http://{wiki}/w/api.php?action=parse&page={title}&format=xml"
-            logger.info(path)
-            #remove xml tags around article and fix HTML tags and quotes
-            #return fixHTML(stripTags(getDoc(path), "text"))
-            return self.fixHTML(self.getDoc(path).decode('utf-8')), path
+            
+            # Create the API request string - use format=json for better handling
+            path = f"http://{wiki}/w/api.php?action=parse&page={title}&format=json"
+            logger.info(f'Requesting URL: {path}')
+            
+            # Get the document
+            raw_content = self.getDoc(path)
+            
+            # Ensure we have unicode content
+            if isinstance(raw_content, bytes):
+                raw_content = raw_content.decode('utf-8')
+            
+            # Parse JSON response
+            import json
+            parsed_data = json.loads(raw_content)
+            
+            # Extract HTML content from JSON
+            if 'parse' in parsed_data and 'text' in parsed_data['parse']:
+                html_content = parsed_data['parse']['text']['*']
+                return html_content, path
+            else:
+                raise ValueError("Unable to find HTML content in API response")
+                
         except Exception as e:
-            logger.warning(f"The erro found in getArticleAsHTMLByTitle: {e}")
+            logger.error(f"Error in getArticleAsHTMLByTitle: {e}")
+            raise
+
     def getDoc(self, path):
         """opens a remote file by http and retrieves data
         

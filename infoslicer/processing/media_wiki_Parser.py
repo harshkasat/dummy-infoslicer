@@ -12,37 +12,45 @@ class MediaWiki_Parser(HTMLParser):
     remove_classes_regexp = re.compile("toc|noprint|metadata|sisterproject|boilerplate|reference(?!s)|thumb|navbox|editsection")
 
     def __init__(self, document_to_parse, title, source_url):
+        """Initialize parser with wiki content
+        
+        Args:
+            document_to_parse: HTML content from wiki API
+            title: Article title
+            source_url: Source URL
+        """
         if document_to_parse is None:
-            raise NoDocException("No content to parse - supply document to __init__")
+            raise NoDocException("No content to parse")
 
-        logger.debug('MediaWiki_Parser: %s' % source_url)
-
-        # Ensure document_to_parse is a string
+        logger.debug(f'MediaWiki_Parser init: {source_url}')
+        
+        # Handle input type conversion
         if isinstance(document_to_parse, bytes):
             document_to_parse = document_to_parse.decode('utf-8', errors='ignore')
-
-        # Split the document to extract text content
+            
+        # Clean up the HTML content
+        document_to_parse = document_to_parse.strip()
+        if not document_to_parse:
+            raise NoDocException("Empty content after cleanup")
+            
         try:
-            header, input_content = document_to_parse.split("<text xml:space=\"preserve\">")
-        except ValueError:
-            # Fallback if split fails
-            input_content = document_to_parse
-
-        # Find the revision id
-        revid_match = re.findall(r'\<parse.*revid\=\"(?P<rid>[0-9]*)\"', header)
-        revid = revid_match[0] if revid_match else '0'
-
-        # Clean up input content
-        input_content = input_content.split("</text>")[0] if "</text>" in input_content else input_content
-        
-        # Use BeautifulSoup instead of custom parsing
-        input_content = "<body>" + input_content + "</body>"
-        
-        # Call the normal constructor
-        HTMLParser.__init__(self, input_content, title, source_url)
-        
-        # Overwrite the source variable with revision-specific URL
-        self.source = f"http://{source_url.replace('http://', '').split('/')[0]}/w/index.php?oldid={revid}"
+            # Initialize parent HTMLParser
+            HTMLParser.__init__(self, document_to_parse, title, source_url)
+            
+            # Extract revision ID if present in source URL
+            revision_match = re.search(r'[?&]oldid=(\d+)', source_url)
+            self.revision_id = revision_match.group(1) if revision_match else None
+            
+            # Set source with revision if available
+            if self.revision_id:
+                base_url = source_url.split('/w/')[0]
+                self.source = {'href': f"{base_url}/w/index.php?oldid={self.revision_id}"}
+            else:
+                self.source = {'href': source_url}
+                
+        except Exception as e:
+            logger.error(f"Parser initialization error: {e}")
+            raise NoDocException(f"Failed to initialize parser: {e}")
 
     def specialise(self):
         """
