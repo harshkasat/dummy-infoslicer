@@ -54,7 +54,20 @@ def download_wiki_article(title, wiki, progress):
             progress.set_label(_('Error getArticleAsHTMLByTitle: %s') % e)
             raise
 
-        # Rest of the function remains the same
+        progress.set_label(_('Processing "%s"...') % title)
+        parser = MediaWiki_Parser(article, title, url)
+        contents = parser.parse()
+
+        progress.set_label(_('Downloading "%s" images...') % title)
+        book.WIKI.create(title + _(' (from %s)') % wiki, contents)
+
+        progress.set_label(_('"%s" successfully downloaded') % title)
+
+    except PageNotFoundError as e:
+        elogger.debug(f'download_and_add:{e}')
+        progress.set_label(_('"%s" could not be found') % title)
+
+
     except Exception as e:
         # More detailed error logging
         logger.error(f'Detailed error: {e}', exc_info=True)
