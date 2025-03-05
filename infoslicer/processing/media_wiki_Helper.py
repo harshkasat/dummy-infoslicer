@@ -29,9 +29,8 @@ class NoResultsError(Exception):
     def __str__(self):
         return repr(self.parameter)
 
-"""
-Default media wikihost 
-"""
+
+# Default media wikihost 
 defaultWiki = "en.wikipedia.org"
 
 
@@ -40,7 +39,7 @@ This class handles interaction with Media Wiki. Getting
 content based on a number of parameters such as URL, Title, Revision.
 """
 class MediaWiki_Helper:
-    
+
     def __init__(self):
         self.proxies = net.proxies
 

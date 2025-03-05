@@ -153,10 +153,10 @@ class HTMLParser:
         """
         logger.info('Starting document parsing')
         try:
-            try:
-                self.image_handler()
-            except Exception as e:
-                logger.error('Error during image handling %s', e)
+            # try:
+            #     self.image_handler()
+            # except Exception as e:
+            #     logger.error('Error during image handling %s', e)
             try:
                 self.pre_parse()
             except Exception as e:
