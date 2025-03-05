@@ -101,7 +101,7 @@ class MediaWiki_Helper:
             title = self.resolveTitle(title, wiki)
             
             # Create the API request string - use format=json for better handling
-            path = f"http://{wiki}/w/api.php?action=parse&page={title}&format=json"
+            path = f"http://{wiki}/w/api.php?action=parse&page={title}&format=xml"
             logger.info(f'Requesting URL: {path}')
             
             # Get the document
