@@ -62,8 +62,9 @@ class HTMLParser:
             @return: new tag
         """
         new_para = self.tag_generator(tag)
-        sentences = re.split(re.compile("[\.\!\?\"] "), text)
-        separators = re.findall(re.compile("[\.\!\?\"](?= )"), text)
+        text_str = text.decode('utf-8') if isinstance(text, bytes) else text
+        sentences = re.split(re.compile(r"[\.\!\?\"] "), text_str)
+        separators = re.findall(re.compile(r"[\.\!\?\"](?= )"), text_str)
         for i in range(len(sentences) - 1):
             new_para.append(self.tag_generator("ph", sentences[i] + separators[i]))
         new_para.append(self.tag_generator("ph", sentences[-1]))
