@@ -93,15 +93,19 @@ class MediaWiki_Helper:
         @param wiki: optional. Defaults to default wiki
         @return: article content in HTML markup
         @rtype: string"""
-        #resolve article title
+        # Resolve the title (handle redirects)
         title = self.resolveTitle(title, wiki)
-        #create the API request string
+
+        # Create the API request URL
         path = "http://%s/w/api.php?action=parse&page=%s&format=xml" % (wiki, title)
-        #get the document content
+
+        # Fetch the document content
         doc = self.getDoc(path)
-        #remove xml tags around article and fix HTML tags and quotes
+
+        # Extract article content inside <text> tag
         article_content = self.stripTags(doc, "text")
-        return self.fixHTML(article_content)
+        # Fix HTML entities
+        return self.fixHTML(article_content), path
 
     def getDoc(self, path):
         """opens a remote file by http and retrieves data
@@ -124,13 +128,22 @@ class MediaWiki_Helper:
         return re.sub('[\x80-\xFF]', lambda c: '%%%02x' % ord(c.group(0)), b)
 
     def stripTags(self, input, tag):
-        """removes specified tag
-    
-        @param input: string to work on
-        @param tag: tag to remove
-        @return: original string with specified tag removed
-        @rtype: string"""
-        return input.split("<%s>" % (tag), 1)[1].split("</%s>" % (tag), 1)[0]
+        """Extracts content inside a specific XML tag.
+        
+        @param input: XML string
+        @param tag: The tag to extract content from
+        @return: Content inside the tag
+        """
+        try:
+            xmldoc = minidom.parseString(input)
+            elements = xmldoc.getElementsByTagName(tag)
+            if elements and elements[0].firstChild:
+                return elements[0].firstChild.nodeValue
+            else:
+                return ""
+        except Exception as e:
+            logger.error(f"Error extracting tag {tag}: {e}")
+            return ""
     
     def fixHTML(self, input_content):
         """fixes <, > and " characters in HTML

@@ -36,7 +36,7 @@ class HTMLParser:
     def __init__(self, document_to_parse, title, source_url):
         if document_to_parse == None:
             raise NoDocException("No content to parse - supply document to __init__")
-        self.input = BeautifulSoup(document_to_parse)
+        self.input = BeautifulSoup(document_to_parse, "xml")
         self.source = source_url
         self.output_soup = BeautifulStoneSoup('<?xml version="1.0" encoding="utf-8"?><reference><title>%s</title></reference>' % title)
         # First ID issued will be id below + 1
