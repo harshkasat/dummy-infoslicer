@@ -40,7 +40,7 @@ class HTMLParser:
         self.soup = BeautifulSoup(document_to_parse, "html.parser")
         
         self.source = source_url
-        self.output_soup = BeautifulSoup('<?xml version="1.0" encoding="utf-8"?><reference><title>%s</title></reference>' % title, "html.parser")
+        self.output_soup = BeautifulSoup(f'<?xml version="1.0" encoding="utf-8"?><reference><title>{title}</title></reference>', "html.parser")
         # First ID issued will be id below + 1
         self.ids = {"reference" : 1,\
                     "section" : 1,\
