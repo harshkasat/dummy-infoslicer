@@ -226,24 +226,30 @@ class HTMLParser:
         if contents != None:
             new_tag.insert(0, contents)
         return new_tag
-    
+
     def unTag(self, tag):
         """
-            recursively removes unwanted tags according to defined lists
-            @param tag: tag hierarchy to work on
+        Recursively removes unwanted tags according to defined lists
+        @param tag: tag hierarchy to work on
         """
         for child in tag.findChildren(True, recursive=False):
             self.unTag(child)
-        if (self.remove_classes_regexp != "") and (tag.has_key("class") and (re.match(self.remove_classes_regexp, tag["class"]) != None)):
-            tag.extract()
-        elif tag.name in self.keep_tags:
+
+        # Check if tag has class attribute and process class matching
+        if self.remove_classes_regexp and "class" in tag.attrs:
+            # Convert class list to string if needed
+            tag_classes = " ".join(tag.get("class")) if isinstance(tag.get("class"), list) else tag.get("class")
+            if tag_classes and re.match(self.remove_classes_regexp, tag_classes):
+                tag.extract()
+                return
+
+        if tag.name in self.keep_tags:
             new_tag = Tag(self.soup, tag.name)
             new_tag.contents = tag.contents
             tag.replaceWith(new_tag)
-
         elif tag.name in self.remove_tags_keep_content:            
             children = tag.findChildren(True, recursive=False)
-            if len(children)==1:
+            if len(children) == 1:
                 tag.replaceWith(children[0])
             elif len(children) > 1:
                 new_tag = Tag(self.soup, "p")
