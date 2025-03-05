@@ -33,14 +33,19 @@ class HTMLParser:
     reference_separators = ["h1"]
     block_elements = ["img", "table", "ol", "ul"]
     #=======================================================================
-        
+
     def __init__(self, document_to_parse, title, source_url):
         if document_to_parse == None:
             raise NoDocException("No content to parse - supply document to __init__")
         self.soup = BeautifulSoup(document_to_parse, "html.parser")
-        
+
         self.source = source_url
-        self.output_soup = BeautifulSoup(f'<?xml version="1.0" encoding="utf-8"?><reference><title>{title}</title></reference>', "html.parser")
+        xml_template = f'''<?xml version="1.0" encoding="utf-8"?>
+        <reference>
+            <title>{title}</title>
+        </reference>'''
+
+        self.output_soup = BeautifulSoup(xml_template, "xml")
         # First ID issued will be id below + 1
         self.ids = {"reference" : 1,\
                     "section" : 1,\
@@ -233,49 +238,35 @@ class HTMLParser:
         @param tag: tag hierarchy to work on
         """
         # Skip processing if tag is None or has no name
-        if not tag or not tag.name:
+        if not tag or not hasattr(tag, 'name') or not tag.name:
             return
 
-        # Process children first
-        for child in tag.findChildren(True, recursive=False):
-            self.unTag(child)
-
-        # Check if tag has class attribute and process class matching
-        if self.remove_classes_regexp and "class" in tag.attrs:
-            tag_classes = " ".join(tag.get("class")) if isinstance(tag.get("class"), list) else tag.get("class")
-            if tag_classes and re.match(self.remove_classes_regexp, tag_classes):
-                tag.extract()
-                return
-
         try:
-            if tag.name in self.keep_tags:
-                # Ensure tag name is valid before creating new tag
-                if not tag.name:
-                    logger.warning("Found tag with no name, skipping")
+            # Process children first (make a copy of children list to avoid modification during iteration)
+            children = list(tag.findChildren(True, recursive=False))
+            for child in children:
+                self.unTag(child)
+
+            # Check if tag has class attribute and process class matching
+            if self.remove_classes_regexp and tag.get('class'):
+                tag_classes = " ".join(tag.get("class")) if isinstance(tag.get("class"), list) else tag.get("class")
+                if tag_classes and re.match(self.remove_classes_regexp, tag_classes):
+                    tag.unwrap()  # Use unwrap instead of extract to keep contents
                     return
 
-                new_tag = Tag(self.soup, name=tag.name)
-                new_tag.contents = tag.contents
-                tag.replace_with(new_tag)
+            if tag.name in self.keep_tags:
+                # Keep the tag but clean it
+                tag.attrs = {}  # Remove all attributes
+                
             elif tag.name in self.remove_tags_keep_content:
-                children = tag.findChildren(True, recursive=False)
-                if len(children) == 1:
-                    tag.replace_with(children[0])
-                elif len(children) > 1:
-                    new_tag = Tag(self.soup, "p")
-                    for child in children:
-                        new_tag.append(child)
-                    tag.replace_with(new_tag)
-                else:
-                    # Handle empty or text-only tags
-                    contents = tag.renderContents().decode('utf-8')
-                    if contents:
-                        tag.replace_with(contents)
-                    else:
-                        tag.extract()
+                # Instead of creating new tags, just unwrap this one
+                tag.unwrap()
+                
             else:
+                # Remove tags we don't want to keep
                 tag.extract()
-        except ValueError as e:
+                
+        except Exception as e:
             logger.error(f"Error processing tag {tag}: {str(e)}")
-            # Extract the tag to avoid further processing
-            tag.extract()
+            # Safely remove problematic tag but keep its contents
+            tag.unwrap()
