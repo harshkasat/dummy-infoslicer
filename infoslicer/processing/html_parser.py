@@ -162,7 +162,7 @@ class HTMLParser:
                 #create a new section tag
                 new_section = self.tag_generator("section")
                 #make a title for the tag from heading contents
-                new_section.append(self.tag_generator("title", tag.renderContents()))
+                new_section.append(self.tag_generator("title", tag.renderContents().decode("utf-8")))
                 #hold a pointer to the new section
                 current_section = new_section
                 #add the new section to the current refbody
@@ -176,7 +176,7 @@ class HTMLParser:
                 #create a new reference tag
                 new_reference = self.tag_generator("reference")
                 #make a title for the tag from heading contents
-                new_reference.append(self.tag_generator("title", tag.renderContents()))
+                new_reference.append(self.tag_generator("title", tag.renderContents().decode("utf-8")))
                 #create a refbody tag for the reference
                 new_refbody = self.tag_generator("refbody")
                 #add refbody to the reference tag
@@ -186,13 +186,13 @@ class HTMLParser:
                 #add the new reference to the containing reference tag in the output
                 output_reference.append(new_reference)
             #block element action
-            # elif tag_name in self.block_elements:
-            #     if in_section:
-            #         #add block element to current section
-            #         current_section.append(self.tag_generator(tag_name, tag.renderContents()))
-            #     else:
-            #         #add block element to new section
-            #         current_refbody.append(self.tag_generator("section", self.tag_generator(tag_name, tag.renderContents())))
+            elif tag_name in self.block_elements:
+                if in_section:
+                    #add block element to current section
+                    current_section.append(self.tag_generator(tag_name, tag.renderContents().decode("utf-8")))
+                else:
+                    #add block element to new section
+                    current_refbody.append(self.tag_generator("section", self.tag_generator(tag_name, tag.renderContents().decode("utf-8"))))
             #find the next tag and continue
             tag = tag.findNextSibling()
         #append the image list
