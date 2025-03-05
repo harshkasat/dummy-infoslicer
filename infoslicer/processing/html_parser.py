@@ -1,10 +1,11 @@
 # Copyright (C) IBM Corporation 2008
 
+import re
+import logging
+from datetime import date
 from bs4 import BeautifulSoup, Tag
 from infoslicer.processing.newtiful_soup import NewtifulStoneSoup as BeautifulStoneSoup
-import re
-from datetime import date
-
+logger = logging.getLogger('infoslicer::html_parser')
 class NoDocException(Exception):
     def __init__(self, value):
         self.parameter = value
@@ -36,7 +37,8 @@ class HTMLParser:
     def __init__(self, document_to_parse, title, source_url):
         if document_to_parse == None:
             raise NoDocException("No content to parse - supply document to __init__")
-        self.input = BeautifulSoup(document_to_parse, "html.parser")
+        self.soup = BeautifulSoup(document_to_parse, "html.parser")
+        logger.error(f'HTMLParser: {self.soup}')
         self.source = source_url
         self.output_soup = BeautifulStoneSoup('<?xml version="1.0" encoding="utf-8"?><reference><title>%s</title></reference>' % title)
         # First ID issued will be id below + 1
@@ -46,7 +48,7 @@ class HTMLParser:
                     "ph" : 1\
                     }
         self.image_list = self.tag_generator("reference", self.tag_generator("refbody"),[("id", "imagelist")])
-    
+
     def create_paragraph(self, text, tag="p"):
         """
             Creates a new paragraph containing <ph> tags, surrounded by the specified tag
@@ -74,7 +76,7 @@ class HTMLParser:
         """
             Extracts image tags from the document
         """
-        for img in self.input.findAll("img"):
+        for img in self.soup.findAll("img"):
             too_small = False
             image_path = img['src']    
             alt_text = ""
@@ -93,7 +95,7 @@ class HTMLParser:
             Extracts 1st paragraph from input, and makes it a 'shortdesc' tag
             @return: new <shortdesc> tag containing contents of 1st paragraph
         """
-        paragraphs = self.input.findAll("p")
+        paragraphs = self.soup.findAll("p")
         for p in paragraphs:
             contents = p.renderContents()
             if len(contents) > 20 and (("." in contents) or ("?" in contents) or ("!" in contents)):
@@ -133,7 +135,7 @@ class HTMLParser:
         #call specialised method (redundant in this class, used for inheritance)
         self.specialise()
         #find the first tag
-        tag = self.input.find(self.root_node).findChild()
+        tag = self.soup.find(self.root_node).findChild()
         while tag != None:
             #set variable to avoid hammering the string conversion function
             tag_name = tag.name
@@ -196,7 +198,7 @@ class HTMLParser:
         """
             Prepares the input for parsing
         """
-        for tag in self.input.findAll(True, recursive=False):
+        for tag in self.soup.findAll(True, recursive=False):
             self.unTag(tag)
     
     def specialise(self):
@@ -235,7 +237,7 @@ class HTMLParser:
         if (self.remove_classes_regexp != "") and (tag.has_key("class") and (re.match(self.remove_classes_regexp, tag["class"]) != None)):
             tag.extract()
         elif tag.name in self.keep_tags:
-            new_tag = Tag(self.input, tag.name)
+            new_tag = Tag(self.soup, tag.name)
             new_tag.contents = tag.contents
             tag.replaceWith(new_tag)
 
@@ -244,7 +246,7 @@ class HTMLParser:
             if len(children)==1:
                 tag.replaceWith(children[0])
             elif len(children) > 1:
-                new_tag = Tag(self.input, "p")
+                new_tag = Tag(self.soup, "p")
                 for child in tag.findChildren(True, recursive=False):
                     new_tag.append(child)
                 tag.replaceWith(new_tag)
