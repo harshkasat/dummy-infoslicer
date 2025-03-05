@@ -96,11 +96,12 @@ class MediaWiki_Helper:
         #resolve article title
         title = self.resolveTitle(title, wiki)
         #create the API request string
-        path = "http://%s/w/api.php?action=parse&page=%s&format=xml" % (wiki,title)
+        path = "http://%s/w/api.php?action=parse&page=%s&format=xml" % (wiki, title)
+        #get the document content
+        doc = self.getDoc(path)
         #remove xml tags around article and fix HTML tags and quotes
-        #return fixHTML(stripTags(getDoc(path), "text"))
-        logger.error(self.getDoc(path))
-        return self.fixHTML(self.getDoc(path)), path
+        article_content = self.stripTags(doc, "text")
+        return self.fixHTML(article_content)
 
     def getDoc(self, path):
         """opens a remote file by http and retrieves data
