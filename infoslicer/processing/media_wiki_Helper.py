@@ -136,6 +136,7 @@ class MediaWiki_Helper:
         @param input: input string to work on
         @return: modified version of input
         @rtype: string"""
+        logger.error("fixHTML: " + input)
         return input.replace("&lt;", "<").replace("&gt;", ">").replace("&quot;",'"')
     
     def getImageURLs(self, title, wiki=defaultWiki, revision=None):
