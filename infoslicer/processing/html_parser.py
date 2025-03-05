@@ -318,22 +318,23 @@ class HTMLParser:
             # Find all tags at the root level
             try:
                 root_tags = self.input.findAll(True, recursive=False)
+                logger.error(f'Root tags found: {len(root_tags)}')
             except Exception as find_err:
                 logger.error(f'Error finding tags: {find_err}')
                 root_tags = []
 
-            if not root_tags:
-                logger.warning('No tags found in the input document')
-                return
-            # Process each tag with individual error handling
-            for tag in root_tags:
-                try:
-                    logger.debug(f'Processing tag: {getattr(tag, "name", "Unknown")}')
-                    self.untag(tag)
-                except Exception as tag_err:
-                    logger.error(f'Error processing tag {getattr(tag, "name", "Unknown")}: {tag_err}')
-                    # Continue processing other tags
-                    continue
+            # if not root_tags:
+            #     logger.warning('No tags found in the input document')
+            #     return
+            # # Process each tag with individual error handling
+            # for tag in root_tags:
+            #     try:
+            #         logger.debug(f'Processing tag: {getattr(tag, "name", "Unknown")}')
+            #         self.untag(tag)
+            #     except Exception as tag_err:
+            #         logger.error(f'Error processing tag {getattr(tag, "name", "Unknown")}: {tag_err}')
+            #         # Continue processing other tags
+            #         continue
         except Exception as e:
             logger.error(f'Critical error during pre-parse: {e}')
             raise
