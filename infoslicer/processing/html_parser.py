@@ -209,22 +209,22 @@ class HTMLParser:
             
     def tag_generator(self, tag, contents=None, attrs=[]):
         """
-            Generates new tags for the output, adding IDs where appropriate
-            @param tag: name of new tag
-            @param contents: Optional, contents to add to tag
-            @param attrs: Optional, attributes to add to tag
-            @return: new Tag object
+        Generates new tags for the output, adding IDs where appropriate
+        @param tag: name of new tag
+        @param contents: Optional, contents to add to tag
+        @param attrs: Optional, attributes to add to tag
+        @return: new Tag object
         """
         if tag in self.ids and attrs == []:
             self.ids[tag] += 1
             attrs = [("id", str(self.ids[tag]))]
-        if attrs != []:
-            new_tag = Tag(self.output_soup, name=tag, attrs=attrs)
-        else:
-            new_tag = Tag(self.output_soup, name=tag)
+        
+        # Convert list of tuples to dictionary
+        attrs_dict = dict(attrs) if attrs else {}
+        
+        new_tag = Tag(self.output_soup, name=tag, attrs=attrs_dict)
         if contents != None:
             new_tag.insert(0, contents)
-        attrs = []
         return new_tag
     
     def unTag(self, tag):
