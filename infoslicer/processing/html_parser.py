@@ -161,26 +161,26 @@ class HTMLParser:
                 self.pre_parse()
             except Exception as e:
                 logger.error('Error during pre_parse %s', e)
-        #     try:
-        #         output_reference = self.output_soup.find("reference")
-        #     except Exception as e:
-        #         logger.error('Error finding reference in output_soup: %s', e)
-        #         raise
+            try:
+                output_reference = self.output_soup.find("reference")
+            except Exception as e:
+                logger.error('Error finding reference in output_soup: %s', e)
+                raise
 
-        #     # try:
-        #     #     self.add_metadata(output_reference)
-        #     # except Exception as e:
-        #     #     logger.error('Error adding metadata: %s', e)
-        #     #     raise
+            # try:
+            #     self.add_metadata(output_reference)
+            # except Exception as e:
+            #     logger.error('Error adding metadata: %s', e)
+            #     raise
 
-        #     try:
-        #         self.process_tags(output_reference)
-        #     except Exception as e:
-        #         logger.error('Error processing tags: %s', e)
-        #         raise
-        #     logger.info('Document parsing completed')
-        #     self.output_soup.reference.append(self.image_list)
-        #     return self.output_soup.prettify()
+            try:
+                self.process_tags(output_reference)
+            except Exception as e:
+                logger.error('Error processing tags: %s', e)
+                raise
+            logger.info('Document parsing completed')
+            self.output_soup.reference.append(self.image_list)
+            return self.output_soup.prettify()
         except Exception as e:
             logger.error('Error during parsing: %s', e)
             raise
@@ -325,19 +325,15 @@ class HTMLParser:
             if not root_tags:
                 logger.warning('No tags found in the input document')
                 return
-
-            # # Process each tag with individual error handling
-            # for tag in root_tags:
-            #     try:
-            #         logger.debug(f'Processing tag: {getattr(tag, "name", "Unknown")}')
-            #         self.untag(tag)
-            #     except Exception as tag_err:
-            #         logger.error(f'Error processing tag {getattr(tag, "name", "Unknown")}: {tag_err}')
-            #         # Continue processing other tags
-            #         continue
+            # Process each tag with individual error handling
             for tag in root_tags:
-                logger.error(f'Processing tag: {tag}')
-
+                try:
+                    logger.debug(f'Processing tag: {getattr(tag, "name", "Unknown")}')
+                    self.untag(tag)
+                except Exception as tag_err:
+                    logger.error(f'Error processing tag {getattr(tag, "name", "Unknown")}: {tag_err}')
+                    # Continue processing other tags
+                    continue
         except Exception as e:
             logger.error(f'Critical error during pre-parse: {e}')
             raise
