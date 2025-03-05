@@ -57,7 +57,7 @@ class MediaWiki_Parser(HTMLParser):
         Uses DITA_Parser class's specialise() call to find the infobox in a wiki article
         """
         # Use BeautifulSoup for more robust parsing
-        soup = BeautifulSoup(self.input, 'html.parser')
+        soup = BeautifulSoup(self.soup, 'html.parser')
         
         # Find first table that might be an infobox
         first_table = soup.find('table')
