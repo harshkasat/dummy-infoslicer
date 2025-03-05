@@ -130,14 +130,14 @@ class MediaWiki_Helper:
         @rtype: string"""
         return input.split("<%s>" % (tag), 1)[1].split("</%s>" % (tag), 1)[0]
     
-    def fixHTML(self, input):
+    def fixHTML(self, input_content):
         """fixes <, > and " characters in HTML
         
         @param input: input string to work on
         @return: modified version of input
         @rtype: string"""
-        logger.error("fixHTML: " + input)
-        return input.replace("&lt;", "<").replace("&gt;", ">").replace("&quot;",'"')
+        logger.error(input_content)
+        return input_content.replace("&lt;", "<").replace("&gt;", ">").replace("&quot;",'"')
     
     def getImageURLs(self, title, wiki=defaultWiki, revision=None):
         """returns a list of the URLs of every image on the specified page on the (optional) specified wiki
