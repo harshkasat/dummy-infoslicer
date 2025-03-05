@@ -15,7 +15,7 @@ class NoDocException(Exception):
 Wrap Beautiful Soup HTML parser up in custom class to add some 
 Media Wiki and DITA specific parsing functionality.
 """
-class HTML_Parser:
+class HTMLParser:
     
     #=======================================================================
     # These lists are used at the pre-parsing stage
