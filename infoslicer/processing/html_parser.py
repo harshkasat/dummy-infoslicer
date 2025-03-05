@@ -246,17 +246,17 @@ class HTMLParser:
         if tag.name in self.keep_tags:
             new_tag = Tag(self.soup, tag.name)
             new_tag.contents = tag.contents
-            tag.replaceWith(new_tag)
-        elif tag.name in self.remove_tags_keep_content:            
+            tag.replace_with(new_tag)
+        elif tag.name in self.remove_tags_keep_content:
             children = tag.findChildren(True, recursive=False)
             if len(children) == 1:
-                tag.replaceWith(children[0])
+                tag.replace_with(children[0])
             elif len(children) > 1:
                 new_tag = Tag(self.soup, "p")
                 for child in tag.findChildren(True, recursive=False):
                     new_tag.append(child)
-                tag.replaceWith(new_tag)
+                tag.replace_with(new_tag)
             else:
-                tag.replaceWith(tag.renderContents())
+                tag.replace_with(tag.renderContents().decode('utf-8'))
         else:
             tag.extract()
