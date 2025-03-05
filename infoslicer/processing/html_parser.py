@@ -38,9 +38,9 @@ class HTMLParser:
         if document_to_parse == None:
             raise NoDocException("No content to parse - supply document to __init__")
         self.soup = BeautifulSoup(document_to_parse, "html.parser")
-        logger.error(f'HTMLParser: {self.soup}')
+        
         self.source = source_url
-        self.output_soup = BeautifulStoneSoup('<?xml version="1.0" encoding="utf-8"?><reference><title>%s</title></reference>' % title)
+        self.output_soup = BeautifulSoup('<?xml version="1.0" encoding="utf-8"?><reference><title>%s</title></reference>' % title, "html.parser")
         # First ID issued will be id below + 1
         self.ids = {"reference" : 1,\
                     "section" : 1,\
@@ -219,9 +219,9 @@ class HTMLParser:
             self.ids[tag] += 1
             attrs = [("id", str(self.ids[tag]))]
         if attrs != []:
-            new_tag = Tag(self.output_soup, tag, attrs)
+            new_tag = Tag(self.output_soup, name=tag, attrs=attrs)
         else:
-            new_tag = Tag(self.output_soup, tag)
+            new_tag = Tag(self.output_soup, name=tag)
         if contents != None:
             new_tag.insert(0, contents)
         attrs = []
