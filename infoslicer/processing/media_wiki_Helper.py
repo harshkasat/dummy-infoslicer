@@ -4,7 +4,7 @@
 import urllib.request as urllib
 from xml.dom import minidom
 import logging
-
+import json
 import net
 
 import re
@@ -97,7 +97,7 @@ class MediaWiki_Helper:
         title = self.resolveTitle(title, wiki)
 
         # Create the API request URL
-        path = "http://%s/w/api.php?action=parse&page=%s&format=xml" % (wiki, title)
+        path = "http://%s/w/api.php?action=parse&page=%s&format=json" % (wiki, title)
 
         # Fetch the document content
         doc = self.getDoc(path)
@@ -127,7 +127,7 @@ class MediaWiki_Helper:
     def urlEncodeNonAscii(self, b):
         return re.sub('[\x80-\xFF]', lambda c: '%%%02x' % ord(c.group(0)), b)
 
-    def stripTags(self, input, tag):
+    def stripTags(self, input_json, tag):
         """Extracts content inside a specific XML tag.
         
         @param input: XML string
@@ -135,12 +135,9 @@ class MediaWiki_Helper:
         @return: Content inside the tag
         """
         try:
-            xmldoc = minidom.parseString(input)
-            elements = xmldoc.getElementsByTagName(tag)
-            if elements and elements[0].firstChild:
-                return elements[0].firstChild.nodeValue
-            else:
-                return ""
+            load_data = json.loads(input_json)
+            strip_html = load_data["parse"][tag]['*']
+            return strip_html
         except Exception as e:
             logger.error(f"Error extracting tag {tag}: {e}")
             return ""
