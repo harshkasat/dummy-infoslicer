@@ -232,31 +232,50 @@ class HTMLParser:
         Recursively removes unwanted tags according to defined lists
         @param tag: tag hierarchy to work on
         """
+        # Skip processing if tag is None or has no name
+        if not tag or not tag.name:
+            return
+
+        # Process children first
         for child in tag.findChildren(True, recursive=False):
             self.unTag(child)
 
         # Check if tag has class attribute and process class matching
         if self.remove_classes_regexp and "class" in tag.attrs:
-            # Convert class list to string if needed
             tag_classes = " ".join(tag.get("class")) if isinstance(tag.get("class"), list) else tag.get("class")
             if tag_classes and re.match(self.remove_classes_regexp, tag_classes):
                 tag.extract()
                 return
 
-        if tag.name in self.keep_tags:
-            new_tag = Tag(self.soup, tag.name)
-            new_tag.contents = tag.contents
-            tag.replace_with(new_tag)
-        elif tag.name in self.remove_tags_keep_content:
-            children = tag.findChildren(True, recursive=False)
-            if len(children) == 1:
-                tag.replace_with(children[0])
-            elif len(children) > 1:
-                new_tag = Tag(self.soup, "p")
-                for child in tag.findChildren(True, recursive=False):
-                    new_tag.append(child)
+        try:
+            if tag.name in self.keep_tags:
+                # Ensure tag name is valid before creating new tag
+                if not tag.name:
+                    logger.warning("Found tag with no name, skipping")
+                    return
+
+                new_tag = Tag(self.soup, name=tag.name)
+                new_tag.contents = tag.contents
                 tag.replace_with(new_tag)
+            elif tag.name in self.remove_tags_keep_content:
+                children = tag.findChildren(True, recursive=False)
+                if len(children) == 1:
+                    tag.replace_with(children[0])
+                elif len(children) > 1:
+                    new_tag = Tag(self.soup, "p")
+                    for child in children:
+                        new_tag.append(child)
+                    tag.replace_with(new_tag)
+                else:
+                    # Handle empty or text-only tags
+                    contents = tag.renderContents().decode('utf-8')
+                    if contents:
+                        tag.replace_with(contents)
+                    else:
+                        tag.extract()
             else:
-                tag.replace_with(tag.renderContents().decode('utf-8'))
-        else:
+                tag.extract()
+        except ValueError as e:
+            logger.error(f"Error processing tag {tag}: {str(e)}")
+            # Extract the tag to avoid further processing
             tag.extract()
