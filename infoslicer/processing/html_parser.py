@@ -132,7 +132,7 @@ class HTMLParser:
         #add created and modified dates
         output_reference.prolog.append(self.tag_generator('critdates', '<created date="%s" /><revised modified="%s" />' % (the_date, the_date)))
         #add the first refbody
-        output_reference.append(self.tag_generator("refbody")) 
+        output_reference.append(self.tag_generator("refbody"))
         #track whether text should be inserted in a section or into the refbody
         in_section = False
         #set current refbody and section pointers
@@ -186,13 +186,13 @@ class HTMLParser:
                 #add the new reference to the containing reference tag in the output
                 output_reference.append(new_reference)
             #block element action
-            elif tag_name in self.block_elements:
-                if in_section:
-                    #add block element to current section
-                    current_section.append(self.tag_generator(tag_name, tag.renderContents()))
-                else:
-                    #add block element to new section
-                    current_refbody.append(self.tag_generator("section", self.tag_generator(tag_name, tag.renderContents())))
+            # elif tag_name in self.block_elements:
+            #     if in_section:
+            #         #add block element to current section
+            #         current_section.append(self.tag_generator(tag_name, tag.renderContents()))
+            #     else:
+            #         #add block element to new section
+            #         current_refbody.append(self.tag_generator("section", self.tag_generator(tag_name, tag.renderContents())))
             #find the next tag and continue
             tag = tag.findNextSibling()
         #append the image list
