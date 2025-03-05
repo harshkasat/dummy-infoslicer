@@ -75,14 +75,12 @@ def download_wiki_article(title, wiki, progress):
 
 def image_handler(root, uid, document):
     """
-        Takes a DITA article and downloads images referenced in it
-        (finding all <image> tags).
-        Attemps to fix incomplete paths using source url.
-        @param document: DITA to work on
-        @return: The document with image tags adjusted to point to local paths
+    Takes a DITA article and downloads images referenced in it
+    (finding all <image> tags).
+    Attempts to fix incomplete paths using source url.
     """
     document = BeautifulStoneSoup(document)
-    dir_path =  os.path.join(root, uid, "images")
+    dir_path = os.path.join(root, uid, "images")
 
     logger.debug('image_handler: %s' % dir_path)
 
@@ -92,30 +90,43 @@ def image_handler(root, uid, document):
     for image in document.findAll("image"):
         fail = False
         path = image['href']
-        if "#DEMOLIBRARY#" in path:
+        
+        # Handle protocol-relative URLs and other URL formats
+        if path.startswith("//"):
+            path = "https:" + path
+        elif "#DEMOLIBRARY#" in path:
             path = path.replace("#DEMOLIBRARY#",
                     os.path.join(get_bundle_path(), 'examples'))
             image_title = os.path.split(path)[1]
             shutil.copyfile(path, os.path.join(dir_path, image_title))
-        else:
-            image_title = path.rsplit("/", 1)[-1]
-            # attempt to fix incomplete paths
-            if (not path.startswith("http://")) and document.source is not None and "href" in document.source:
-                if path.startswith("//upload"):
-                    path = 'http:' + path
-                elif path.startswith("/"):
-                    path = document.source['href'].rsplit("/", 1)[0] + path
+            continue
+
+        image_title = path.rsplit("/", 1)[-1]
+        
+        # Fix incomplete paths
+        if not any(path.startswith(proto) for proto in ['http://', 'https://']):
+            if document.source and "href" in document.source:
+                base_url = document.source['href'].rsplit("/", 1)[0]
+                if path.startswith("/"):
+                    path = base_url + path
                 else:
-                    path = document.source['href'].rsplit("/", 1)[0] + "/" + path
-            logger.debug("Retrieving image: " + path)
+                    path = base_url + "/" + path
+
+        logger.debug("Retrieving image: " + path)
+
+        try:
             file = open(os.path.join(dir_path, image_title), 'wb')
             image_contents = _open_url(path)
-            if image_contents == None:
+            if image_contents is None:
                 fail = True
             else:
                 file.write(image_contents)
             file.close()
-        #change to relative paths:
+        except Exception as e:
+            logger.error(f"Failed to download image {path}: {str(e)}")
+            fail = True
+
+        # Change to relative paths
         if not fail:
             image['href'] = os.path.join(dir_path.replace(os.path.join(root, ""), "", 1), image_title)
             image['orig_href'] = path
@@ -126,19 +137,31 @@ def image_handler(root, uid, document):
 
 def _open_url(url):
     """
-        retrieves content from specified url
+    Retrieves content from specified url with improved error handling
     """
     urllib.request._urlopener = _new_url_opener()
+    
     try:
-        logger.debug("opening " + url)
-        logger.debug("proxies: " + str(proxies))
-        doc = urllib.request.urlopen(url)
-        output = doc.read()
-        doc.close()
-        logger.debug("url opened succesfully")
-        return output
-    except IOError as e:
-        elogger.debug('_open_url: %s' % e)
+        # Ensure URL has a protocol
+        if url.startswith("//"):
+            url = "https:" + url
+            
+        logger.debug(f"Opening URL: {url}")
+        logger.debug(f"Using proxies: {proxies}")
+        
+        # Create Request object with headers
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+        }
+        req = urllib.request.Request(url, headers=headers)
+        
+        # Open URL with timeout
+        with urllib.request.urlopen(req, timeout=30) as response:
+            return response.read()
+            
+    except Exception as e:
+        logger.error(f"Failed to open URL {url}: {str(e)}")
+        return None
 
 class _new_url_opener(urllib.request.FancyURLopener):
     version = "Mozilla/5.0 (X11; U; Linux x86_64; en-US; rv:1.9.1b2)" \
