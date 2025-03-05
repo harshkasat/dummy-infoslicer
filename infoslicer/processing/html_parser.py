@@ -102,7 +102,7 @@ class HTMLParser:
         """
         paragraphs = self.soup.findAll("p")
         for p in paragraphs:
-            contents = p.renderContents()
+            contents = p.renderContents().decode("utf-8")
             if len(contents) > 20 and (("." in contents) or ("?" in contents) or ("!" in contents)):
                 p.extract()
                 return self.create_paragraph(contents, "shortdesc")
