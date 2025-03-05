@@ -99,6 +99,7 @@ class MediaWiki_Helper:
         path = "http://%s/w/api.php?action=parse&page=%s&format=xml" % (wiki,title)
         #remove xml tags around article and fix HTML tags and quotes
         #return fixHTML(stripTags(getDoc(path), "text"))
+        logger.error(self.getDoc(path))
         return self.fixHTML(self.getDoc(path)), path
 
     def getDoc(self, path):
@@ -136,7 +137,6 @@ class MediaWiki_Helper:
         @param input: input string to work on
         @return: modified version of input
         @rtype: string"""
-        logger.error(input_content)
         return input_content.replace("&lt;", "<").replace("&gt;", ">").replace("&quot;",'"')
     
     def getImageURLs(self, title, wiki=defaultWiki, revision=None):
