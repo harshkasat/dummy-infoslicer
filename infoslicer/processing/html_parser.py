@@ -45,7 +45,7 @@ class HTMLParser:
             <title>{title}</title>
         </reference>'''
 
-        self.output_soup = BeautifulSoup(xml_template, "xml")
+        self.output_soup = BeautifulSoup(xml_template, "html.parser")
         # First ID issued will be id below + 1
         self.ids = {"reference" : 1,\
                     "section" : 1,\
