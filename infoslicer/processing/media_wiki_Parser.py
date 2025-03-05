@@ -12,22 +12,33 @@ class MediaWiki_Parser(HTMLParser):
     remove_classes_regexp = re.compile("toc|noprint|metadata|sisterproject|boilerplate|reference(?!s)|thumb|navbox|editsection")
     
     def __init__(self, document_to_parse, title, source_url):
-        if input == None:
+        if document_to_parse == None:
             raise NoDocException("No content to parse - supply document to __init__")
 
         logger.debug('MediaWiki_Parser: %s' % source_url)
 
-        header, input_content = document_to_parse.split("<text xml:space=\"preserve\">")
+        # Check if input is MediaWiki XML format or direct HTML
+        if "<text xml:space=\"preserve\">" in document_to_parse:
+            # Handle MediaWiki XML format
+            header, input_content = document_to_parse.split("<text xml:space=\"preserve\">")
+            input_content = input_content.split("</text>")[0]
+            
+            #find the revision id in the xml the wiki API returns
+            revid = re.findall(re.compile('\<parse.*revid\=\"(?P<rid>[0-9]*)\"'), header)
+            revision_id = revid[0] if revid else ''
+        else:
+            # Handle direct HTML input
+            input_content = document_to_parse
+            revision_id = ''
 
-        #find the revision id in the xml the wiki API returns
-        revid = re.findall(re.compile('\<parse.*revid\=\"(?P<rid>[0-9]*)\"'),
-                header)
-
-        input_content = input_content.split("</text>")[0]
         #call the normal constructor
         HTMLParser.__init__(self, "<body>" + input_content + "</body>", title, source_url)
+        
         #overwrite the source variable
-        self.source = "http://" + source_url.replace("http://", "").split("/")[0] + "/w/index.php?oldid=%s" % revid[0]
+        if revision_id:
+            self.source = "http://" + source_url.replace("http://", "").split("/")[0] + "/w/index.php?oldid=%s" % revision_id
+        else:
+            self.source = source_url
     
     def specialise(self):
         """
