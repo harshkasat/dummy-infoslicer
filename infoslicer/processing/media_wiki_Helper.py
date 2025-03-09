@@ -151,7 +151,8 @@ class MediaWiki_Helper:
         @rtype: string"""
         # First pass: Fix standard HTML entities
         try:
-            content = input_content.replace("&lt;", "<").replace("&gt;", ">").replace("&quot;", '"')
+            content = input_content
+            logger.error(content)
 
             # Second pass: Remove HTML tags and citations
             patterns = [
