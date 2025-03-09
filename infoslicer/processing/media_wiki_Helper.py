@@ -143,12 +143,21 @@ class MediaWiki_Helper:
             return ""
 
     def fixHTML(self, input_content):
-        """fixes <, > and " characters in HTML
+        """fixes HTML entities and malformed tags in HTML
         
         @param input: input string to work on
         @return: modified version of input
         @rtype: string"""
-        return input_content.replace("&lt;", "<").replace("&gt;", ">").replace("&quot;",'"')
+        # Fix standard HTML entities
+        content = input_content.replace("&lt;", "<").replace("&gt;", ">").replace("&quot;", '"')
+        
+        # Fix malformed tags and entities
+        content = re.sub(r'&lt:/?su?p?&gt;?', '', content)  # Remove malformed sup tags
+        content = re.sub(r'&lt:/?sup&gt;?', '', content)    # Remove proper sup tags
+        content = re.sub(r':\[.*?\]', '', content)          # Remove citation brackets
+        content = re.sub(r';\[.*?\]', '', content)          # Remove citation brackets with semicolon
+        
+        return content
 
     def getImageURLs(self, title, wiki=defaultWiki, revision=None):
         """returns a list of the URLs of every image on the specified page on the (optional) specified wiki
