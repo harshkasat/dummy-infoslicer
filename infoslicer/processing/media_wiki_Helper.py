@@ -104,7 +104,6 @@ class MediaWiki_Helper:
 
         # Extract article content inside <text> tag
         article_content = self.stripTags(doc, "text")
-        logger.error(doc[:120])
         # Fix HTML entities
         return self.fixHTML(article_content), path
 
