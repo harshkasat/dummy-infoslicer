@@ -103,9 +103,9 @@ class MediaWiki_Helper:
         doc = self.getDoc(path)
 
         # Extract article content inside <text> tag
-        article_content = self.stripTags(doc, "text")
+        article_content, strip_revid = self.stripTags(doc, "text")
         # Fix HTML entities
-        return self.fixHTML(article_content), path
+        return self.fixHTML(article_content), path, strip_revid
 
     def getDoc(self, path):
         """opens a remote file by http and retrieves data
@@ -137,7 +137,8 @@ class MediaWiki_Helper:
         try:
             load_data = json.loads(input_json)
             strip_html = load_data["parse"][tag]['*']
-            return strip_html
+            strip_revid = load_data['parse']['revid']
+            return strip_html, strip_revid
         except Exception as e:
             logger.error(f"Error extracting tag {tag}: {e}")
             return ""

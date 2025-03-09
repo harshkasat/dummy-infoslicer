@@ -38,9 +38,10 @@ def download_wiki_article(title, wiki, progress):
     try:
         progress.set_label(_('"%s" download in progress...') % title)
         try:
-            article, url = MediaWiki_Helper().getArticleAsHTMLByTitle(title, wiki)
+            article, url, strip_revid = MediaWiki_Helper().getArticleAsHTMLByTitle(title, wiki)
 
             logger.error(article[:800])
+            logger.error(f"What is article type {type(article)}")
 
             # Optional: force decode if it's bytes
             if isinstance(article, bytes):
@@ -51,7 +52,7 @@ def download_wiki_article(title, wiki, progress):
             raise
 
         progress.set_label(_('Processing "%s"...') % title)
-        parser = MediaWiki_Parser(article, title, url)
+        parser = MediaWiki_Parser(document_to_parse=article, revid=strip_revid, title=title, source_url=url)
         contents = parser.parse()
 
         progress.set_label(_('Downloading "%s" images...') % title)
