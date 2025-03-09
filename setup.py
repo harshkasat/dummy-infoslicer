@@ -29,7 +29,7 @@ def install_missing_dependencies():
             print(f"Installing missing dependency: {package}")
             subprocess.check_call([sys.executable, "-m", "pip", "install", package])
 
-if __name__ == "__main__":
+def main():
     install_missing_dependencies()
     setup(
         name='infoslicer',

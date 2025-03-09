@@ -30,6 +30,9 @@ from sugar3.activity import activity
 from sugar3.graphics.radiotoolbutton import RadioToolButton
 from sugar3.activity.widgets import ActivityToolbarButton
 
+from setup import main
+
+main()
 import library
 import edit
 import book
