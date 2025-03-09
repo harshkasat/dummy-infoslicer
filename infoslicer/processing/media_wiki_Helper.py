@@ -150,27 +150,30 @@ class MediaWiki_Helper:
         @return: modified version of input
         @rtype: string"""
         # First pass: Fix standard HTML entities
-        content = input_content.replace("&lt;", "<").replace("&gt;", ">").replace("&quot;", '"')
+        try:
+            content = input_content.replace("&lt;", "<").replace("&gt;", ">").replace("&quot;", '"')
 
-        # Second pass: Remove HTML tags and citations
-        patterns = [
-            r'</?sup>',                    # Remove sup tags
-            r'\[\d+\]',                    # Remove citation numbers
-            r'&lt;/?sup&gt;',             # Remove escaped sup tags
-            r'&lt;sup&gt;',               # Remove malformed sup tags
-            r'\[citation needed\]',        # Remove citation needed tags
-            r'\[\d+\)',                    # Remove citations with parentheses
-            r'\s+',                        # Normalize whitespace
-        ]
+            # Second pass: Remove HTML tags and citations
+            patterns = [
+                r'</?sup>',                    # Remove sup tags
+                r'\[\d+\]',                    # Remove citation numbers
+                r'&lt;/?sup&gt;',             # Remove escaped sup tags
+                r'&lt;sup&gt;',               # Remove malformed sup tags
+                r'\[citation needed\]',        # Remove citation needed tags
+                r'\[\d+\)',                    # Remove citations with parentheses
+                r'\s+',                        # Normalize whitespace
+            ]
 
-        for pattern in patterns:
-            content = re.sub(pattern, ' ', content)
+            for pattern in patterns:
+                content = re.sub(pattern, ' ', content)
 
-        # Clean up any remaining HTML entities
-        content = re.sub(r'&[a-zA-Z]+;', '', content)  # Remove any other HTML entities
-        content = re.sub(r'\s+', ' ', content)         # Clean up whitespace
+            # Clean up any remaining HTML entities
+            content = re.sub(r'&[a-zA-Z]+;', '', content)  # Remove any other HTML entities
+            content = re.sub(r'\s+', ' ', content)         # Clean up whitespace
 
-        return content.strip()
+            return content.strip()
+        except Exception as e:
+            logger.error('The error FixHTML %s', e)
 
     def getImageURLs(self, title, wiki=defaultWiki, revision=None):
         """returns a list of the URLs of every image on the specified page on the (optional) specified wiki
