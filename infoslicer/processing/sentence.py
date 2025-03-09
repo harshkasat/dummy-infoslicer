@@ -180,7 +180,7 @@ class Sentence( RawSentence ):
 class Picture( RawSentence ):
 
     def __init__(self, picture_data, buf, insertioniter):
-        id = 0
+        idz = 0
         source_article_id = picture_data.source_article_id
         source_section_id = 0
         source_paragraph_id = 0
@@ -204,7 +204,7 @@ class Picture( RawSentence ):
         buf.move_mark(leftmark, left)
         buf.move_mark(rightmark, right)
 
-        RawSentence.__init__(self, id, source_article_id, source_section_id,
+        RawSentence.__init__(self, idz, source_article_id, source_section_id,
         source_paragraph_id, source_sentence_id, buf, formatting, leftmark, rightmark)
         self.type = "picture"
 

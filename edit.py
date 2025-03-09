@@ -116,8 +116,6 @@ class ToolbarBuilder():
         self.jimg_toggle.set_sensitive(False)
 
     def _toggle_image_chooser(self, widget):
-        # self._old_cursor = self.edit.get_window().get_cursor()
-        # self.edit.get_window().set_cursor(Gdk.Cursor.new(Gdk.CursorType.WATCH))
         GLib.idle_add(self.__image_chooser)
 
     def __image_chooser(self):
@@ -129,11 +127,8 @@ class ToolbarBuilder():
                 title = str(jobject.metadata['title'])
                 path = str(jobject.file_path)
                 TABS[2].gallery.add_image(path, title)
-        # self.edit.get_window().set_cursor(self._old_cursor)
 
     def _toggle_text_chooser(self, widget):
-        # self._old_cursor = self.edit.get_window().get_cursor()
-        # self.edit.get_window().set_cursor(Gdk.Cursor.new(Gdk.CursorType.WATCH))
         GLib.idle_add(self.__text_chooser)
 
     def __text_chooser(self):
@@ -149,7 +144,6 @@ class ToolbarBuilder():
                 fp.close()
                 article_data = dehtml(text, title)
                 TABS[0].set_source_article(Article(article_data))
-        # self.edit.get_window().set_cursor(self._old_cursor)
 
     def _toggle_cb(self, widget, toggles):
         for tab in TABS:

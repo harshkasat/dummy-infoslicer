@@ -19,7 +19,6 @@ from gi.repository import Gdk
 from gi.repository import GObject
 import logging
 from threading import Timer
-from datetime import datetime
 from gettext import gettext as _
 import locale
 
@@ -114,10 +113,6 @@ class View(Gtk.EventBox):
         wiki.append_page(wiki_widget, None)
 
         self.progress = Gtk.Label()
-        #self.progress.set_size_request(-1, style.SMALL_ICON_SIZE+4)
-        #progress_box = Gtk.HBox()
-        #progress_box.pack_start(Gtk.HSeparator(, True, True, 0), False)
-        #progress_box.pack_start(self.progress, False)
 
         wiki_box = Gtk.VBox()
         wiki_box.pack_start(search_box, False, False, 0)
@@ -141,7 +136,6 @@ class View(Gtk.EventBox):
                                            style.GRID_CELL_SIZE) / 2))
 
         # workspace
-
         articles_box = Gtk.HBox()
         articles_box.pack_start(self.wiki, True, True, 0)
         articles_box.pack_start(Gtk.VSeparator(), False, False, 0)

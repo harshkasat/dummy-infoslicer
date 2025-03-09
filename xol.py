@@ -14,7 +14,15 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
+
+# @author: Matthew Bailey
+# This class deals with the creation of content packages, comprised of articles from
+# themes, with are zipped up and installed in the relevant OS specific location. From
+# here they can be distributed to the consumers
+
+
 import os
+import copy
 from gi.repository import Gtk
 import zipfile
 import uuid
@@ -82,9 +90,9 @@ def publish(activity, force=False):
         jobject.metadata['activity'] = book.CUSTOM.uid
         jobject.metadata['mime_type'] = 'application/vnd.olpc-content'
         jobject.metadata['description'] = \
-                'This is a bundle containing articles on %s.\n' \
+                'This is a bundle containing articles on {}.\n' \
                 'To view these articles, open the \'Browse\' Activity.\n' \
-                'Go to \'Books\', and select \'%s\'.' % (title, title)
+                'Go to \'Books\', and select \'{}\'.'.format(title, title)
 
     book.CUSTOM.sync_article()
     book.CUSTOM.revision += 1
@@ -103,13 +111,7 @@ def publish(activity, force=False):
     activity.add_alert(alert)
     alert.show()
 
-"""
-@author: Matthew Bailey
 
-This class deals with the creation of content packages, comprised of articles from
-themes, with are zipped up and installed in the relevant OS specific location. From
-here they can be distributed to the consumers
-"""
 def _publish(title, jobject):
     zipfilename = '/tmp/infoslicer.xol'
     zip = zipfile.ZipFile(zipfilename, 'w')
@@ -219,7 +221,6 @@ def _info_file(zip, uid, title):
 
 # XXX setup mode_t for files written by writestr()
 def zipstr(zip, arcname, str):
-    import copy
     zipinfo = copy.copy(zip.infolist()[0])
     zipinfo.filename = arcname
     zip.writestr(zipinfo, str)

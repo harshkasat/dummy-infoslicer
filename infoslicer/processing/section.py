@@ -46,7 +46,6 @@ class RawSection:
     functions.
     """
 
-
     def __init__(self, idz, source_article_id, source_section_id, paragraphs, buf):
         self.id = idz
         self.source_article_id = source_article_id
@@ -104,9 +103,6 @@ class RawSection:
             paragraph = Paragraph(paragraphdata, self.buf, insertioniter)
             self.paragraphs.insert(paragraphindex+1, paragraph)
 
-
-
-
     def delete(self):
         for paragraph in self.paragraphs:
             paragraph.delete()
@@ -150,7 +146,6 @@ class RawSection:
             return True
         else:
             return False
-
 
     def getParagraph(self, lociter):
         paragraphindex = self.__get_exact_paragraph(lociter)
@@ -320,7 +315,7 @@ class RawSection:
 class Section( RawSection ):
 
     def __init__(self, section_data, buf, insertioniter):
-        id = section_data.id
+        idz = section_data.id
         source_article_id = section_data.source_article_id
         source_section_id = section_data.source_section_id
 
@@ -337,7 +332,7 @@ class Section( RawSection ):
 
         buf.delete_mark(insertionmark)
 
-        RawSection.__init__(self, id, source_article_id, source_section_id, paragraphs, buf)
+        RawSection.__init__(self, idz, source_article_id, source_section_id, paragraphs, buf)
 
 
 class dummySection(Section):

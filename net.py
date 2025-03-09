@@ -16,7 +16,7 @@
 
 import os
 import shutil
-import urllib.request, urllib.parse, urllib.error 
+import urllib.request, urllib.parse, urllib.error
 import logging
 from gettext import gettext as _
 
@@ -84,7 +84,7 @@ def image_handler(root, uid, document):
     for image in document.findAll("image"):
         fail = False
         path = image['href']
-        
+
         # Handle protocol-relative URLs and other URL formats
         if path.startswith("//"):
             path = "https:" + path
@@ -96,7 +96,7 @@ def image_handler(root, uid, document):
             continue
 
         image_title = path.rsplit("/", 1)[-1]
-        
+
         # Fix incomplete paths
         if not any(path.startswith(proto) for proto in ['http://', 'https://']):
             if document.source and "href" in document.source:
@@ -134,25 +134,25 @@ def _open_url(url):
     Retrieves content from specified url with improved error handling
     """
     urllib.request._urlopener = _new_url_opener()
-    
+
     try:
         # Ensure URL has a protocol
         if url.startswith("//"):
             url = "https:" + url
-            
+
         logger.debug(f"Opening URL: {url}")
         logger.debug(f"Using proxies: {proxies}")
-        
+
         # Create Request object with headers
         headers = {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
         }
         req = urllib.request.Request(url, headers=headers)
-        
+
         # Open URL with timeout
         with urllib.request.urlopen(req, timeout=30) as response:
             return response.read()
-            
+
     except Exception as e:
         logger.error(f"Failed to open URL {url}: {str(e)}")
         return None
@@ -168,7 +168,7 @@ _proxy_file = os.path.join(os.path.split(os.path.split(__file__)[0])[0],
 _proxylist = {}
 
 if os.access(_proxy_file, os.F_OK):
-    proxy_file_handle = open(_proxy_file, "r")
+    proxy_file_handle = open(_proxy_file, "r", encoding="utf-8")
     for line in proxy_file_handle.readlines():
         parts = line.split(':', 1)
         #logger.debug("setting " + parts[0] + " proxy to " + parts[1])

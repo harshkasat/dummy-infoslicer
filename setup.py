@@ -15,8 +15,14 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
+from setuptools import setup
 from sugar3.activity import bundlebuilder
-install_requires = ['bs4']
-if __name__ == "__main__":
-    bundlebuilder.start()
 
+if __name__ == "__main__":
+    setup(
+        name='infoslicer',
+        install_requires=[
+            'typing_extensions',
+        ],
+    )
+    bundlebuilder.start()
