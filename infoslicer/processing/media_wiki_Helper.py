@@ -149,16 +149,28 @@ class MediaWiki_Helper:
         @param input: input string to work on
         @return: modified version of input
         @rtype: string"""
-        # Fix standard HTML entities
+        # First pass: Fix standard HTML entities
         content = input_content.replace("&lt;", "<").replace("&gt;", ">").replace("&quot;", '"')
 
-        # Fix malformed tags and entities
-        content = re.sub(r'&lt:/?su?p?&gt;?', '', content)  # Remove malformed sup tags
-        content = re.sub(r'&lt:/?sup&gt;?', '', content)    # Remove proper sup tags
-        content = re.sub(r':\[.*?\]', '', content)          # Remove citation brackets
-        content = re.sub(r';\[.*?\]', '', content)          # Remove citation brackets with semicolon
+        # Second pass: Remove HTML tags and citations
+        patterns = [
+            r'</?sup>',                    # Remove sup tags
+            r'\[\d+\]',                    # Remove citation numbers
+            r'&lt;/?sup&gt;',             # Remove escaped sup tags
+            r'&lt;sup&gt;',               # Remove malformed sup tags
+            r'\[citation needed\]',        # Remove citation needed tags
+            r'\[\d+\)',                    # Remove citations with parentheses
+            r'\s+',                        # Normalize whitespace
+        ]
 
-        return content
+        for pattern in patterns:
+            content = re.sub(pattern, ' ', content)
+
+        # Clean up any remaining HTML entities
+        content = re.sub(r'&[a-zA-Z]+;', '', content)  # Remove any other HTML entities
+        content = re.sub(r'\s+', ' ', content)         # Clean up whitespace
+
+        return content.strip()
 
     def getImageURLs(self, title, wiki=defaultWiki, revision=None):
         """returns a list of the URLs of every image on the specified page on the (optional) specified wiki
