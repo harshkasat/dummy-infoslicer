@@ -18,19 +18,18 @@
 import sys
 import subprocess
 from setuptools import setup, find_packages
-from sugar3.activity import bundlebuilder
 
-def install_missing_dependencies():
-    required = ['typing_extensions']
-    for package in required:
-        try:
-            __import__(package)
-        except ImportError:
-            print(f"Installing missing dependency: {package}")
-            subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+# def install_missing_dependencies():
+#     required = ['typing_extensions']
+#     for package in required:
+#         try:
+#             __import__(package)
+#         except ImportError:
+#             print(f"Installing missing dependency: {package}")
+#             subprocess.check_call([sys.executable, "-m", "pip", "install", package])
 
 def main():
-    install_missing_dependencies()
+    # install_missing_dependencies()
     setup(
         name='infoslicer',
         version='1.0.0',
@@ -39,4 +38,3 @@ def main():
             'typing_extensions'
         ],
     )
-    bundlebuilder.start()
