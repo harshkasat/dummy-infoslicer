@@ -2,8 +2,8 @@
 
 from bs4 import BeautifulSoup
 
-#Extend beautiful soup HTML parsing library 
-#to recognise new self-closing tag <reference> 
+#Extend beautiful soup HTML parsing library
+#to recognise new self-closing tag <reference>
 class NewtifulStoneSoup(BeautifulSoup):
     SELF_CLOSING_TAGS = {"reference"}
 

@@ -89,7 +89,7 @@ class HTMLParser:
         try:
             for img in self.soup.findAll("img"):
                 too_small = False
-                image_path = img['src']    
+                image_path = img['src']
                 alt_text = ""
                 if img.has_key("width") and img.has_key("height") and int(img['width']) <= 70 and int(img['height']) <= 70:
                     too_small = True
@@ -97,7 +97,7 @@ class HTMLParser:
                     alt_text = img['alt']
                 else:
                     alt_text = image_path.split("/")[-1]
-                if (not too_small) and self.image_list.refbody.find(attrs={"href" : image_path}) == None:
+                if (not too_small) and self.image_list.refbody.find(attrs={"href" : image_path}) is None:
                     self.image_list.refbody.append(self.tag_generator("image", "<alt>%s</alt>" % alt_text, [("href", image_path)]))
                 img.extract()
         except Exception as e:
@@ -150,7 +150,7 @@ class HTMLParser:
             self.specialise()
             #find the first tag
             tag = self.soup.find(ROOT_NODE).findChild()
-            while tag != None:
+            while tag is not None:
                 #set variable to avoid hammering the string conversion function
                 tag_name = tag.name
                 #for debugging:

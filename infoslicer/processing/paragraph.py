@@ -46,7 +46,7 @@ class RawParagraph:
 
     """
 
-    def __init__(self, idz, 
+    def __init__(self, idz,
             source_article_id, source_section_id,
             source_paragraph_id, sentences, buf):
 
@@ -138,7 +138,7 @@ class RawParagraph:
         rightdist = right - middle
 
         if (sentenceindex < len(self.sentences)) and (leftdist > rightdist):
-            sentenceindex = sentenceindex +1 
+            sentenceindex = sentenceindex +1
         return sentenceindex
 
 
@@ -278,4 +278,4 @@ class dummyParagraph( Paragraph ):
         self.source_section_id = -1
         self.source_paragraph_id = -1
         self.buf = buf
-        self.sentences = [ dummySentence(buf, insertioniter, leftgravity) ]              
+        self.sentences = [ dummySentence(buf, insertioniter, leftgravity) ]
