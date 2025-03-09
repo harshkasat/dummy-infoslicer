@@ -15,14 +15,28 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
-from setuptools import setup
+import sys
+import subprocess
+from setuptools import setup, find_packages
 from sugar3.activity import bundlebuilder
 
+def install_missing_dependencies():
+    required = ['typing_extensions']
+    for package in required:
+        try:
+            __import__(package)
+        except ImportError:
+            print(f"Installing missing dependency: {package}")
+            subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+
 if __name__ == "__main__":
+    install_missing_dependencies()
     setup(
         name='infoslicer',
+        version='1.0.0',
+        packages=find_packages(),
         install_requires=[
-            'typing_extensions',
+            'typing_extensions'
         ],
     )
     bundlebuilder.start()
