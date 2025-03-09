@@ -40,8 +40,7 @@ def download_wiki_article(title, wiki, progress):
         try:
             article, url, strip_revid = MediaWiki_Helper().getArticleAsHTMLByTitle(title, wiki)
 
-            logger.error(article[:800])
-            logger.error(f"What is article type {type(article)}")
+            logger.error(article[:4000])
 
             # Optional: force decode if it's bytes
             if isinstance(article, bytes):

@@ -151,13 +151,13 @@ class MediaWiki_Helper:
         @rtype: string"""
         # Fix standard HTML entities
         content = input_content.replace("&lt;", "<").replace("&gt;", ">").replace("&quot;", '"')
-        
+
         # Fix malformed tags and entities
         content = re.sub(r'&lt:/?su?p?&gt;?', '', content)  # Remove malformed sup tags
         content = re.sub(r'&lt:/?sup&gt;?', '', content)    # Remove proper sup tags
         content = re.sub(r':\[.*?\]', '', content)          # Remove citation brackets
         content = re.sub(r';\[.*?\]', '', content)          # Remove citation brackets with semicolon
-        
+
         return content
 
     def getImageURLs(self, title, wiki=defaultWiki, revision=None):
