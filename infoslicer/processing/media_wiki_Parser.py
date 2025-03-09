@@ -13,7 +13,7 @@ class MediaWiki_Parser(HTMLParser):
 
     def __init__(self, document_to_parse, title, source_url):
         # logger.error("Revid" + document_to_parse['parse']['revid'])
-        logger.error(document_to_parse[:400])
+        # logger.error(document_to_parse[:400])
         revid = '1278607833'
         if document_to_parse is None:
             raise NoDocException("No content to parse - supply document to __init__")

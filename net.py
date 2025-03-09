@@ -40,6 +40,8 @@ def download_wiki_article(title, wiki, progress):
         try:
             article, url = MediaWiki_Helper().getArticleAsHTMLByTitle(title, wiki)
 
+            logger.error(article[:800])
+
             # Optional: force decode if it's bytes
             if isinstance(article, bytes):
                 article = article.decode('utf-8', errors='ignore')
