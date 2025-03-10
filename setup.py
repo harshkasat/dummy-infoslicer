@@ -15,18 +15,6 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
-import sys
-import subprocess
-from setuptools import setup, find_packages
-
-def install_missing_dependencies():
-    required = ['typing_extensions']
-    for package in required:
-        try:
-            __import__(package)
-        except ImportError:
-            print(f"Installing missing dependency: {package}")
-            subprocess.check_call([sys.executable, "-m", "pip", "install", package])
-
-def main():
-    install_missing_dependencies()
+from sugar3.activity import bundlebuilder
+if __name__ == "__main__":
+    bundlebuilder.start()
