@@ -289,7 +289,7 @@ class HTMLParser:
         @rtype: string"""
         # First pass: Fix standard HTML entities
         try:
-            content = input_content.replace("&lt;", " ").replace("&gt;", " ").replace("&quot;", '"').replace("sup", "").replace("/", "")
+            content = input_content.replace("&lt;", " ").replace("&gt;", " ").replace("&quot;", '"').replace("sup", "")
 
             # Second pass: Remove HTML tags and citations
             patterns = [
