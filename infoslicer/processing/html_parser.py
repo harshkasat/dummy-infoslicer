@@ -206,8 +206,7 @@ class HTMLParser:
             #append the image list
             self.output_soup.reference.append(self.image_list)
             #return output as a properly indented string
-            if self.output_soup.find('&lt'):
-                logger.error('We find &lt in self.output_soup')
+            logger.error(self.output_soup.prettify())
             return self.output_soup.prettify()
         except Exception as e:
             logger.error(f"Error parsing document: {str(e)}")
