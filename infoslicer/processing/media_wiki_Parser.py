@@ -12,8 +12,6 @@ class MediaWiki_Parser(HTMLParser):
     remove_classes_regexp = re.compile("toc|noprint|metadata|sisterproject|boilerplate|reference(?!s)|thumb|navbox|editsection")
 
     def __init__(self, document_to_parse, revid, title, source_url):
-        # logger.error("Revid" + document_to_parse['parse']['revid'])
-        # logger.error(document_to_parse[:400])
         if document_to_parse is None:
             raise NoDocException("No content to parse - supply document to __init__")
 

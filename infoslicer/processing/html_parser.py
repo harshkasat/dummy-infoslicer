@@ -206,7 +206,7 @@ class HTMLParser:
             #append the image list
             self.output_soup.reference.append(self.image_list)
             #return output as a properly indented string
-            logger.error(self.output_soup.prettify())
+            logger.error(self.fixHTML(self.output_soup.prettify()))
             return self.output_soup.prettify()
         except Exception as e:
             logger.error(f"Error parsing document: {str(e)}")
@@ -280,3 +280,35 @@ class HTMLParser:
         except Exception as e:
             logger.error(f"Error processing tag {tag}: {str(e)}")
             tag.unwrap()
+
+    def fixHTML(self, input_content):
+        """fixes HTML entities and malformed tags in HTML
+        
+        @param input: input string to work on
+        @return: modified version of input
+        @rtype: string"""
+        # First pass: Fix standard HTML entities
+        try:
+            content = input_content.replace("&lt;", " ").replace("&gt;", " ").replace("&quot;", '"')
+
+            # Second pass: Remove HTML tags and citations
+            patterns = [
+                r'</?sup>',                    # Remove sup tags
+                r'\[\d+\]',                    # Remove citation numbers
+                r'&lt;/?sup&gt;',             # Remove escaped sup tags
+                r'&lt;sup&gt;',               # Remove malformed sup tags
+                r'\[citation needed\]',        # Remove citation needed tags
+                r'\[\d+\)',                    # Remove citations with parentheses
+                r'\s+',                        # Normalize whitespace
+            ]
+
+            for pattern in patterns:
+                content = re.sub(pattern, ' ', content)
+
+            # Clean up any remaining HTML entities
+            content = re.sub(r'&[a-zA-Z]+;', '', content)  # Remove any other HTML entities
+            content = re.sub(r'\s+', ' ', content)         # Clean up whitespace
+
+            return content.strip()
+        except Exception as e:
+            logger.error('The error FixHTML %s', e)
