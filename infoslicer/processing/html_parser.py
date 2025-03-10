@@ -207,7 +207,7 @@ class HTMLParser:
             self.output_soup.reference.append(self.image_list)
             #return output as a properly indented string
             logger.error(self.fixHTML(self.output_soup.prettify()))
-            return self.output_soup.prettify()
+            return self.fixHTML(self.output_soup.prettify())
         except Exception as e:
             logger.error(f"Error parsing document: {str(e)}")
 
@@ -289,7 +289,7 @@ class HTMLParser:
         @rtype: string"""
         # First pass: Fix standard HTML entities
         try:
-            content = input_content.replace("&lt;", " ").replace("&gt;", " ").replace("&quot;", '"')
+            content = input_content.replace("&lt;", " ").replace("&gt;", " ").replace("&quot;", '"').replace("sup", "")
 
             # Second pass: Remove HTML tags and citations
             patterns = [
